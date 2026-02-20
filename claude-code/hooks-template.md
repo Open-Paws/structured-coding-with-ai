@@ -1,6 +1,6 @@
 # Claude Code Hooks Configuration Guide
 
-Hooks are shell commands that Claude Code executes before or after specific agent actions. Unlike instructions in CLAUDE.md (which the model may misinterpret or skip), hooks run deterministically — they either pass or block the action. Use hooks for any rule that must never be violated.
+Hooks are shell commands that Claude Code executes before or after specific agent actions. They are strictly superior to instruction-based enforcement: hooks run deterministically, cost zero tokens, and never hallucinate. Use hooks for any check that must never be skipped — formatting, linting, secret scanning, test gates.
 
 This file is a planning template, not executable configuration. Identify which hooks your project needs, fill in the placeholder commands with your actual tools, then configure them in Claude Code's settings following the official documentation.
 
