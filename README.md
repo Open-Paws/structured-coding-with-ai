@@ -1,6 +1,6 @@
-# C4C Structured Coding Library
+# Structured Coding Library for Animal Advocacy
 
-Ready-to-use instruction file sets for 12 AI coding tools, designed for animal advocacy development at Code for Compassion Campus. Each tool directory is self-contained: copy it into your project root and your AI assistant immediately understands advocacy-domain constraints, security threat models, testing standards, and process workflows. No external dependencies, no shared config, no setup beyond copying files.
+Ready-to-use instruction file sets for 12 AI coding tools, designed for anyone building software for animal advocacy and liberation. Each tool directory is self-contained: copy it into your project root and your AI assistant immediately understands advocacy-domain constraints, security threat models, testing standards, and process workflows. No external dependencies, no shared config, no setup beyond copying files.
 
 ---
 
