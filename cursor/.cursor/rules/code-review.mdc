@@ -1,0 +1,55 @@
+---
+description: "Comprehensive code review checklist combining Ousterhout red flags, AI-specific failure patterns, and advocacy concerns — invoke manually with @ when reviewing or preparing code for review"
+---
+# Code Review for AI-Assisted Advocacy Development
+
+## When to Use
+- Reviewing any pull request, especially those containing AI-generated code
+- Preparing your own code for review (self-review checklist)
+- Evaluating whether AI-generated output is ready for submission
+
+## Layered Review Pipeline
+
+Do not spend human review time on what automated tools can check. The review pipeline has four layers:
+
+1. **Automated formatting/linting** — zero human effort, enforced in CI. If formatting issues appear in review, the pipeline is broken.
+2. **Static analysis and type checking** — automated gates that catch structural issues, type errors, and known vulnerability patterns before human review.
+3. **AI-assisted first-pass review** — flags potential issues: logic errors, missed edge cases, inconsistent patterns, security concerns. Treat flags as suggestions, not verdicts.
+4. **Human review** — focuses on architecture, security, business logic correctness, design quality, and whether the tests are meaningful.
+
+## Ousterhout Red Flags Checklist
+
+Check every AI-generated module for these structural problems:
+- **Shallow module** — interface as complex as implementation; no information hiding; wrapper that adds surface area without reducing complexity
+- **Information leakage** — implementation details exposed across module boundaries; callers need to know how the module works internally
+- **Temporal decomposition** — code structured by execution order rather than by information hiding; "first we do X, then Y, then Z" as module boundaries
+- **Pass-through method** — method that does nothing except delegate to another method with a nearly identical signature
+- **Repetition** — same logic in multiple places; AI duplicates existing code at 4x the normal rate because it lacks full codebase awareness
+- **Special-general mixture** — general-purpose mechanism contaminated with special-case handling
+- **Conjoined methods** — cannot understand one method without reading another
+
+## AI-Specific Failure Patterns
+
+Check for these patterns that are characteristic of AI-generated code:
+- **Multi-responsibility functions** — AI produces functions that do several things at several levels of abstraction; split immediately
+- **Suppressed errors** — AI catches exceptions too broadly or silently swallows failures; IEEE Spectrum found newer models increasingly remove safety checks to make code appear to work
+- **Hallucinated APIs** — AI generates calls to functions, methods, or packages that do not exist; verify every external dependency and API call
+- **Over-patterning** — Strategy, Factory, Observer applied where a plain function and conditional would suffice; AI reaches for patterns aggressively
+- **Coverage theater** — AI generates tests with high coverage but meaningless assertions; verify with mutation testing
+- **Silent failure pattern** — AI may remove safety checks, create fake output matching desired formats, or **edit tests to pass rather than fixing code**; verify all safety checks from original code are preserved
+
+## Advocacy-Specific Review Concerns
+
+For every change, explicitly assess:
+- **Data leak vectors** — does this change create new paths for investigation data, activist identities, or witness information to leave the system? Check logs, error messages, API responses, and telemetry.
+- **Surveillance surface area** — does this change increase the system's exposure to surveillance? New network endpoints, new data storage, new third-party integrations all increase surface area.
+- **Emotional safety** — if this change affects content display, does it maintain progressive disclosure, content warnings, and configurable detail levels? Does it respect the user's existing content preferences?
+- **Coalition boundary violations** — does this change allow data to flow between bounded contexts without going through the anti-corruption layer? AI agents import directly for expedience.
+- **Ag-gag exposure** — does this change affect investigation data handling? If so, verify zero-retention compliance, metadata stripping, and encrypted storage.
+
+## PR Standards
+- PRs containing AI-generated code MUST be tagged **AI-Assisted**
+- Target under 200 lines changed per PR; use stacked PRs for larger changes
+- PR description must explain WHY, not just WHAT
+- Two human approvals required for primarily AI-generated PRs
+- Security-sensitive changes require explicit security review annotation

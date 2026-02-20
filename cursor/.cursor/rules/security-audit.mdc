@@ -1,0 +1,89 @@
+---
+description: "Advocacy-specific security audit checklist — invoke manually with @ when touching security-sensitive code, before deployments, or for periodic security assessment"
+---
+# Security Audit for Animal Advocacy Projects
+
+## When to Use
+- Touching code that handles investigation data, evidence, witness identities, or activist records
+- Before any deployment to production
+- Adding new dependencies, external integrations, or MCP servers
+- Periodic security review of existing codebase
+- After any security incident or near-miss
+
+## The Three-Adversary Threat Model
+
+Every audit must consider all three adversary categories:
+
+**State Surveillance** — Law enforcement using ag-gag statutes, warrants, subpoenas, and device seizure. They have legal authority to compel data disclosure. Design assumption: any data that exists can be legally demanded.
+
+**Industry Infiltration** — Corporate investigators posing as volunteers, social engineering attacks against coalition members, industry-funded surveillance of activist networks. They use social and technical means to penetrate organizations.
+
+**AI Model Bias** — Training data encoding industry framing ("livestock" instead of "farmed animal"), models refusing to assist with investigation documentation, or models leaking investigation details through telemetry. The tools themselves can be compromised vectors.
+
+## Audit Checklist
+
+### Zero-Retention Compliance
+- [ ] No sensitive data sent to services that retain inputs
+- [ ] Retention policies verified contractually for all external services
+- [ ] No telemetry to third parties containing advocacy data
+- [ ] Logging does not capture activist identities alongside action records
+- [ ] Error reporting does not include investigation data in stack traces or payloads
+
+### Encrypted Storage
+- [ ] All investigation data, evidence, and activist records use encrypted storage
+- [ ] Plausible deniability implemented for stored investigation data
+- [ ] Encryption keys are not stored alongside encrypted data
+- [ ] No temporary files with decrypted content on disk
+- [ ] No swap files, crash dumps, or recovery caches containing sensitive state
+
+### Supply Chain — Slopsquatting Defense
+- [ ] Every dependency verified to exist in its actual package registry
+- [ ] Dependency maintainers verified as legitimate (not recently created accounts)
+- [ ] Approximately **20% of AI-recommended packages do not exist** — each one checked
+- [ ] Only 1 in 5 AI-recommended dependency versions are both safe and hallucination-free
+- [ ] No dependencies added without explicit human verification of registry listing
+- [ ] Lock files pinned to exact versions; no floating version ranges for security-sensitive dependencies
+
+### Input Validation
+- [ ] All inputs validated and sanitized at system boundaries (barricade pattern)
+- [ ] Investigation search fields tested against SQL injection
+- [ ] Testimony display fields tested against XSS
+- [ ] Evidence upload endpoints tested against path traversal
+- [ ] File upload size limits enforced to prevent denial-of-service
+- [ ] AI-generated validation code reviewed — 45% of AI code contains OWASP Top 10 vulnerabilities
+
+### Ag-Gag Exposure Vectors
+- [ ] Metadata stripped from investigation footage before storage (timestamps, geolocation, device IDs)
+- [ ] Audit logs protect identities they record — no logs that identify who accessed investigation data
+- [ ] Data flows designed for adversarial legal discovery, not just adversarial hackers
+- [ ] No data retention beyond operational necessity
+
+### Device Seizure Readiness
+- [ ] Remote wipe capability for all sensitive data
+- [ ] Encrypted volumes lock automatically on suspicious conditions
+- [ ] No data leaked on unexpected termination (power loss, confiscation)
+- [ ] Application state leaves zero recoverable sensitive data on disk after power loss
+
+### Instruction File Integrity
+- [ ] All instruction files (`.cursorrules`, `.mdc` files) reviewed for hidden Unicode characters
+- [ ] The "Rules File Backdoor" attack uses invisible characters to inject malicious AI directives
+- [ ] Instruction file changes diffed character-by-character
+- [ ] Instruction files treated as security-critical artifacts requiring review
+
+### MCP Server Security
+- [ ] Any MCP server handling sensitive data is self-hosted
+- [ ] Each MCP server's data access, network egress, and retention audited
+- [ ] An MCP server with network access can exfiltrate data regardless of application encryption
+- [ ] MCP servers from untrusted sources never enabled without code review
+
+### Self-Hosted Inference
+- [ ] Code paths handling investigation data use self-hosted inference, not cloud APIs
+- [ ] Model providers may comply with government data requests — sensitive paths must not transit external infrastructure
+- [ ] Routine development tasks (formatting, boilerplate) may use external APIs
+- [ ] Critical paths verified to function without external AI service availability
+
+### Coalition Data Isolation
+- [ ] Data from different coalition partners is isolated
+- [ ] Cross-partner data sharing goes through anti-corruption layers
+- [ ] Strictest partner's data handling policy governs shared data
+- [ ] Data sharing agreements define compromise procedures (what happens when a partner is breached)

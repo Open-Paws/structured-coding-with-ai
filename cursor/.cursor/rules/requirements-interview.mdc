@@ -1,0 +1,59 @@
+---
+description: "Structured requirements gathering process for advocacy stakeholders — invoke manually with @ when starting a new feature or when requirements are unclear"
+---
+# Requirements Interview for Advocacy Projects
+
+## When to Use
+- Starting a new feature and requirements are unclear
+- A stakeholder has requested a change and the scope is undefined
+- Beginning work on a coalition-facing feature where multiple organizations have different needs
+- Any feature touching investigation, evidence, witness, or legally sensitive data
+
+## Process
+
+### Step 1: Establish Context
+Ask one question at a time. Use multiple choice when possible to reduce ambiguity. Begin with the broadest context question: **What is the primary purpose of this feature, and who will use it?** Wait for the answer before proceeding. Do not batch questions — stakeholders provide better answers when focused on one concern at a time.
+
+### Step 2: Identify Users and Their Risk Profiles
+Determine who will use this feature and what risks they face:
+- Are users public campaign supporters, coalition coordinators, investigators, legal team members, or sanctuary staff?
+- What happens if their identity is exposed through this feature?
+- What happens if the data this feature handles is subpoenaed?
+- Are users in jurisdictions with ag-gag laws?
+- Do users operate in environments with unreliable connectivity or device seizure risk?
+
+### Step 3: Map the Threat Model
+For every feature, explicitly ask:
+- **Who are the adversaries?** (State surveillance, industry infiltration, AI model bias, insider threat)
+- **What legal exposure does this create?** (Ag-gag statutes, subpoena risk, whistleblower protection)
+- **What is the data retention policy?** (Zero-retention, time-limited, permanent with encryption)
+- **What happens if this system is compromised, discovered, or seized?**
+- **What happens to this data if a coalition partner is compromised?**
+
+### Step 4: Define Coalition Boundaries
+If the feature involves data sharing across organizations:
+- Which coalition partners need access?
+- What are each partner's risk levels?
+- What data transformation is needed at boundaries?
+- What happens to shared data when a partner leaves the coalition?
+- What is the strictest data handling policy among all partners? (That policy governs the exchange.)
+
+### Step 5: Clarify Success Criteria
+Define what "done" looks like in testable terms:
+- What are the specific business rules this feature must enforce?
+- What are the acceptance criteria a reviewer can verify?
+- What are the failure modes that would constitute a security incident?
+- What performance constraints exist (bandwidth, offline capability, response time)?
+
+### Step 6: Assess Budget and Constraints
+For advocacy organizations with limited resources:
+- What is the compute budget for this feature?
+- Are there infrastructure constraints (self-hosted requirement, no cloud APIs for sensitive paths)?
+- What is the timeline, and what is the minimum viable version?
+- Can existing components be reused, or is new infrastructure required?
+
+### Step 7: Document the Specification
+Compile answers into a written specification that includes: purpose, users and risk profiles, threat model, coalition requirements, success criteria, constraints, and open questions. This spec becomes the source of truth for test generation and implementation planning. Return to the stakeholder for confirmation before proceeding.
+
+## Key Principle
+Ask questions that reveal risk, not just functionality. A requirements interview that only asks "what should it do?" misses the advocacy-critical question: "what happens when it fails, is discovered, or is seized?"
