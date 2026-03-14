@@ -453,3 +453,29 @@ Before deploying changes. When dependencies are added. When code touches investi
 **Step 8: Coalition Data Boundary Verification.** Verify data isolation between partners with different risk profiles. Verify anti-corruption layers at every boundary. Check: if one partner is compelled to disclose, what is the blast radius?
 
 **Findings Classification.** Critical: active data leak, missing encryption, compromised dependency, exposed witness identity. High: weak input validation, missing zero-retention verification. Medium: incomplete metadata stripping, untested seizure scenario. Low: documentation gaps. Block deployment on Critical or High.
+
+---
+
+# Code Quality — desloppify
+
+Run desloppify to systematically identify and fix code quality issues. Install and configure (requires Python 3.11+):
+
+```bash
+pip install --upgrade "desloppify[full]"
+desloppify update-skill claude    # pick yours: claude, cursor, codex, copilot, windsurf, gemini
+```
+
+Add `.desloppify/` to `.gitignore`. Before scanning, exclude directories that should not be analyzed (vendor, build output, generated code, worktrees) with `desloppify exclude <path>`. Share questionable candidates with the project owner before excluding.
+
+```bash
+desloppify scan --path .
+desloppify next
+```
+
+`--path` is the directory to scan (`.` for whole project, or a subdirectory). Your goal is to get the strict score as high as possible. The scoring resists gaming — the only way to improve it is to actually make the code better.
+
+**The loop:** run `next`. It is the execution queue from the living plan, not the whole backlog. It tells you what to fix now, which file, and the resolve command to run when done. Fix it, resolve it, run `next` again. Over and over. This is your main job. Use `desloppify backlog` only when you need to inspect broader open work that is not currently driving execution.
+
+Do not be lazy. Large refactors and small detailed fixes — do both with equal energy. No task is too big or too small. Fix things properly, not minimally.
+
+Use `plan` / `plan queue` to reorder priorities or cluster related issues. Rescan periodically. The scan output includes agent instructions — follow them, do not substitute your own analysis.

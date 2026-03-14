@@ -46,3 +46,25 @@ After two failed fix attempts, STOP. Clear the conversation and restart with a b
 - Do not log, store, or transmit activist personally identifiable information
 - Do not display traumatic content without progressive disclosure and content warnings
 - Do not allow data to cross bounded context boundaries without anti-corruption layers
+
+## Code Quality — desloppify
+
+Run desloppify to systematically identify and fix code quality issues. Install and configure (requires Python 3.11+):
+
+```bash
+pip install --upgrade "desloppify[full]"
+desloppify update-skill claude    # pick yours: claude, cursor, codex, copilot, windsurf, gemini
+```
+
+Add `.desloppify/` to `.gitignore`. Before scanning, exclude directories that should not be analyzed (vendor, build output, generated code, worktrees) with `desloppify exclude <path>`. Share questionable candidates with the project owner before excluding.
+
+```bash
+desloppify scan --path .
+desloppify next
+```
+
+`--path` is the directory to scan (`.` for whole project, or a subdirectory). Goal: get the strict score as high as possible — the scoring resists gaming, the only way to improve it is to actually make the code better.
+
+**The loop:** run `next`. It tells you what to fix now, which file, and the resolve command to run when done. Fix it, resolve it, run `next` again. This is your main job. Use `desloppify backlog` only to inspect broader open work not currently driving execution.
+
+Large refactors and small detailed fixes — do both with equal energy. Fix things properly, not minimally. Use `plan` / `plan queue` to reorder priorities or cluster related issues. Rescan periodically. The scan output includes agent instructions — follow them, do not substitute your own analysis.

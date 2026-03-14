@@ -31,6 +31,28 @@ Before finishing any task, verify AI output against these ranked failure modes:
 9. **Over-patterning** — use simplest structure that works; reject unnecessary patterns
 10. **Test quality** — every test must fail when the behavior it covers is broken
 
+## Code Quality — desloppify
+
+Run desloppify to systematically identify and fix code quality issues. Install and configure (requires Python 3.11+):
+
+```bash
+pip install --upgrade "desloppify[full]"
+desloppify update-skill copilot
+```
+
+Add `.desloppify/` to `.gitignore`. Before scanning, exclude directories that should not be analyzed (vendor, build output, generated code, worktrees) with `desloppify exclude <path>`. Share questionable candidates with the project owner before excluding.
+
+```bash
+desloppify scan --path .
+desloppify next
+```
+
+`--path` is the directory to scan (`.` for whole project, or a subdirectory). Goal: get the strict score as high as possible — the scoring resists gaming, the only way to improve it is to actually make the code better.
+
+**The loop:** run `next`. It tells you what to fix now, which file, and the resolve command to run when done. Fix it, resolve it, run `next` again. This is your main job. Use `desloppify backlog` only to inspect broader open work not currently driving execution.
+
+Large refactors and small detailed fixes — do both with equal energy. Fix things properly, not minimally. Use `plan` / `plan queue` to reorder priorities or cluster related issues. Rescan periodically. The scan output includes agent instructions — follow them, do not substitute your own analysis.
+
 ## Scoped Guidance
 
 See `.github/instructions/` for domain-specific rules: testing, security, privacy, cost optimization, advocacy domain, accessibility, emotional safety. See `.github/prompts/` for invocable workflows. See `.github/skills/` for detailed process guidance.

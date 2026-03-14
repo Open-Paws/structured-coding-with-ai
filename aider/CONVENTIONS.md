@@ -314,3 +314,27 @@ Before deploying changes. When new dependencies are added. When code touches inv
 7. **Ag-gag exposure assessment.** Audit data flows assuming adversarial legal discovery. Verify metadata stripping. Check: if a court subpoena targeted this system, what would be disclosed?
 8. **Coalition data boundary verification.** Verify isolation between partners. Anti-corruption layers at every crossing. Blast radius assessment if one partner is compelled to disclose.
 9. **Findings report.** Classify: Critical (active leak, missing encryption, compromised dependency, exposed witness), High (weak validation, unverified retention), Medium (incomplete metadata stripping, untested seizure scenario), Low (documentation gaps). Block deployment on Critical or High.
+
+---
+
+## Code Quality — desloppify
+
+Run desloppify to systematically identify and fix code quality issues. Install and configure (requires Python 3.11+):
+
+```bash
+pip install --upgrade "desloppify[full]"
+desloppify update-skill claude    # pick yours: claude, cursor, codex, copilot, windsurf, gemini
+```
+
+Add `.desloppify/` to `.gitignore`. Before scanning, exclude directories that should not be analyzed (vendor, build output, generated code, worktrees) with `desloppify exclude <path>`. Share questionable candidates with the project owner before excluding.
+
+```bash
+desloppify scan --path .
+desloppify next
+```
+
+`--path` is the directory to scan (`.` for whole project, or a subdirectory). Goal: get the strict score as high as possible — the scoring resists gaming, the only way to improve it is to actually make the code better.
+
+**The loop:** run `next`. It tells you what to fix now, which file, and the resolve command to run when done. Fix it, resolve it, run `next` again. This is your main job. Use `desloppify backlog` only to inspect broader open work not currently driving execution.
+
+Large refactors and small detailed fixes — do both with equal energy. Fix things properly, not minimally. Use `plan` / `plan queue` to reorder priorities or cluster related issues. Rescan periodically. The scan output includes agent instructions — follow them, do not substitute your own analysis.
