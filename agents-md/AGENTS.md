@@ -242,7 +242,7 @@ When data must cross bounded context boundaries, use explicit translation layers
 
 ## Compassionate Language — No Speciesist Idioms
 
-Code, documentation, comments, commit messages, and variable names must use compassionate, non-speciesist language. AI agents frequently generate common English idioms that normalize animal violence — reject these and use alternatives. Examples: "kill two birds with one stone" → "accomplish two things at once"; "beat a dead horse" → "belabor the point"; "more than one way to skin a cat" → "more than one way to solve this"; "guinea pig" → "test subject"; "cattle vs. pets" → "ephemeral vs. persistent"; "master/slave" → "primary/replica"; "whitelist/blacklist" → "allowlist/denylist". See `no-animal-violence/` for automated enforcement via Semgrep rules, ESLint plugin, Vale rules, and pre-commit hooks covering 60+ speciesist patterns.
+Code, documentation, comments, commit messages, and variable names must use compassionate, non-speciesist language. AI agents frequently generate common English idioms that normalize animal violence — reject these and use alternatives. Examples: "kill two birds with one stone" → "accomplish two things at once"; "beat a dead horse" → "belabor the point"; "more than one way to skin a cat" → "more than one way to solve this"; "guinea pig" → "test subject"; "cattle vs. pets" → "ephemeral vs. persistent"; "master/slave" → "primary/replica"; "whitelist/blacklist" → "allowlist/denylist". For automated enforcement covering 60+ speciesist patterns, see the Open Paws no-animal-violence ecosystem: https://github.com/Open-Paws/no-animal-violence (core rules), with integrations for Semgrep, ESLint, Vale, pre-commit hooks, GitHub Actions, VS Code, and Reviewdog at https://github.com/Open-Paws.
 
 ---
 

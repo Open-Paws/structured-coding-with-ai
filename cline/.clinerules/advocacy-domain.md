@@ -71,4 +71,13 @@ Code, documentation, comments, commit messages, and variable names must use comp
 - "whitelist/blacklist" → "allowlist/denylist"
 - "grandfathered" → "legacy"
 
-This is not exhaustive — 60+ patterns are enforced by automated tooling. See `no-animal-violence/` for Semgrep rules, ESLint plugin, Vale rules, and pre-commit hooks that detect speciesist language across code, comments, and documentation. Install enforcement with `no-animal-violence/setup.sh`.
+This is not exhaustive — 60+ patterns are enforced by the Open Paws no-animal-violence tooling ecosystem:
+- Semgrep rules: https://github.com/Open-Paws/semgrep-rules-no-animal-violence
+- ESLint plugin: https://github.com/Open-Paws/eslint-plugin-no-animal-violence
+- Vale style rules: https://github.com/Open-Paws/vale-no-animal-violence
+- Pre-commit hook: https://github.com/Open-Paws/no-animal-violence-pre-commit
+- GitHub Action: https://github.com/Open-Paws/no-animal-violence-action
+- VS Code extension: https://github.com/Open-Paws/vscode-no-animal-violence
+- Reviewdog runner: https://github.com/Open-Paws/reviewdog-no-animal-violence
+
+Core rule definitions: https://github.com/Open-Paws/no-animal-violence
