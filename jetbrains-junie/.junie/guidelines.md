@@ -89,6 +89,8 @@ Advocacy software faces the three adversaries model. Security is the structural 
 
 **Instruction file integrity — Rules File Backdoor.** The "Rules File Backdoor" attack uses hidden Unicode characters in instruction files (`.junie/guidelines.md`, `.cursorrules`, `.mdc` files) to inject invisible directives that make AI produce malicious output. Treat ALL instruction files as security-critical artifacts. Review for non-printable characters. Diff changes character-by-character. In advocacy projects, a compromised instruction file could direct AI to weaken encryption, leak data, or disable safety checks.
 
+**Provider routing for sensitive data.** When using AI coding assistants with multiple model providers, sensitive advocacy data (investigation content, witness identities, legal defense materials) must NEVER route through free-tier providers that may retain inputs. Free-tier APIs may retain inputs for training or compliance — assume they do unless contractually guaranteed otherwise. Route sensitive work exclusively through zero-retention providers or self-hosted inference.
+
 **Self-hosted inference for critical paths.** Any code path handling investigation data, witness identities, or legal defense materials should use self-hosted AI inference — not cloud APIs. Model providers may comply with government data requests.
 
 **MCP server security.** Any MCP server handling sensitive advocacy data MUST be self-hosted. Audit each server's data access, network egress, and retention before enabling. An MCP server with network access can exfiltrate data regardless of application-level encryption.
@@ -167,6 +169,10 @@ AI agents drift from domain terminology toward generic synonyms ("user" instead 
 **Legal Defense** — case management, attorney-client privileged communications. Privilege imposes its own data handling requirements that override other policies.
 
 **Anti-corruption layers between contexts.** When data crosses bounded context boundaries, use explicit translation layers. Raw investigation evidence becomes a "media asset" in a public campaign only through deliberate transformation stripping operational metadata. NEVER allow direct imports between contexts — AI agents optimize for expedience and import directly rather than translating through anti-corruption layers.
+
+### Compassionate Language — No Speciesist Idioms
+
+Code, documentation, comments, commit messages, and variable names must use compassionate, non-speciesist language. AI agents frequently generate idioms that normalize animal violence — reject and replace. Examples: "kill two birds with one stone" → "accomplish two things at once"; "beat a dead horse" → "belabor the point"; "guinea pig" → "test subject"; "cattle vs. pets" → "ephemeral vs. persistent"; "master/slave" → "primary/replica"; "whitelist/blacklist" → "allowlist/denylist". See `no-animal-violence/` for automated enforcement covering 60+ patterns.
 
 ---
 

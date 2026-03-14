@@ -36,3 +36,8 @@ The Rules File Backdoor uses hidden Unicode in instruction files to inject invis
 Code paths handling investigation data or witness identities should use self-hosted inference, not cloud APIs. Model providers may comply with government data requests.
 
 **WARNING:** Windsurf generates persistent memories about your codebase across sessions. Review and clear Windsurf memories regularly for projects involving sensitive investigation or witness data.
+
+
+## Provider Routing for Sensitive Data
+
+When using AI coding assistants with multiple model providers, sensitive advocacy data (investigation content, witness identities, legal defense materials) must NEVER route through free-tier providers that may retain inputs. Free-tier APIs (Google AI Studio, Groq, Mistral, Cohere, OpenRouter free models, Together AI) may retain inputs for training or compliance — assume they do unless contractually guaranteed otherwise. Route sensitive work exclusively through zero-retention providers or self-hosted inference.

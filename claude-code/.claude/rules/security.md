@@ -44,3 +44,8 @@ Any code path handling investigation data, witness identities, or legal defense 
 ## MCP Server Security
 
 MCP servers extend agent capabilities but also extend the attack surface. Any MCP server handling sensitive advocacy data MUST be self-hosted. Audit each server's data access patterns, network egress, and data retention before enabling. An MCP server with network access can exfiltrate data regardless of application-level encryption.
+
+
+## Provider Routing for Sensitive Data
+
+When using AI coding assistants with multiple model providers, sensitive advocacy data (investigation content, witness identities, legal defense materials) must NEVER route through free-tier providers that may retain inputs. Free-tier APIs (Google AI Studio, Groq, Mistral, Cohere, OpenRouter free models, Together AI) may retain inputs for training or compliance — assume they do unless contractually guaranteed otherwise. Route sensitive work exclusively through zero-retention providers or self-hosted inference.

@@ -36,3 +36,8 @@ The "Rules File Backdoor" attack uses hidden Unicode characters in instruction f
 ## Self-Hosted Inference for Critical Paths
 
 Any code path handling investigation data, witness identities, or legal defense materials should use self-hosted AI inference — not cloud-hosted APIs. Model providers may comply with government data requests. For routine development tasks (formatting, boilerplate, documentation), external APIs are acceptable. For anything touching the three adversaries' interests, self-host.
+
+
+## Provider Routing for Sensitive Data
+
+When using AI coding assistants with multiple model providers, sensitive advocacy data (investigation content, witness identities, legal defense materials) must NEVER route through free-tier providers that may retain inputs. Free-tier APIs (Google AI Studio, Groq, Mistral, Cohere, OpenRouter free models, Together AI) may retain inputs for training or compliance — assume they do unless contractually guaranteed otherwise. Route sensitive work exclusively through zero-retention providers or self-hosted inference.

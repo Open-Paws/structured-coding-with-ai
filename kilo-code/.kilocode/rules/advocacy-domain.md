@@ -38,3 +38,25 @@ DIFFERENT domains with different models, rules, and security requirements. Do no
 ## Anti-Corruption Layers
 
 When data crosses bounded context boundaries, use explicit translation layers. Raw evidence becomes a "media asset" only through deliberate transformation stripping operational metadata. Coalition intelligence becomes an investigation lead only through documented intake. NEVER allow direct imports between contexts — AI agents will optimize for expedience. Each boundary crossing must be auditable.
+
+
+## Compassionate Language — No Speciesist Idioms
+
+Code, documentation, comments, commit messages, and variable names must use compassionate, non-speciesist language. AI agents frequently generate common English idioms that normalize animal violence — reject these and use alternatives.
+
+**Prohibited patterns** (with alternatives):
+- "kill two birds with one stone" → "accomplish two things at once"
+- "beat a dead horse" → "belabor the point"
+- "more than one way to skin a cat" → "more than one way to solve this"
+- "let the cat out of the bag" → "reveal the secret"
+- "like shooting fish in a barrel" → "effortless task"
+- "guinea pig" (as test subject) → "test subject" or "early adopter"
+- "open a can of worms" → "open a difficult topic"
+- "wild goose chase" → "futile search"
+- "cattle vs. pets" → "ephemeral vs. persistent"
+- "pet project" → "side project"
+- "master/slave" → "primary/replica"
+- "whitelist/blacklist" → "allowlist/denylist"
+- "grandfathered" → "legacy"
+
+This is not exhaustive — 60+ patterns are enforced by automated tooling. See `no-animal-violence/` for Semgrep rules, ESLint plugin, Vale rules, and pre-commit hooks that detect speciesist language across code, comments, and documentation. Install enforcement with `no-animal-violence/setup.sh`.

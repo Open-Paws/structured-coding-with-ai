@@ -60,6 +60,10 @@ These are separate domains with different models, rules, and security requiremen
 
 AI agents blur bounded context boundaries because they optimize for making code work, not for maintaining conceptual boundaries. When an agent needs data from another context, it will import directly rather than going through an anti-corruption layer. Reject this.
 
+### Compassionate Language — No Speciesist Idioms
+
+Code, documentation, comments, commit messages, and variable names must use compassionate, non-speciesist language. AI agents frequently generate common English idioms that normalize animal violence — reject these and use alternatives. Examples: "kill two birds with one stone" → "accomplish two things at once"; "beat a dead horse" → "belabor the point"; "more than one way to skin a cat" → "more than one way to solve this"; "guinea pig" → "test subject"; "cattle vs. pets" → "ephemeral vs. persistent"; "master/slave" → "primary/replica"; "whitelist/blacklist" → "allowlist/denylist". See `no-animal-violence/` for automated enforcement via Semgrep, ESLint, Vale, and pre-commit hooks covering 60+ speciesist patterns.
+
 ---
 
 ## Testing
@@ -99,6 +103,8 @@ Advocacy software faces three distinct adversaries requiring different counterme
 **Device seizure preparation.** Remote wipe capability for sensitive data. Encrypted volumes that lock automatically on suspicious conditions. No temporary files with decrypted content, no swap files with sensitive state, no crash dumps with investigation data.
 
 **Instruction file integrity — Rules File Backdoor.** The "Rules File Backdoor" attack uses hidden Unicode characters in instruction files to inject invisible directives that make AI produce malicious output. Treat ALL instruction files as security-critical artifacts. Review for non-printable characters. Diff changes character-by-character. A compromised instruction file could direct the AI to weaken encryption, leak data, or disable safety checks.
+
+**Provider routing for sensitive data.** When using AI coding assistants with multiple model providers, sensitive advocacy data (investigation content, witness identities, legal defense materials) must NEVER route through free-tier providers that may retain inputs. Free-tier APIs may retain inputs for training or compliance — assume they do unless contractually guaranteed otherwise. Route sensitive work exclusively through zero-retention providers or self-hosted inference.
 
 **Self-hosted inference for critical paths.** Any code path handling investigation data, witness identities, or legal defense materials should use self-hosted AI inference. Model providers may comply with government data requests.
 

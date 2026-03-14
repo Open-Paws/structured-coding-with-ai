@@ -144,6 +144,9 @@ Design for the scenario where devices are confiscated without warning. Remote wi
 ## Instruction File Integrity — Rules File Backdoor
 The **Rules File Backdoor** attack uses hidden Unicode characters in AI instruction files to inject invisible directives that make AI agents produce malicious output. Treat ALL instruction files (including this one) as security-critical artifacts. Review them for non-printable characters. Diff instruction file changes character-by-character. In advocacy projects, a compromised instruction file could direct the AI to weaken encryption, leak data to external endpoints, or disable safety checks.
 
+## Provider Routing for Sensitive Data
+When using AI coding assistants with multiple model providers, sensitive advocacy data (investigation content, witness identities, legal defense materials) must NEVER route through free-tier providers that may retain inputs. Free-tier APIs (Google AI Studio, Groq, Mistral, Cohere, OpenRouter free models, Together AI) may retain inputs for training or compliance — assume they do unless contractually guaranteed otherwise. Route sensitive work exclusively through zero-retention providers or self-hosted inference.
+
 ## Self-Hosted Inference for Critical Paths
 Any code path handling investigation data, witness identities, or legal defense materials should use self-hosted AI inference — not cloud-hosted APIs. Model providers may comply with government data requests. For routine development tasks, external APIs are acceptable. For anything touching the three adversaries' interests, self-host.
 
@@ -236,6 +239,10 @@ These are DIFFERENT domains with different models, different rules, and differen
 
 ## Anti-Corruption Layers
 When data must cross bounded context boundaries, use explicit translation layers. An investigation's raw evidence becomes a "media asset" in a public campaign only through a deliberate transformation that strips operational metadata. NEVER allow direct imports between contexts — AI agents will optimize for expedience and import directly. Each boundary crossing must be auditable.
+
+## Compassionate Language — No Speciesist Idioms
+
+Code, documentation, comments, commit messages, and variable names must use compassionate, non-speciesist language. AI agents frequently generate common English idioms that normalize animal violence — reject these and use alternatives. Examples: "kill two birds with one stone" → "accomplish two things at once"; "beat a dead horse" → "belabor the point"; "more than one way to skin a cat" → "more than one way to solve this"; "guinea pig" → "test subject"; "cattle vs. pets" → "ephemeral vs. persistent"; "master/slave" → "primary/replica"; "whitelist/blacklist" → "allowlist/denylist". See `no-animal-violence/` for automated enforcement via Semgrep rules, ESLint plugin, Vale rules, and pre-commit hooks covering 60+ speciesist patterns.
 
 ---
 
