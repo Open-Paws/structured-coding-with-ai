@@ -1,6 +1,6 @@
 # Structured Coding Library for Animal Advocacy
 
-Ready-to-use instruction file sets for 12 AI coding tools, designed for anyone building software for animal advocacy and liberation. Each tool directory is self-contained: copy it into your project root and your AI assistant immediately understands advocacy-domain constraints, security threat models, testing standards, and process workflows. No external dependencies, no shared config, no setup beyond copying files.
+Ready-to-use instruction file sets for 14 AI coding tools, designed for anyone building software for animal advocacy and liberation. Each tool directory is self-contained: copy it into your project root and your AI assistant immediately understands advocacy-domain constraints, security threat models, testing standards, and process workflows. No external dependencies, no shared config, no setup beyond copying files.
 
 ---
 
@@ -9,10 +9,16 @@ Ready-to-use instruction file sets for 12 AI coding tools, designed for anyone b
 Pick your tool. Copy the files into your project root.
 
 ```bash
+# Codex
+cp codex/AGENTS.md your-project/
+
 # Claude Code
 cp claude-code/CLAUDE.md your-project/
 cp claude-code/hooks-template.md your-project/
 cp -r claude-code/.claude your-project/
+
+# OpenCode
+cp opencode/AGENTS.md your-project/
 
 # Cursor
 cp cursor/.cursorrules your-project/
@@ -56,7 +62,9 @@ cp agents-md/AGENTS.md your-project/
 
 | Tool | Directory | Files | Format Notes |
 |------|-----------|------:|--------------|
-| Claude Code | `claude-code/` | 15 | CLAUDE.md + 7 scoped rules + 6 skills + hooks template |
+| Codex | `codex/` | 2 | AGENTS.md + README for Codex CLI, IDE, and GitHub-connected tasks |
+| Claude Code | `claude-code/` | 16 | CLAUDE.md + 8 scoped rules + 6 skills + hooks template |
+| OpenCode | `opencode/` | 2 | Native AGENTS.md + README, with optional `opencode.json` instruction layering |
 | Cursor | `cursor/` | 14 | .cursorrules + 13 .mdc files with 4 activation modes |
 | GitHub Copilot | `github-copilot/` | 22 | copilot-instructions.md + 7 instructions + 6 prompts + 2 chat modes + 6 skills |
 | Windsurf | `windsurf/` | 14 | 14 .md files in .windsurf/rules/ with 4 trigger types, within 6K/12K char limits |
@@ -68,7 +76,7 @@ cp agents-md/AGENTS.md your-project/
 | Gemini CLI | `gemini-cli/` | 1 | Single GEMINI.md with all content as sections |
 | JetBrains / Junie | `jetbrains-junie/` | 1 | Single .junie/guidelines.md, always loaded |
 | AGENTS.md | `agents-md/` | 1 | Single vendor-neutral file, supported by 20+ tools |
-| **Total** | | **137** | |
+| **Total** | | **142** | |
 
 ---
 
@@ -111,9 +119,13 @@ For Claude Code specifically, see `hooks-template.md` for setting up determinist
 
 ---
 
-## The 12 Tools
+## The 14 Tools
+
+**Codex** -- `AGENTS.md` at project root. Works for local Codex sessions and GitHub-connected Codex tasks. Best fit when you want one shared instruction file that covers execution discipline, approvals, verification, and advocacy-domain constraints.
 
 **Claude Code** -- `CLAUDE.md` at project root (under 60 lines), scoped rules in `.claude/rules/` with optional `paths:` frontmatter for file-targeted activation, process skills in `.claude/skills/` with YAML frontmatter. Supports hooks for deterministic enforcement of formatting, linting, and security scanning.
+
+**OpenCode** -- `AGENTS.md` at project root using OpenCode's native rules format. Additional modular guidance can be layered through `opencode.json` `instructions`, but the core project contract lives in the committed root file.
 
 **Cursor** -- `.cursorrules` at project root (always loaded), scoped rules in `.cursor/rules/*.mdc` using MDC format with four activation modes: Always Apply, Auto Attached (glob-triggered), Agent Requested (description-triggered), and Manual (user invokes with @).
 
@@ -141,4 +153,4 @@ For Claude Code specifically, see `hooks-template.md` for setting up determinist
 
 ## Source Material
 
-The content across all 12 tool sets was derived from a knowledge base covering: empirical research on AI-assisted development (code quality metrics, comprehension effects, failure patterns), software design principles (Ousterhout, Feathers, DDD), testing strategy (mutation testing, property-based testing, contract testing), git workflow for AI-generated code, and operational security for the animal advocacy domain. Each tool's content was independently authored to maximize use of its native format and activation mechanisms -- this is not a template applied 12 times.
+The content across all 14 tool sets was derived from a knowledge base covering: empirical research on AI-assisted development (code quality metrics, comprehension effects, failure patterns), software design principles (Ousterhout, Feathers, DDD), testing strategy (mutation testing, property-based testing, contract testing), git workflow for AI-generated code, and operational security for the animal advocacy domain. Each tool's content was independently authored to maximize use of its native format and activation mechanisms -- this is not a template applied 14 times.
