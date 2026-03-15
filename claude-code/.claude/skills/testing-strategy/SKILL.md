@@ -1,5 +1,5 @@
 ---
-name: advocacy-testing-strategy
+name: testing-strategy
 description: Spec-first test generation, assertion quality review, mutation testing, five anti-patterns to avoid — for AI-assisted advocacy development where silent test failures mean lost evidence or exposed activists
 ---
 # Testing Strategy
