@@ -2,7 +2,7 @@
 
 Hooks are shell commands that Claude Code executes before or after specific agent actions. They are strictly superior to instruction-based enforcement: hooks run deterministically, cost zero tokens, and never hallucinate. Use hooks for any check that must never be skipped — formatting, linting, secret scanning, test gates.
 
-This file is a planning template, not executable configuration. Identify which hooks your project needs, fill in the placeholder commands with your actual tools, then configure them in Claude Code's settings following the official documentation.
+This file is a planning template, not executable configuration. Identify which hooks your project needs, fill in the placeholder commands with your actual tools, then configure them in Claude Code's settings following the official documentation. For `PreToolUse` and `PostToolUse`, Claude Code sends hook input as JSON on `stdin`, so hook commands should read fields like `.tool_input.command` or `.tool_input.file_path` from that payload.
 
 ## Recommended Hook Slots
 
@@ -29,7 +29,7 @@ Replace with your project's secret-scanning or sensitive-data-detection tool. Th
 
 **Purpose:** Auto-format the edited file immediately. This is a deterministic check — formatting should never consume instruction budget or rely on the model remembering to do it.
 
-**Placeholder command:** `[YOUR_FORMATTER] --file $EDITED_FILE`
+**Placeholder command:** `[YOUR_FORMATTER] --file <path-from-stdin-json>`
 
 Replace with your project's code formatter. This hook should always exit zero (formatting failures should warn, not block).
 
@@ -57,4 +57,56 @@ Replace with a grep-based script or dedicated PII scanner configured with your p
 
 ## How to Configure
 
-Claude Code hooks are configured through the tool's settings interface or configuration files. Consult the Claude Code documentation for the exact format and available trigger points. Each hook definition specifies the trigger event, the shell command to run, and whether a non-zero exit code should block the action.
+Claude Code hooks are configured through `.claude/settings.json` in your project root. Install `jq` first for JSON parsing, then add a structure like this:
+
+```json
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -er '.tool_input.command | startswith(\"git commit\")' >/dev/null || exit 0; [YOUR_SECURITY_SCANNER] --staged-files-only",
+            "timeout": 30
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -er '.tool_input.command | startswith(\"git push\")' >/dev/null || exit 0; [YOUR_TEST_RUNNER] --full-suite",
+            "timeout": 120
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|MultiEdit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE_PATH=$(jq -r '.tool_input.file_path // empty'); test -n \"$FILE_PATH\" || exit 0; [YOUR_FORMATTER] --file \"$FILE_PATH\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SessionStart": [],
+    "SessionEnd": [],
+    "Notification": []
+  }
+}
+```
+
+**Key details:**
+- `PreToolUse` and `PostToolUse` receive JSON on `stdin`; read `.tool_input.command` and `.tool_input.file_path` from that payload
+- Common matchers: `"Bash"` (shell commands), `"Edit|MultiEdit|Write"` (file edits), `"*"` (all tools)
+- `type`: only `"command"` is currently supported
+- Additional lifecycle events include `UserPromptSubmit`, `Stop`, `SubagentStop`, and `PreCompact` alongside `Notification`, `SessionStart`, and `SessionEnd`
+- Timeout is in seconds (optional, defaults to 120)
+- Hooks can also be configured via the `/hooks` slash command in Claude Code
