@@ -57,4 +57,46 @@ Replace with a grep-based script or dedicated PII scanner configured with your p
 
 ## How to Configure
 
-Claude Code hooks are configured through the tool's settings interface or configuration files. Consult the Claude Code documentation for the exact format and available trigger points. Each hook definition specifies the trigger event, the shell command to run, and whether a non-zero exit code should block the action.
+Claude Code hooks are configured through `.claude/settings.json` in your project root. Add the following JSON structure to configure hooks:
+
+```json
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[YOUR_SECURITY_SCANNER] --staged-files-only",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[YOUR_FORMATTER] --file $TOOL_INPUT_PATH",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SessionStart": [],
+    "SessionEnd": [],
+    "Notification": []
+  }
+}
+```
+
+**Key details:**
+- Trigger events: `PreToolUse`, `PostToolUse`, `SessionStart`, `SessionEnd`, `Notification`
+- Common matchers: `"Bash"` (pre-command), `"Edit|Write"` (post-edit), `"*"` (all tools)
+- Hook types: `"command"` (shell command), `"approval"` (requires user approval)
+- Use `$TOOL_INPUT_PATH` for PostToolUse to get the file path being edited
+- Timeout is in seconds (optional, defaults to 120)
+- Hooks can also be configured via the `/hooks` slash command in Claude Code
