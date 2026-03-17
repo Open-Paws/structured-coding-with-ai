@@ -57,4 +57,51 @@ Replace with a grep-based script or dedicated PII scanner configured with your p
 
 ## How to Configure
 
-Claude Code hooks are configured through the tool's settings interface or configuration files. Consult the Claude Code documentation for the exact format and available trigger points. Each hook definition specifies the trigger event, the shell command to run, and whether a non-zero exit code should block the action.
+Add hooks to `.claude/settings.json` (project-level) or `.claude/settings.local.json` (personal, gitignored). The structure:
+
+```json
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "YOUR_SECURITY_SCANNER --staged-files-only",
+            "timeout": 30000
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "YOUR_FORMATTER --file $CLAUDE_FILE_PATH",
+            "timeout": 10000
+          }
+        ]
+      }
+    ],
+    "PreToolUse:Bash(git push*)": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "YOUR_TEST_RUNNER --full-suite",
+            "timeout": 300000
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+**Event names:** `PreToolUse`, `PostToolUse`, `SessionStart`, `SessionEnd`, `Notification`. The `matcher` field is a regex matched against the tool name (or tool name + arguments). `timeout` is in milliseconds. A non-zero exit code from a `PreToolUse` hook blocks the action.
+
+Use `/hooks` in Claude Code to interactively add and test hooks.

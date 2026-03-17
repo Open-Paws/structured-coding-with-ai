@@ -113,7 +113,7 @@ For Claude Code specifically, see `hooks-template.md` for setting up determinist
 
 ## The 12 Tools
 
-**Claude Code** -- `CLAUDE.md` at project root (under 60 lines), scoped rules in `.claude/rules/` with optional `paths:` frontmatter for file-targeted activation, process skills in `.claude/skills/` with YAML frontmatter. Supports hooks for deterministic enforcement of formatting, linting, and security scanning.
+**Claude Code** -- `CLAUDE.md` at project root (under 60 lines), scoped rules in `.claude/rules/` with optional `paths:` frontmatter for file-targeted activation, process skills in `.claude/skills/` with YAML frontmatter (prefixed `advocacy-` to avoid shadowing global skills). Supports hooks for deterministic enforcement of formatting, linting, and security scanning.
 
 **Cursor** -- `.cursorrules` at project root (always loaded), scoped rules in `.cursor/rules/*.mdc` using MDC format with four activation modes: Always Apply, Auto Attached (glob-triggered), Agent Requested (description-triggered), and Manual (user invokes with @).
 
