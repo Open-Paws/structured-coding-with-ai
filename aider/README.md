@@ -7,7 +7,7 @@ This directory contains a single file, `CONVENTIONS.md`, which provides project-
 `CONVENTIONS.md` is a comprehensive instruction file covering:
 
 - **7 concerns**: design principles, testing, security, privacy, cost optimization, accessibility, emotional safety
-- **6 process skills**: git workflow, testing strategy, requirements gathering, plan-first development, code review, security audit
+- **6 process skills**: git workflow, testing strategy, requirements interview, plan-first development, code review, security audit
 
 The file references Aider-specific features:
 

@@ -1,6 +1,6 @@
 # GitHub Copilot Instruction Set
 
-Configuration files for GitHub Copilot (VS Code, JetBrains, CLI). This is the richest instruction hierarchy of the four tools, with five distinct configuration elements.
+Configuration files for GitHub Copilot (VS Code, JetBrains, CLI). This is the richest instruction hierarchy in the repository, with five distinct configuration elements.
 
 ## Structure
 
