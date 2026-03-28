@@ -34,7 +34,7 @@ Verify the sitemap exists at `/sitemap.xml`, contains only canonical indexable U
 
 Verify hub-and-spoke topic cluster model — pillar pages (2,000-4,000 words) supported by 8-15 cluster pages with bidirectional links — increases AI citation rate from 12% to 41%. Verify "Last Updated" dates visible via `<time datetime="YYYY-MM-DD">` synchronized with `dateModified`. Verify URLs descriptive, hyphenated, lowercase, max 3 levels deep.
 
-Core Web Vitals (March 2026 thresholds): LCP ≤ 2.0s (tightened from 2.5s in March 2026 update), INP ≤ 200ms (replaced FID), CLS ≤ 0.1. Verify SSR or SSG, HTTPS, gzip/brotli, `<link rel="preload">` for LCP element, explicit `width`/`height` on all images (CLS prevention), `loading="lazy"` for below-fold images, WebP/AVIF formats.
+Core Web Vitals (March 2026 thresholds): LCP ≤ 2.5s, INP ≤ 200ms (replaced FID), CLS ≤ 0.1. Verify SSR or SSG, HTTPS, gzip/brotli, `<link rel="preload">` for LCP element, explicit `width`/`height` on all images (CLS prevention), `loading="lazy"` for below-fold images, WebP/AVIF formats.
 
 ## Step 9: Audit Content Patterns and E-E-A-T
 
@@ -49,8 +49,9 @@ Verify no content is hidden via `display:none`, `visibility:hidden`, white-on-wh
 Document findings by priority:
 
 - **Critical** — JS-only primary content, broken heading hierarchy, robots.txt blocking AI citation crawlers, missing HTTPS, agent-aware cloaking detected
-- **High** — LCP > 2.0s (failing March 2026 threshold), missing structured data, no Wikipedia article when notability sources exist, no Wikidata entry, missing `sameAs` Wikipedia/Wikidata links, no topic cluster architecture
+- **High** — LCP > 2.5s (failing March 2026 threshold), missing structured data, no Wikipedia article when notability sources exist, no Wikidata entry, missing `sameAs` Wikipedia/Wikidata links, no topic cluster architecture
 - **Medium** — headings not question-format, passive voice and weak entity salience, no answer-first paragraphs, missing author attribution with Person schema, missing IndexNow, outdated `dateModified` values, key facts inconsistent across platforms
 - **Low** — no `llms.txt` (zero current AI value but low-effort), content not following citable paragraph pattern, missing VideoObject schema for video content
 
 For each finding: the specific page or component affected, what is missing or incorrect, and the exact implementation needed.
+
