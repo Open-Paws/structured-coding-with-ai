@@ -1,0 +1,47 @@
+---
+description: "Apply when starting a new feature, beginning significant code changes, planning architecture, decomposing tasks, or when the current approach has failed twice and needs a fresh start"
+---
+# Plan-First Development
+
+## When to Use
+- Starting a new feature or significant change
+- Breaking down a complex task into subtasks
+- When the current approach has failed twice (two-failure rule)
+- Beginning any session where code will be written
+
+## Why Planning Matters More with AI
+
+AI agents generate code with no inherent understanding of intent. Without a plan, the agent optimizes for "working code" rather than "right code." Anthropic's randomized controlled trial found AI-assisted developers scored **17 percentage points lower** on comprehension tests (50% vs. 67%). Planning counteracts this by forcing you to articulate intent before generation begins.
+
+## Process
+
+### Step 1: Read Before Writing
+Explore the existing codebase before making any changes. Understand the current architecture, existing patterns, and available utilities. AI agents that skip this step generate duplicate functions, violate established patterns, and introduce inconsistencies. In advocacy software, skipping this step can mean accidentally bypassing security boundaries or anti-corruption layers between bounded contexts.
+
+### Step 2: Brainstorm a Specification
+Write down what the feature should do, what constitutes success, and what constitutes failure. For advocacy features, the spec must include: who are the users, what are their risk profiles, what happens if this feature is compromised or discovered or seized, what coalition partners need access, what legal exposure exists, and what the data retention policy is.
+
+### Step 3: Outline a Step-by-Step Plan
+Decompose the specification into discrete, testable subtasks. Each subtask should complete within half the agent's context window. Order subtasks so each one builds on tested, committed work from the previous step. Do not plan subtasks that depend on uncommitted changes from other subtasks.
+
+### Step 4: Write Failing Tests from the Spec
+Before writing any implementation, write tests that encode the specification. Each test should express a business rule in executable form. These tests define "done" — the implementation is complete when all tests pass. In advocacy software, include tests for security properties: data isolation, anonymization irreversibility, content warning presence, and progressive disclosure behavior.
+
+### Step 5: Implement One Subtask at a Time
+Execute one subtask. Test it. Commit it. Then move to the next. Never let the agent implement multiple subtasks in a single pass — this is how complexity compounds and errors cascade.
+
+### Step 6: Verify After Each Step
+After each subtask, verify that: tests pass, no regressions were introduced, the code reads clearly to a human reviewer, no security boundaries were compromised, and the implementation matches the spec rather than drifting toward what was easiest to generate.
+
+### Step 7: Comprehension Check
+After the AI generates code, explain what it does in your own words before committing. If you cannot explain it, you do not understand it, and ununderstood code is a liability. Use the **generation-then-comprehension pattern**: generate code, then immediately ask the AI to explain it, then verify your understanding matches. This preserves learning while leveraging AI speed.
+
+## The Two-Failure Rule
+
+After two failed attempts to fix an issue, STOP. Do not compound errors with a third attempt. Instead: (1) clear the conversation context, (2) write a better specification incorporating what you learned from the failures, (3) start fresh with the improved spec. Switching between different AI models also helps — different models have different blind spots.
+
+## Session Hygiene
+- Start sessions fresh rather than extending degraded long conversations
+- Compact at approximately 50% context usage
+- Break work into chunks that complete within half the context window
+- Each session should have a clear goal defined before the first code change
