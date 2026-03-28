@@ -3,25 +3,88 @@ applyTo: "**/*.html,**/robots.txt,**/sitemap.xml,**/llms.txt,**/layout.*,**/Layo
 ---
 # GEO + SEO Rules for Animal Advocacy Websites
 
-Websites built for animal advocacy serve two discovery channels: traditional search engines and AI answer systems (ChatGPT, Perplexity, Google AI Overviews, Claude, Gemini, Bing Copilot). Approximately 60% of searches end without a click — AI systems are the fastest-growing discovery channel and have distinct citation requirements. Follow these rules when building or modifying any public-facing advocacy website.
+Websites built for animal advocacy serve two discovery channels: traditional search engines and AI answer systems (ChatGPT, Perplexity, Google AI Overviews, Claude, Gemini, Bing Copilot). Approximately 60% of searches now end without a click — AI systems are the fastest-growing discovery channel and have distinct citation requirements. Follow these rules when building or modifying any public-facing advocacy website.
+
+**How AI citation works:** Google generates an answer first, then scores content against it using embedding distance. Each sentence of the drafted answer is vectorized and compared against source passage embeddings — passages within a threshold distance get cited. This means content must match the semantic shape of what AI expects to say, not just cover the topic. Only 17-32% of AI Overview citations come from pages ranking in the organic top 10, so lower-authority pages can win with the right content structure.
+
+---
 
 ## HTML Structure
 
-Every page needs exactly one `<h1>` tag containing the primary topic. Use a logical heading hierarchy (`h1 > h2 > h3`), never skipping levels. Phrase `<h2>` headings as questions where the section answers something — question-based headings produce 7× more AI citations for smaller sites. The first paragraph after any heading must directly answer that question in 40-60 words. AI systems pull from the first 30% of content 44% of the time — lead with the answer.
+Every page needs exactly one `<h1>` tag containing the primary topic. Use a logical heading hierarchy (`h1 > h2 > h3`), never skipping levels. Phrase `<h2>` headings as questions when the section answers something — question-based headings produce 7× more AI citations for smaller sites. The first paragraph after any heading must directly answer that question in 40-60 words. AI systems pull from the first 30% of content 44% of the time — lead with the answer.
 
-Keep paragraphs to 2-4 sentences (40-60 words). Structure content as self-contained 120-180 word modules — this modular pattern generates 70% more ChatGPT citations than unstructured prose.
+Keep paragraphs to 2-4 sentences (40-60 words). Structure content as self-contained 120-180 word modules that make sense if extracted from context — this pattern generates 70% more ChatGPT citations than unstructured prose.
 
 Use semantic HTML correctly: `<article>`, `<section>`, `<nav>`, `<aside>`, `<header>`, `<footer>`, `<main>`. Add `lang` attribute to `<html>`. Every `<img>` must have a descriptive `alt` attribute. Every `<a>` must have meaningful anchor text — never "click here".
 
-Use `<table>` for comparison data (32.5% of AI-cited content uses tables). Use `<ol>` and `<ul>` for lists (78% of AI answers include list formats). Use `<blockquote cite="...">` for expert quotations (+28-40% AI visibility). Use `<time datetime="YYYY-MM-DD">` for dates. Use `<dfn>` for term definitions; `<abbr title="...">` for acronyms on first use. Add `id` attributes to all `<h2>` and `<h3>` elements.
+Use `<table>` for comparison data (32.5% of AI-cited content contains tables). Use `<ol>` and `<ul>` for lists (78% of AI answers include list formats). Use `<blockquote cite="...">` for expert quotations (+28-40% AI visibility). Use `<time datetime="YYYY-MM-DD">` for dates. Use `<dfn>` for term definitions. Use `<abbr title="full term">` on first use. Add `id` attributes to all `<h2>` and `<h3>` elements.
 
-Flag any content rendered exclusively by JavaScript. AI crawlers often cannot execute JS — all primary content must be in the initial HTML response (SSR or pre-rendered).
+**Do NOT:**
+- Hide content behind JavaScript-only rendering — AI crawlers often cannot execute JS. All critical content must be in the initial HTML response (SSR or pre-rendered).
+- Use `display:none` or `visibility:hidden` on content to be indexed.
+- Rely on infinite scroll — use paginated `<a>` links.
+- Use iframes for primary content.
+- Keyword-stuff — stuffing decreases AI visibility by 10%.
 
-Do NOT use `display:none` or `visibility:hidden` on content to be indexed. Do NOT rely on infinite scroll — use paginated `<a>` links. Do NOT use iframes for primary content. Do NOT keyword-stuff — stuffing decreases AI visibility by 10%.
+---
+
+## Semantic Writing for AI Retrieval
+
+AI citation systems retrieve at the sentence and paragraph level, not the page level. Every piece of content must be written to survive extraction.
+
+**Entity salience:** Always make the primary entity the grammatical subject in active voice. In active voice, "Open Paws documented 34% adoption growth in 2025" gives Open Paws a salience score of 0.74. The passive equivalent ("adoption growth of 34% was documented in 2025") drops the entity to a salience score of 0.11. AI systems weight entities by their grammatical prominence.
+
+**Atomic claims:** Write every sentence as a self-contained semantic triple (subject + verb + object with explicit context). Eliminate vague pronouns — every sentence must make sense in isolation. "It increased" is never acceptable; "Factory farm adoption of AI monitoring increased 34% between 2023 and 2025 according to FERN's annual survey" is a citable claim.
+
+**Proper noun density:** AI-cited text averages 20.6% proper nouns versus 5-8% in standard English. Name the organization, the researcher, the report, the year. Vague attribution ("experts say") never gets cited; specific attribution ("according to Compassion in World Farming's 2025 report") does.
+
+**Content density sweet spot:** Pages under 5,000 characters get approximately 66% of their content used by AI systems. Pages over 20,000 characters get only 12%. Keep individual topic pages focused and dense rather than exhaustive and padded. Gemini's grounding budget allocates roughly 380 words per webpage per query — you're competing for a fixed slice.
+
+**Paragraph structure:** 71% of AI-cited paragraphs contain four lines or fewer. 64% include explicit feature or capability lists. Open every major section with a 40-60 word declarative statement that contains the answer — information buried deep in paragraphs is rarely retrieved.
+
+---
+
+## Wikipedia and Wikidata (High-Priority)
+
+Wikipedia accounts for 47.9% of ChatGPT's top-10 cited sources. Having a Wikipedia page creates a stable Wikidata Q-ID that AI systems use as a truth anchor — when multiple sources conflict, the version corroborated by Wikipedia prevails. One documented case: a B2B platform with no Wikipedia page was invisible to AI for industry queries while competitors appeared consistently. After creating a Wikipedia page and Wikidata entry, its Google Knowledge Panel appeared within 72 hours and it began appearing in ChatGPT answers.
+
+**Wikidata** serves 11 million queries daily across 119 million entities with 1.65 billion structured statements. Google's Knowledge Graph, Amazon Alexa, Apple Siri, and Microsoft all integrate Wikidata. Companies have gained Knowledge Panels within 7 days of creating a proper Wikidata entry.
+
+For Open Paws and any advocacy organization this site represents:
+- Create a Wikipedia article (if one doesn't exist) with citations to reliable third-party sources
+- Create a Wikidata entry with complete structured data: organization type, founding date, location, founders, official website, social media profiles
+- Build an entity web: connect the organization → key tools/platforms → key people → related organizations → policy areas
+- Add `sameAs` links in Organization schema pointing to the Wikidata entity (`https://www.wikidata.org/wiki/Q...`)
+- Ensure Wikipedia and Wikidata data match the site's own structured data — inconsistency reduces AI confidence
+
+The Wikimedia Foundation is actively building a vector embedding of Wikidata specifically for RAG workflows. Structured semantic presence in Wikidata creates durable AI visibility that outlasts individual algorithm updates.
+
+---
+
+## Authoritative Platform Publishing
+
+85% of AI brand mentions come from third-party pages, not the brand's own site. Brand search volume is the strongest single predictor of AI citations (Spearman r=0.334). Publishing structured, high-quality content on platforms AI already trusts provides a faster path to citation than building authority on a new domain.
+
+**Trust hierarchy by platform:**
+- AI Overviews are 3× more likely to cite .gov sources
+- YouTube accounts for ~23.3% of AI citations across platforms
+- Wikipedia accounts for ~18.4%
+- Reddit accounts for up to 46.5% of Perplexity's top citations
+
+**Practical implications for advocacy content:**
+- Publish thorough, genuinely helpful answers in relevant subreddits (r/vegan, r/AnimalRights, r/environment, topic-specific subs) — Reddit citations in AI Overviews surged 450% in three months. Authentic participation only; AI systems have visibility into Reddit's moderation pipeline and flag inauthentic content.
+- Create and maintain YouTube content — transcripts become crawlable text, and YouTube is the #2 cited platform
+- Maintain active LinkedIn organization page with regular substantive posts
+- Publish on GitHub (documentation, datasets, reports as markdown) — GitHub is highly trusted by AI systems
+- Submit data to authoritative databases: Our World in Data, Statista, government data portals
+
+**Cross-platform consistency:** When the same factual claims appear consistently across Reddit, industry forums, review sites, Wikipedia, Wikidata, LinkedIn, and GitHub, AI systems' multi-source verification assigns higher confidence. Branded web mentions have the strongest correlation with AI visibility (Spearman r=0.664), outweighing traditional backlinks (r=0.587).
+
+---
 
 ## Structured Data (JSON-LD)
 
-Structured data is the single highest-leverage GEO action: 41% citation rate with schema vs 15% without. Only 12.4% of websites implement it — a major competitive advantage.
+Implement JSON-LD schema in the `<head>` of every page. Sites with structured data achieve 41% AI citation rates vs 15% without. Only 12.4% of websites implement it — this is the single highest-leverage on-site GEO action.
 
 ### Organization + WebSite schema (every page)
 
@@ -39,7 +102,9 @@ Structured data is the single highest-leverage GEO action: 41% citation rate wit
       "sameAs": [
         "https://www.linkedin.com/company/your-org",
         "https://twitter.com/your-org",
-        "https://github.com/your-org"
+        "https://github.com/your-org",
+        "https://en.wikipedia.org/wiki/Your_Org",
+        "https://www.wikidata.org/wiki/QXXXXXXX"
       ],
       "description": "One-sentence description"
     },
@@ -99,7 +164,9 @@ Structured data is the single highest-leverage GEO action: 41% citation rate wit
 </script>
 ```
 
-Also implement when applicable: HowTo, BreadcrumbList, SoftwareApplication, Event, Dataset, Person. Always use JSON-LD format (not Microdata). Use `@id` references to connect entities across pages. Keep `dateModified` accurate. Validate at schema.org/validator.
+Also implement when applicable: **HowTo**, **BreadcrumbList**, **SoftwareApplication**, **Event**, **Dataset**, **Person**. Always use JSON-LD (not Microdata). Use `@id` references to connect entities across pages. Keep `dateModified` accurate. Validate at schema.org/validator.
+
+---
 
 ## Meta Tags
 
@@ -125,11 +192,11 @@ Also implement when applicable: HowTo, BreadcrumbList, SoftwareApplication, Even
 </head>
 ```
 
-Meta description: 150-160 chars, direct factual answer to primary query, one specific statistic, never duplicated across pages. Title: `Primary Keyword — Brand Name`, 50-60 chars, keywords first, unique per page.
+Meta description: 150-160 chars, direct factual answer to the primary query, one specific statistic, never duplicated across pages. Title: `Primary Keyword — Brand Name`, 50-60 chars, keywords first, unique per page.
+
+---
 
 ## Robots.txt
-
-Allow AI citation crawlers, optionally block AI training crawlers:
 
 ```
 User-agent: Googlebot
@@ -179,38 +246,67 @@ Disallow: /
 Sitemap: https://yoursite.com/sitemap.xml
 ```
 
-Note: blocking `Googlebot` blocks both Google Search AND Google AI Overviews — there is no way to separate them.
+Critical: blocking `Googlebot` blocks both Google Search AND AI Overviews — there is no way to allow one without the other. There are now 226+ identified AI crawlers; review and update this quarterly. Some AI agents use standard browser user-agent strings and ignore robots.txt entirely — treat this as best-effort control.
+
+---
 
 ## XML Sitemap
 
-Include only canonical, indexable URLs. `<lastmod>` must reflect actual update dates — never fake it. Reference in robots.txt. Submit to Google Search Console and Bing Webmaster Tools. Regenerate automatically when content changes.
+Include only canonical, indexable URLs. `<lastmod>` must reflect actual content update date — never fake it. Reference in robots.txt. Submit to Google Search Console and Bing Webmaster Tools. Regenerate automatically when content changes. Maximum 50,000 URLs per file.
+
+---
+
+## IndexNow
+
+IndexNow notifies Bing (which feeds ChatGPT) instantly when content is published or updated. Place a key file at `https://yoursite.com/{key}.txt` and ping on every publish:
+
+```
+GET https://api.indexnow.org/indexnow?url=https://yoursite.com/new-page&key=YOUR_KEY
+```
+
+Integrate into CI/CD pipeline or CMS publish hooks. IndexNow is supported by Bing, Yandex, Seznam, and Naver. Rate limit: 10,000 URLs/day.
+
+---
 
 ## Site Architecture
 
-Use descriptive hyphenated lowercase URLs under 75 characters. Max 3 levels deep. Canonical tags on every page. 301 redirects for URL changes.
+URL rules: descriptive hyphenated lowercase under 75 characters, primary keyword in URL, max 3 levels deep. Canonical tags on every page. 301 redirects for any URL changes.
 
-Hub-and-spoke topic cluster model — increases AI citation rate from 12% to 41%:
-- Pillar page: 2,000-4,000 words on a broad topic
-- Cluster pages: 8-15 detailed pages on specific subtopics
-- Bidirectional links: every cluster page links to the pillar; the pillar links to every cluster page
+Hub-and-spoke topic cluster model — increases AI citation rates from 12% to 41%:
+- **Pillar page**: 2,000-4,000 words on a broad topic
+- **Cluster pages**: 8-15 detailed pages on specific subtopics
+- **Bidirectional links**: every cluster page links to the pillar; the pillar links to every cluster page
 
-Display "Last Updated: [date]" visibly using `<time datetime="YYYY-MM-DD">`. Synchronize with `dateModified` in schema. 76% of most-cited AI content was updated within 30 days.
+Content freshness: display "Last Updated: [date]" visibly using `<time datetime="YYYY-MM-DD">`. Keep `dateModified` synchronized. 76% of most-cited AI content was updated within 30 days. Content published within 30 days has a 3.4× citation advantage on Perplexity.
+
+**First-mover advantage:** For topics with few authoritative sources, publishing first creates a durable citation position. One documented case: a fabricated article on an obscure topic was cited by ChatGPT, Gemini, AI Overviews, and Grok within 24 hours. A replication attempt two days later failed — the first mover had captured the position. Prioritize creating content on emerging advocacy topics before competitors do.
+
+---
 
 ## Performance
 
-AI crawlers timeout at 1-5 seconds: TTFB < 200ms, LCP < 2.5s, CLS < 0.1, page weight < 1MB. Require SSR or SSG — AI crawlers often skip JavaScript rendering. Enforce HTTPS.
+AI crawlers timeout at 1-5 seconds. Targets: TTFB < 200ms, LCP < 2.5s, CLS < 0.1, total page weight < 1MB (18% of pages over 1MB are abandoned by AI crawlers).
+
+Require SSR or SSG — AI crawlers often cannot execute JavaScript. Implement gzip or brotli. Use modern image formats (WebP/AVIF with `<picture>` fallbacks). Enforce HTTPS. Mobile-responsive (Google uses mobile-first indexing).
+
+---
 
 ## Content Patterns That Earn AI Citations
 
-Citable paragraph pattern:
+### Citable paragraph pattern
+
+Every key claim follows this structure:
 ```
 [Direct statement of fact]. [Specific statistic with attribution].
 [Brief elaboration]. [Source: Named Organization, Date]
 ```
 
-FAQ block: `<h2>` with exact question, 40-60 word direct answer immediately following, FAQPage schema wrapping.
+### FAQ block pattern
 
-Definition block:
+`<h2>` or `<h3>` with the exact question. 40-60 word direct answer immediately following. FAQPage schema wrapping the whole section.
+
+### Definition block pattern
+
 ```html
 <section id="what-is-term">
   <h2>What is [Term]?</h2>
@@ -218,7 +314,59 @@ Definition block:
 </section>
 ```
 
-Author attribution on every content page: visible name, credentials, link to profile page with Person schema. Content with proper author metadata gets 40% more AI citations.
+### Author attribution
+
+Every content page: visible author name and credentials, link to author profile page with Person schema. Content with proper author metadata gets 40% more AI citations.
+
+---
+
+## Platform-Specific Behavior
+
+AI citation sources vary dramatically by platform and change constantly:
+- **ChatGPT**: Wikipedia-heavy (47.9% of top-10 citations), converts at 4.4× the rate of search visitors
+- **Perplexity**: Reddit-heavy (up to 46.5% of top citations), significantly more vulnerable than other platforms to external content attacks
+- **Google AI Overviews**: 3× more likely to cite .gov, heavily favors known entities with digital credibility
+
+Only 11% of domains are cited by both ChatGPT and Perplexity for the same queries — platform-specific optimization matters. Citation volatility is extreme: 40-60% monthly turnover is normal. A single platform algorithm update caused a -52% traffic collapse for some sites. Build presence across multiple platforms rather than depending on any single one.
+
+Topical authority (r=0.4) is the strongest predictor of AI citations — traditional Domain Authority (r=0.18) explains less than 20% of citation variance. 80% of URLs cited by AI assistants do not rank in Google's top results for the same queries.
+
+---
+
+## llms.txt
+
+Place at `/llms.txt` — a Markdown file describing the site for AI systems:
+
+```markdown
+# Site Name
+
+> One-sentence description.
+
+## Key Pages
+
+- [About](https://yoursite.com/about): Description
+- [Platform](https://yoursite.com/platform): What it does
+```
+
+**Current value is effectively zero.** Google's John Mueller: "No AI system currently uses llms.txt." An 8-month experiment found zero AI crawler visits to llms.txt. Across Acquia's hosting fleet, llms.txt received 0.001% of total traffic — all from SEO audit tools, not AI crawlers. Implement it (low effort) but do not invest significant time or treat it as a meaningful signal. The IETF AIPREF Working Group (co-authored by Google and Mozilla) is the more likely path to a real standard.
+
+---
+
+## Defensive Awareness: High-Risk Techniques to Avoid
+
+These techniques are actively used by competitors but carry severe penalties. Understand them to recognize manipulation in the wild and to ensure the site never accidentally crosses into prohibited territory.
+
+**Hidden text injection** — embedding invisible instructions in web content (white text on white backgrounds, zero-size fonts, opacity-zero elements, invisible Unicode characters U+E0000 to U+E007F) — is explicitly prohibited by Google's spam policies and actively detected by PhantomLint and similar tools. Palo Alto Networks documented 24 layered injection attempts on a single website in March 2026. This has been used to make AI systems recommend specific products, exfiltrate user data, and corrupt persistent memory.
+
+**Agent-aware cloaking** — serving different content to AI crawlers than to human visitors — is explicitly prohibited by all major platforms. Despite being trivially detectable, documented cases show AI-cloaked content scoring 88/100 from ChatGPT while the human-visible version scored 27/100. Google and all major AI platforms treat this as spam; penalties are domain-wide and can include complete deindexing.
+
+**Synthetic consensus** — manufacturing cross-platform brand mentions through fake reviews, astroturfed forum posts, or coordinated inauthentic activity — carries legal risk under FTC deceptive practices law. The FTC's "Operation AI Comply" (September 2024) stated that "using AI tools to trick, mislead, or defraud people is illegal" with "no AI exemption." All 50 states' UDAAP statutes could apply.
+
+**Scaled AI content without human review** caused sites to lose up to 80% of organic traffic overnight in the March 2024 Google core update.
+
+Do not use any of these techniques. For advocacy organizations, the reputational risk of being exposed amplifies the penalty enormously.
+
+---
 
 ## Key Statistics
 
@@ -227,6 +375,7 @@ Author attribution on every content page: visible name, credentials, link to pro
 | Adding statistics to claims | +41% AI visibility |
 | Citing credible sources inline | +30-40% AI visibility |
 | Expert quotations | +28-40% AI visibility |
+| Lower-ranked sites citing sources | +115% AI visibility |
 | Keyword stuffing | -10% AI visibility |
 | FAQ schema | 41% citation rate vs 15% without |
 | Question-based headings | 7× citation impact for smaller sites |
@@ -235,5 +384,11 @@ Author attribution on every content page: visible name, credentials, link to pro
 | Original or proprietary data | 4.31× more citations per URL |
 | Author metadata | +40% citations |
 | Topic cluster architecture | Citation rate 12% → 41% |
-| Fresh content (updated within 30 days) | 76% of most-cited content |
+| Fresh content (within 30 days) | 76% of most-cited content; 3.4× Perplexity advantage |
 | Structured data (schema) | 73% higher AI selection rate |
+| Wikipedia/Wikidata presence | Knowledge Panel within 7 days |
+| Monthly citation turnover | 40-60% — continuous freshness required |
+| Domain Authority correlation | r=0.18 — weak predictor |
+| Topical authority correlation | r=0.40 — strongest predictor |
+| Brand mentions vs AI citations | r=0.664 — strongest on-site signal |
+| AI Overview citations from top-10 results | Only 17-32% — lower-authority pages can win |
