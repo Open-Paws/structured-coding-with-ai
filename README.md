@@ -56,7 +56,7 @@ cp agents-md/AGENTS.md your-project/
 
 | Tool | Directory | Files | Format Notes |
 |------|-----------|------:|--------------|
-| Claude Code | `claude-code/` | 15 | CLAUDE.md + 7 scoped rules + 6 skills + hooks template |
+| Claude Code | `claude-code/` | 17 | CLAUDE.md + 8 scoped rules + 7 skills + hooks template |
 | Cursor | `cursor/` | 14 | .cursorrules + 13 .mdc files with 4 activation modes |
 | GitHub Copilot | `github-copilot/` | 22 | copilot-instructions.md + 7 instructions + 6 prompts + 2 chat modes + 6 skills |
 | Windsurf | `windsurf/` | 14 | 14 .md files in .windsurf/rules/ with 4 trigger types, within 6K/12K char limits |
