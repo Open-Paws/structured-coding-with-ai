@@ -9,6 +9,7 @@ This skill covers both traditional SEO and Generative Engine Optimization (GEO) 
 **The core insight:** Only 17-32% of AI Overview citations come from pages ranking in the organic top 10. Domain Authority correlates with AI citations at r=0.18; topical authority (r=0.40) and branded web mentions (r=0.664) are the real predictors. 80% of URLs cited by AI assistants do not rank in Google's top search results. This means SEO and GEO have different — but overlapping — optimization paths.
 
 ## When to Use
+
 - When building or reviewing any public-facing advocacy website
 - Before launching content that needs to be discoverable by search engines or AI systems
 - When diagnosing why a site is not appearing in Google results or AI responses
