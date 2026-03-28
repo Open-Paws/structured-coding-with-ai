@@ -491,17 +491,17 @@ Use `plan` / `plan queue` to reorder priorities or cluster related issues. Resca
 
 Websites for animal advocacy serve two discovery channels: traditional search engines and AI answer systems (ChatGPT, Perplexity, Google AI Overviews, Claude, Gemini). The game has shifted from keyword matching to **intent satisfaction** (does your content completely solve the user's problem?), **entity authority** (does Google's knowledge graph recognize your brand?), and **technical excellence** (can crawlers efficiently process your site?). AI generates an answer first, then scores content against it using embedding distance. Only 17–32% of AI Overview citations come from pages ranking in the organic top 10 — lower-authority pages can win with the right structure. Domain Authority correlates with AI citations at r=0.18; topical authority (r=0.40) and branded web mentions (r=0.664) are the real predictors.
 
-### Core Web Vitals (Updated March 2026)
+### Core Web Vitals (March 2026)
 
-Google confirmed CWV as ranking factors measured via real Chrome user data at the 75th percentile. The March 2026 core update tightened the LCP "good" threshold from 2.5s to 2.0s.
+Google confirmed CWV as ranking factors measured via real Chrome user data at the 75th percentile.
 
 | Metric | Good | Needs Improvement | Poor |
 |--------|------|-------------------|------|
-| LCP (Largest Contentful Paint) | ≤ 2.0s | 2.0–4.0s | > 4.0s |
+| LCP (Largest Contentful Paint) | ≤ 2.5s | 2.5–4.0s | > 4.0s |
 | INP (Interaction to Next Paint) | ≤ 200ms | 200–500ms | > 500ms |
 | CLS (Cumulative Layout Shift) | ≤ 0.1 | 0.1–0.25 | > 0.25 |
 
-43% of sites still fail the INP threshold. Sites with INP above 200ms saw average position drops of 0.8 places; LCP above 3s causes 23% more traffic loss vs faster competitors.
+43% of sites still fail the INP threshold. Sites with INP above 200ms saw average position drops of 0.8 places; LCP above 3s causes 23% more traffic loss vs faster competitors. The primary INP technique is `scheduler.yield()` (Chrome-native, with `setTimeout` fallback) — breaks long tasks so the browser can handle user input between them.
 
 ### HTML Structure
 
@@ -525,7 +525,7 @@ Sites with structured data achieve 41% AI citation rates vs 15% without; only 12
 
 ### Meta Tags and Technical SEO
 
-Title: 50–60 chars, primary keyword first, unique per page. Meta description: 150–160 chars, direct factual answer + one statistic, never duplicated. Security headers required in 2026: HSTS, CSP, `X-Content-Type-Options`, `X-Frame-Options`. Require SSR or SSG — client-side-only rendering is a strategic error. Manage crawl budget: block low-value parameter URLs and internal search in robots.txt; fix redirect chains; return proper HTTP status codes (200/301/404/410). Use WebP/AVIF with `<picture>` element, `srcset`, explicit `width`/`height`, `loading="lazy"`. Descriptive file names. Keep page weight under 1MB.
+Title: 50–60 chars, primary keyword first, unique per page. Meta description: 150–160 chars, direct factual answer + one statistic, never duplicated. Security headers required in 2026: HSTS, CSP, `X-Content-Type-Options`, `X-Frame-Options`. Require SSR or SSG — client-side-only rendering is a strategic error. Manage crawl budget: block low-value parameter URLs and internal search in robots.txt; fix redirect chains; return proper HTTP status codes (200/301/404/410). Use WebP/AVIF with `<picture>` element, `srcset`, explicit `width`/`height`, `loading="lazy"`. Descriptive file names. Keep page weight under 1MB. Supply chain: pin exact dependency versions, use `npm ci` in CI, scan with Socket.dev or Snyk.
 
 ### Site Architecture and Internal Linking
 
@@ -543,6 +543,18 @@ Allow citation crawlers (OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot) 
 
 85% of AI brand mentions come from third-party pages. Brand mentions now account for 55% of off-page ranking weight (up from ~20% in 2012); backlinks 45%. Brands on 4+ platforms are 2.8× more likely to appear in AI responses. Publish on Reddit (46.5% of Perplexity citations), YouTube (23.3% of AI citations, enable transcripts), LinkedIn, and GitHub. Convert unlinked brand mentions to backlinks — close rates typically above 30%. Digital PR with original research generates 156% more links. The March 2026 spam update devalued sponsored guest posts on generalist sites, niche edits on thin aged domains, and PBNs.
 
+### Conversion Optimization
+
+For nonprofit donation pages: present 3–4 preset amounts with the middle pre-selected and impact descriptions. Pre-select monthly giving — monthly donors become more valuable than one-time donors within 5.25 months, yet 64% of nonprofits still default to one-time. Single-step forms vastly outperform multi-step (52% drop in completions). Removing site header navigation during the donation flow produced a documented 195% conversion increase. Embed the form on-site; never redirect to a third-party processor. For all forms: target 3–5 fields maximum. Dark patterns carry FTC legal risk — the $2.5 billion Amazon settlement (September 2025) is the largest dark pattern enforcement action in history.
+
+### Analytics
+
+Use **Plausible** ($9/month cloud) or **Umami** (self-hosted, free) as primary analytics — no cookies, no consent banner required. Add GA4 only for Google Ads integration or predictive analytics. Track AI referral traffic with a custom channel group in GA4 matching `(chatgpt\.com|perplexity\.ai|claude\.ai|gemini\.google\.com|copilot\.microsoft\.com)` — AI referral traffic grew 357% YoY to 1.1 billion visits in June 2025. Mark key conversions: `donation_completed` (with value), `newsletter_signup`, `volunteer_form_submit`.
+
+### Internationalization
+
+For multilingual sites, use **next-intl** (1.8M weekly downloads) with subdirectory URL strategy (`/en/`, `/hi/`, `/ar/`) to centralize domain authority. Set `lang` and `dir` on `<html>`. Hreflang tags must be self-referencing and reciprocal on every page — 31% of international sites have broken hreflang. Use ICU MessageFormat for plural/gender forms (Arabic requires 6 CLDR plural categories). CSS logical properties (`ps-4`, `pe-4`, `text-start`) handle RTL layout automatically.
+
 ### llms.txt
 
 Place at `/llms.txt`. Current value is effectively zero per multiple studies — zero AI crawler visits documented across 8 months. Implement it (low effort) but do not invest significant time. The IETF AIPREF Working Group (co-authored by Google and Mozilla) is the more likely path to a real standard.
@@ -555,9 +567,8 @@ Place at `/llms.txt`. Current value is effectively zero per multiple studies —
 
 | Signal | Impact |
 |--------|--------|
-| LCP threshold tightened to ≤ 2.0s (March 2026) | Sites at 2.0–2.5s now face ranking pressure |
+| LCP ≤ 2.5s (Good threshold) | Sites above 3s see 23% more traffic loss |
 | INP > 200ms | −0.8 average position drop; 43% of sites fail |
-| LCP > 3s | 23% more traffic loss vs faster competitors |
 | FAQ/structured data | 41% citation rate vs 15% without |
 | Question-based H2s | 7× citation impact for smaller sites |
 | 120–180 word modular sections | 70% more ChatGPT citations |
@@ -570,3 +581,5 @@ Place at `/llms.txt`. Current value is effectively zero per multiple studies —
 | Brand mentions vs AI citations | r=0.664 — strongest overall signal |
 | Topical authority vs AI citations | r=0.40 — strongest on-site predictor |
 | Monthly citation turnover | 40–60% — continuous freshness required |
+| Pre-selecting monthly giving | 31% of nonprofit online revenue |
+| AI referral traffic growth | 357% YoY to 1.1B visits (June 2025) |
