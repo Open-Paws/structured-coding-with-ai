@@ -1,6 +1,6 @@
 ---
 name: geo-seo-audit
-description: SEO + GEO audit and implementation workflow — Core Web Vitals (updated 2026 thresholds), HTML structure, semantic writing, E-E-A-T, content intent, Wikipedia/Wikidata, JSON-LD schema, meta tags, crawl budget, robots.txt, sitemap, IndexNow, topic cluster architecture, link building, brand signals, platform presence, defensive review
+description: SEO + GEO audit and implementation workflow — Core Web Vitals, HTML structure, semantic writing, E-E-A-T, content intent, Wikipedia/Wikidata, JSON-LD schema, meta tags, crawl budget, robots.txt, sitemap, IndexNow, topic cluster architecture, link building, brand signals, conversion optimization, analytics, internationalization, platform presence, defensive review
 ---
 # SEO + GEO Audit
 
@@ -9,6 +9,7 @@ This skill covers both traditional SEO and Generative Engine Optimization (GEO) 
 **The core insight:** Only 17-32% of AI Overview citations come from pages ranking in the organic top 10. Domain Authority correlates with AI citations at r=0.18; topical authority (r=0.40) and branded web mentions (r=0.664) are the real predictors. 80% of URLs cited by AI assistants do not rank in Google's top search results. This means SEO and GEO have different — but overlapping — optimization paths.
 
 ## When to Use
+
 - When building or reviewing any public-facing advocacy website
 - Before launching content that needs to be discoverable by search engines or AI systems
 - When diagnosing why a site is not appearing in Google results or AI responses
@@ -17,21 +18,30 @@ This skill covers both traditional SEO and Generative Engine Optimization (GEO) 
 
 ## Process
 
-### Step 1: Audit Core Web Vitals (Updated March 2026 Thresholds)
+### Step 1: Audit Core Web Vitals
 
-Measure using real field data from Google Search Console (CrUX), not lab tools — Google ranks on field data. Current thresholds:
+Measure using real field data from Google Search Console (CrUX), not lab tools — Google ranks on field data. Current thresholds (as of March 2026):
 
 | Metric | Good | Needs Improvement | Poor |
 |--------|------|-------------------|------|
-| LCP | ≤ 2.0s* | 2.0–4.0s | > 4.0s |
+| LCP | ≤ 2.5s | 2.5–4.0s | > 4.0s |
 | INP | ≤ 200ms | 200–500ms | > 500ms |
 | CLS | ≤ 0.1 | 0.1–0.25 | > 0.25 |
 
-*The March 2026 core update tightened LCP's "good" threshold from 2.5s to 2.0s.
+Check: Is LCP element preloaded with `<link rel="preload">`? Are explicit `width` and `height` on every image/video/iframe (prevents CLS)? Is TTFB under 200ms? Are JavaScript long tasks (>50ms) broken up with `scheduler.yield()` or `setTimeout`? Is `font-display: swap` used for web fonts? Are below-fold images lazy-loaded? Are modern image formats (WebP/AVIF) used?
 
-Check: Is LCP element preloaded with `<link rel="preload">`? Are explicit `width` and `height` on every image/video/iframe (prevents CLS)? Is TTFB under 200ms? Are JavaScript long tasks (>50ms) broken up? Is `font-display: swap` used for web fonts? Are below-fold images lazy-loaded? Are modern image formats (WebP/AVIF) used with `<picture>` fallbacks?
+**INP fix priority order:** (1) audit third-party scripts, (2) lazy-load non-critical features, (3) optimize event handlers with `scheduler.yield()`, (4) reduce JavaScript payload with React Server Components, (5) virtual lists and CSS containment.
 
-Sites with INP above 200ms average -0.8 position drops. Pages with LCP above 3 seconds experience 23% more traffic loss than faster competitors. 43% of sites still fail the 200ms INP threshold — this is the most common CWV failure in 2026.
+**Next.js rendering check:**
+
+| Strategy | TTFB | Best For |
+|---|---|---|
+| SSG (default cached fetch) | Sub-100ms | Static content — blogs, docs |
+| ISR (`next: { revalidate: 60 }`) | Fast, cached | Periodically updated content |
+| SSR (`cache: 'no-store'`) | 200ms+ | User-specific real-time data |
+| PPR (experimental) | Fast shell + streamed | Mixed static/dynamic pages |
+
+Sites with INP above 200ms average -0.8 position drops. Pages with LCP above 3 seconds experience 23% more traffic loss. 43% of sites still fail the 200ms INP threshold — the most common CWV failure.
 
 ### Step 2: Audit Technical SEO
 
@@ -53,11 +63,18 @@ Sites with INP above 200ms average -0.8 position drops. Pages with LCP above 3 s
 - Audit pages with zero organic traffic over 12 months — candidates for consolidation, noindex, or removal
 - Verify HTTP status codes: 200 for live content, 301 for permanent redirects, 404 for missing, 410 for intentionally removed
 
-**Security headers:**
-- Verify HTTPS everywhere with valid, non-expired SSL certificate
-- Check for HSTS (`Strict-Transport-Security`), CSP, `X-Content-Type-Options`, `X-Frame-Options`
-- Fix any mixed content (HTTP resources on HTTPS pages)
-- Verify all canonical tags, sitemap URLs, and internal links use HTTPS
+**Security headers (set via Next.js middleware):**
+- CSP with nonces for scripts/styles
+- `Strict-Transport-Security: max-age=63072000; includeSubDomains; preload`
+- `X-Content-Type-Options: nosniff`
+- `X-Frame-Options: DENY`
+- `Referrer-Policy: strict-origin-when-cross-origin`
+- Remove `X-Powered-By` header
+
+**Supply chain:**
+- Pin exact dependency versions, use `npm ci` in CI pipelines
+- Scan with Socket.dev or Snyk
+- Enable 2FA on npm accounts
 
 ### Step 3: Audit HTML Structure
 
@@ -232,7 +249,28 @@ Check whether content templates implement high-citation patterns:
 
 **VideoObject schema:** If any video content exists, verify VideoObject schema with `name`, `description`, `thumbnailUrl`, `uploadDate`, and `contentUrl`.
 
-### Step 16: Defensive Review
+### Step 16: Audit Conversion Optimization and Analytics
+
+**Donation page audit:**
+- 3-4 preset amounts with middle pre-selected and impact descriptions?
+- Monthly giving pre-selected? (31% of nonprofit online revenue; 64% of orgs still default one-time)
+- Single-step form? (multi-step forms see 52% drop in completions)
+- Site header navigation removed during donation flow?
+- Form embedded on-site, not redirecting to third-party processor?
+- `autoComplete` attributes on all form fields?
+
+**Analytics:**
+- Using cookieless analytics (Plausible or Umami) as primary?
+- AI referral traffic tracked with custom channel group? (ChatGPT 78% of AI traffic; mobile app drops referrer)
+- Key conversion events marked in GA4: `donation_completed` (with value), `newsletter_signup`, `volunteer_form_submit`?
+
+**Internationalization check (if multilingual):**
+- `lang` and `dir` attributes set correctly on `<html>`?
+- Hreflang tags self-referencing and reciprocal on every page?
+- Subdirectory URL strategy (`/en/`, `/hi/`, `/ar/`) for domain authority consolidation?
+- ICU MessageFormat used for plural/gender forms (Arabic requires 6 CLDR plural categories)?
+
+### Step 17: Defensive Review
 
 Check for techniques that would violate platform guidelines:
 
@@ -244,7 +282,7 @@ Check for techniques that would violate platform guidelines:
 
 **User-generated content injection:** If the site hosts comments or forum posts, verify they are sanitized before being served to crawlers.
 
-### Step 17: Findings Report
+### Step 18: Findings Report
 
 Document findings by priority:
 
@@ -258,7 +296,7 @@ Document findings by priority:
 - Agent-aware cloaking detected
 
 **High (implement before significant content investment)**
-- LCP > 2.0s (failing updated March 2026 threshold)
+- LCP > 2.5s (failing Good threshold)
 - INP > 200ms (43% of sites fail this)
 - No Wikipedia article when sufficient notability sources exist
 - No Wikidata entry
@@ -280,6 +318,10 @@ Document findings by priority:
 - No Reddit, YouTube, or LinkedIn presence
 - Key facts inconsistent across platforms
 - Anchor text distribution outside recommended ranges
+- Donation page using multi-step form or missing monthly pre-selection
+- No AI referral traffic tracking in analytics
+- Missing cookieless analytics (relying solely on GA4 with consent banner)
+- Missing hreflang tags on multilingual pages
 
 **Low (optimize over time)**
 - llms.txt not implemented (low current value but zero-cost)
@@ -287,6 +329,7 @@ Document findings by priority:
 - Missing comparison tables on decision-relevant pages
 - No proprietary data or original research pages
 - VideoObject schema not implemented for video content
-- Security headers incomplete (HSTS, CSP)
+- Security headers incomplete (CSP, Permissions-Policy, COOP)
+- Supply chain scanning not in CI pipeline
 
 For each finding: the specific page or component affected, what is missing or incorrect, and the exact implementation needed.
