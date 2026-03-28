@@ -231,19 +231,42 @@ Meta description: 150-160 chars, direct factual answer to the primary query, one
 
 ---
 
-## Core Web Vitals (Updated March 2026)
+## Core Web Vitals
 
-Google's Core Web Vitals are confirmed ranking factors measured via real Chrome user data (CrUX) at the 75th percentile. INP officially replaced FID in March 2024. The March 2026 core update tightened the LCP "good" threshold from 2.5s to 2.0s — sites previously passing at 2.0-2.5s now face ranking pressure.
+Google's Core Web Vitals are confirmed ranking factors measured via real Chrome user data (CrUX) at the 75th percentile. INP officially replaced FID in March 2024.
 
-**Current thresholds:**
+**Current thresholds (as of March 2026):**
 
 | Metric | Good | Needs Improvement | Poor |
 |--------|------|-------------------|------|
-| LCP (Largest Contentful Paint) | ≤ 2.0s | 2.0–4.0s | > 4.0s |
+| LCP (Largest Contentful Paint) | ≤ 2.5s | 2.5–4.0s | > 4.0s |
 | INP (Interaction to Next Paint) | ≤ 200ms (target ≤ 150ms) | 200–500ms | > 500ms |
 | CLS (Cumulative Layout Shift) | ≤ 0.1 | 0.1–0.25 | > 0.25 |
 
 **Ranking impact:** Pages at position 1 show a 10% higher CWV pass rate than position 9. Sites with INP above 200ms saw average position drops of 0.8 places; above 500ms dropped 2-4 positions. Pages with LCP above 3 seconds experienced 23% more traffic loss than faster competitors. 43% of sites still fail the 200ms INP threshold in 2026.
+
+**INP — the hardest metric to fix.** INP requires restructuring how JavaScript executes. The primary technique is `scheduler.yield()` (Chrome-native, with `setTimeout` fallback), which sends remaining work to the front of the task queue while letting the browser handle user input:
+
+```typescript
+function yieldToMain(): Promise<void> {
+  if ('scheduler' in window && 'yield' in (window as any).scheduler) {
+    return (window as any).scheduler.yield();
+  }
+  return new Promise(resolve => setTimeout(resolve, 0));
+}
+// In long event handlers: await yieldToMain(); then doExpensiveWork()
+```
+
+For Next.js: use React Server Components to reduce client JS, `useTransition` for non-urgent state updates, and `next/dynamic` for heavy components. Audit third-party scripts first — highest impact, lowest effort.
+
+**Rendering strategies in Next.js App Router:**
+
+| Strategy | TTFB | Best For |
+|---|---|---|
+| SSG (default cached fetch) | Sub-100ms from CDN | Static content — blogs, docs, marketing pages |
+| ISR (`next: { revalidate: 60 }`) | Fast, cached + background revalidate | Periodically updated content |
+| SSR (`cache: 'no-store'`) | 200ms+ per request | User-specific real-time data — dashboards |
+| PPR (experimental, Suspense) | Fast static shell + streamed dynamic | Mixed pages with some dynamic content |
 
 **Implementation:**
 - TTFB < 200ms (rendering cannot start until HTML arrives)
@@ -251,9 +274,9 @@ Google's Core Web Vitals are confirmed ranking factors measured via real Chrome 
 - Inline critical CSS, defer non-critical CSS
 - Add explicit `width` and `height` attributes to every image, video, iframe, and ad slot (prevents CLS)
 - Use `font-display: swap` for web fonts
-- Break JavaScript long tasks (>50ms) into smaller chunks; yield to the main thread during interactions
+- Break JavaScript long tasks (>50ms) with `yieldToMain()` during interactions
 - Implement `loading="lazy"` for below-fold images
-- Use modern image formats (WebP/AVIF) — 25-50% smaller than JPEG/PNG
+- Use modern image formats (WebP/AVIF) — 25-50% smaller than JPEG/PNG; AVIF 50% smaller than JPEG
 - Keep total page weight < 1MB (18% of pages over 1MB are abandoned by AI crawlers)
 - Test with real field data (Search Console), not just lab tools — Google ranks on field data
 
@@ -299,18 +322,24 @@ Google allocates crawl resources based on perceived site value. Faceted navigati
 
 ### Security headers
 
-Implement all of these — they are expected signals in 2026:
-- `Strict-Transport-Security: max-age=31536000; includeSubDomains` (HSTS)
-- `Content-Security-Policy` (CSP) — prevents XSS
+Implement all of these — they are expected signals in 2026. For Next.js, set via `middleware.ts`:
+- `Content-Security-Policy` (CSP with nonces for scripts/styles) — prevents XSS
+- `Strict-Transport-Security: max-age=63072000; includeSubDomains; preload` (HSTS)
 - `X-Content-Type-Options: nosniff`
-- `X-Frame-Options: SAMEORIGIN`
+- `X-Frame-Options: DENY`
+- `Referrer-Policy: strict-origin-when-cross-origin`
 - Fix all mixed content (HTTP resources on HTTPS pages)
+- Remove `X-Powered-By` header (information disclosure)
+
+### Supply chain security
+
+Pin exact dependency versions, use `npm ci` (never `npm install` in CI), and scan with Socket.dev or Snyk. The 2025 npm supply chain attacks (chalk/debug compromise affected packages with 2.6 billion combined weekly downloads) showed that well-maintained packages are vulnerable. Verify every dependency. Enable 2FA on npm accounts.
 
 ---
 
 ## Robots.txt
 
-```
+```txt
 User-agent: Googlebot
 Allow: /
 
@@ -373,7 +402,7 @@ Include only canonical, indexable URLs. `<lastmod>` must reflect actual update d
 
 IndexNow notifies Bing (which feeds ChatGPT) instantly when content is published or updated. Place a key file at `https://yoursite.com/{key}.txt` and ping on every publish:
 
-```
+```txt
 GET https://api.indexnow.org/indexnow?url=https://yoursite.com/new-page&key=YOUR_KEY
 ```
 
@@ -443,6 +472,50 @@ Backlinks remain the #2 ranking factor but their nature has changed. Topical rel
 
 ---
 
+## Conversion Optimization
+
+For nonprofit donation pages: present 3-4 preset amounts with the middle option pre-selected and pair amounts with impact descriptions ("$40/month provides clean water for 12 families"). Pre-select monthly giving — monthly donors become more valuable than one-time donors within 5.25 months, yet 64% of nonprofits still default to one-time. Single-step forms vastly outperform multi-step (52% drop in completions with multi-step). Eliminating site header navigation during the donation flow produced a documented 195% conversion increase. Embed the form directly on-site; never redirect to a third-party processor.
+
+For all forms: target 3-5 essential fields maximum — each additional field costs ~11% in conversion. Start with easy, non-threatening questions. Make optional fields clearly optional (+25-35% completion). Support browser autofill with correct `autoComplete` attributes (also required for WCAG 2.2 AA SC 1.3.5).
+
+Trust signals with documented impact: charity rating badges increase giving likelihood for 72% of donors; video testimonials are 80-86% more effective than text; specific quantified impact numbers with real names beat generic claims.
+
+**Dark patterns carry legal risk.** The FTC's $2.5 billion settlement with Amazon (September 2025) for a deliberately complex cancellation flow marks the largest dark pattern enforcement action in history. California, Colorado, and 10+ other states explicitly prohibit dark patterns in privacy laws. For advocacy organizations, any perception of manipulation is existential — donor trust is the primary asset.
+
+---
+
+## Analytics
+
+Use **Plausible** ($9/month cloud) or **Umami** (self-hosted, free) as primary analytics — no cookies, no consent banner required, ~1KB script versus GA4's 23KB+. Add GA4 only if you need Google Ads integration or predictive analytics. Proxy analytics scripts through your own domain (Next.js rewrites) to bypass adblockers.
+
+**Tracking AI referral traffic:** AI-generated traffic grew 357% year-over-year to 1.1 billion visits in June 2025. ChatGPT drives 78% of AI traffic but its mobile app drops referrer data entirely (appears as Direct in analytics). Create a custom channel group in GA4 with source matching:
+
+```txt
+(chatgpt\.com|chat\.openai\.com|perplexity\.ai|claude\.ai|gemini\.google\.com|copilot\.microsoft\.com)
+```
+
+Claude drives <0.17% of volume but has the highest session value at $4.56/visit. Track `donation_completed` (with value), `newsletter_signup`, and `volunteer_form_submit` as GA4 conversions.
+
+Use **GrowthBook** (self-hosted, MIT, free) for A/B testing — it queries your existing data warehouse directly and avoids sending user data to third-party servers.
+
+---
+
+## Internationalization
+
+For multilingual advocacy sites, use **next-intl** (1.8M weekly downloads) with subdirectory URL strategy (`/en/`, `/hi/`, `/ar/`). Subdirectories centralize domain authority onto one deployment. Set `lang` and `dir` on `<html>`:
+
+```tsx
+<html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+```
+
+The `lang` attribute determines text-to-speech pronunciation in screen readers. Hreflang tags must be self-referencing and reciprocal on every page — 31% of international sites have broken hreflang. Use `alternates.languages` in Next.js `generateMetadata` to generate hreflang automatically.
+
+Arabic requires all 6 CLDR plural categories — use ICU MessageFormat, not string concatenation. CSS logical properties (`ps-4`, `pe-4`, `text-start`) handle RTL layout mirroring automatically without separate stylesheets.
+
+For Devanagari and Arabic scripts, use Google's **Noto** family with `unicode-range` in `@font-face` to lazy-load only the glyphs needed for each script. Always `font-display: swap` and WOFF2 format.
+
+---
+
 ## llms.txt
 
 Place at `/llms.txt` — a Markdown file describing the site for AI systems.
@@ -508,3 +581,8 @@ These techniques are used by competitors but carry severe penalties. Understand 
 | Backlinks vs brand signals | 45% / 55% of off-page ranking weight |
 | Original data content | 156% more link acquisition; 45% more AI citations |
 | Unlinked brand mention conversion | >30% close rate |
+| AI referral traffic growth | 357% YoY to 1.1B visits (June 2025) |
+| ChatGPT share of AI traffic | 78% of AI referral visits |
+| Pre-selecting monthly giving | Accounts for 31% of online nonprofit revenue |
+| Donation form fields ≤4 | 160% more conversions vs longer forms |
+| Overlay widgets and lawsuits | 22.6% of sued sites had overlays installed |
