@@ -1,4 +1,4 @@
-<\!-- trigger: model_decision -->
+<!-- trigger: model_decision -->
 
 # SEO + GEO Rules for Animal Advocacy Websites
 
