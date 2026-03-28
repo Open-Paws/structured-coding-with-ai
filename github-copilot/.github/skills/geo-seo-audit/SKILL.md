@@ -1,197 +1,250 @@
 ---
 name: geo-seo-audit
-description: GEO + SEO audit and implementation workflow — HTML structure, semantic writing, Wikipedia/Wikidata presence, structured data (JSON-LD schema), meta tags, robots.txt, sitemap, IndexNow, topic cluster architecture, performance, AI citation content patterns, platform-specific behavior, and defensive review for advocacy websites
+description: SEO + GEO audit and implementation workflow — Core Web Vitals (updated 2026 thresholds), HTML structure, semantic writing, E-E-A-T, content intent, Wikipedia/Wikidata, JSON-LD schema, meta tags, crawl budget, robots.txt, sitemap, IndexNow, topic cluster architecture, link building, brand signals, platform presence, defensive review
 ---
-# GEO + SEO Audit
+# SEO + GEO Audit
 
-Generative Engine Optimization (GEO) ensures advocacy content appears in AI answer systems: ChatGPT, Perplexity, Google AI Overviews, Claude, Gemini, Bing Copilot. Traditional SEO remains necessary but is no longer sufficient — approximately 60% of searches end without a click.
+This skill covers both traditional SEO and Generative Engine Optimization (GEO) — ensuring advocacy content ranks in search engines AND appears in AI answer systems (ChatGPT, Perplexity, Google AI Overviews, Claude, Gemini, Bing Copilot).
 
-**How AI citation works:** Google generates an answer first, then scores content against it using embedding distance. Only 17-32% of AI Overview citations come from pages ranking in the organic top 10. Domain Authority correlates with AI citations at only r=0.18; topical authority (r=0.40) and branded web mentions (r=0.664) are the real predictors. 80% of URLs cited by AI assistants do not rank in Google's top search results.
+**The core insight:** Only 17-32% of AI Overview citations come from pages ranking in the organic top 10. Domain Authority correlates with AI citations at r=0.18; topical authority (r=0.40) and branded web mentions (r=0.664) are the real predictors. 80% of URLs cited by AI assistants do not rank in Google's top search results. This means SEO and GEO have different — but overlapping — optimization paths.
 
 ## When to Use
 - When building or reviewing any public-facing advocacy website
-- Before launching content that needs to be discoverable by AI systems
-- When diagnosing why a site is not appearing in AI responses
+- Before launching content that needs to be discoverable by search engines or AI systems
+- When diagnosing why a site is not appearing in Google results or AI responses
 - When implementing a content hub or topic cluster for an advocacy campaign
 - As a pre-launch checklist for any new Open Paws platform page
 
 ## Process
 
-### Step 1: Audit HTML Structure
+### Step 1: Audit Core Web Vitals (Updated March 2026 Thresholds)
+
+Measure using real field data from Google Search Console (CrUX), not lab tools — Google ranks on field data. Current thresholds:
+
+| Metric | Good | Needs Improvement | Poor |
+|--------|------|-------------------|------|
+| LCP | ≤ 2.0s* | 2.0–4.0s | > 4.0s |
+| INP | ≤ 200ms | 200–500ms | > 500ms |
+| CLS | ≤ 0.1 | 0.1–0.25 | > 0.25 |
+
+*The March 2026 core update tightened LCP's "good" threshold from 2.5s to 2.0s.
+
+Check: Is LCP element preloaded with `<link rel="preload">`? Are explicit `width` and `height` on every image/video/iframe (prevents CLS)? Is TTFB under 200ms? Are JavaScript long tasks (>50ms) broken up? Is `font-display: swap` used for web fonts? Are below-fold images lazy-loaded? Are modern image formats (WebP/AVIF) used with `<picture>` fallbacks?
+
+Sites with INP above 200ms average -0.8 position drops. Pages with LCP above 3 seconds experience 23% more traffic loss than faster competitors. 43% of sites still fail the 200ms INP threshold — this is the most common CWV failure in 2026.
+
+### Step 2: Audit Technical SEO
+
+**Rendering:**
+- Verify SSR or SSG — client-side-only rendering increases crawl cost and is invisible to AI crawlers
+- Test with Google's URL Inspection tool to verify rendered content matches expectations
+- AI crawlers (GPTBot, ClaudeBot, PerplexityBot) generally do not execute JavaScript
+
+**Mobile-first:**
+- Audit using Googlebot Smartphone user agent, not desktop
+- Google uses mobile scores as the primary ranking signal for all results
+- 53% of mobile visitors abandon sites taking more than 3 seconds to load
+
+**Crawl budget:**
+- Check for faceted navigation URL explosion (filter/sort parameter combinations)
+- Verify robots.txt blocks low-value parameter URLs, internal search, admin pages
+- Check for redirect chains (sequential redirects waste crawl budget)
+- Verify XML sitemap contains only canonical, indexable URLs with accurate `<lastmod>` dates
+- Audit pages with zero organic traffic over 12 months — candidates for consolidation, noindex, or removal
+- Verify HTTP status codes: 200 for live content, 301 for permanent redirects, 404 for missing, 410 for intentionally removed
+
+**Security headers:**
+- Verify HTTPS everywhere with valid, non-expired SSL certificate
+- Check for HSTS (`Strict-Transport-Security`), CSP, `X-Content-Type-Options`, `X-Frame-Options`
+- Fix any mixed content (HTTP resources on HTTPS pages)
+- Verify all canonical tags, sitemap URLs, and internal links use HTTPS
+
+### Step 3: Audit HTML Structure
 
 Check each page for:
 1. Exactly one `<h1>` tag containing the primary topic
 2. Logical heading hierarchy (`h1 > h2 > h3`) with no skipped levels
-3. `<h2>` headings phrased as questions where the section answers something (7× citation impact for smaller sites)
-4. First paragraph after each heading: direct 40-60 word answer — AI systems pull from the first 30% of content 44% of the time
-5. Paragraphs of 2-4 sentences (40-60 words); content sections of 120-180 words that make sense if extracted (70% more ChatGPT citations)
-6. Semantic elements used correctly: `<article>`, `<section>`, `<nav>`, `<aside>`, `<header>`, `<footer>`, `<main>`
+3. `<h2>` headings phrased as questions where the section answers something (7× citation impact for smaller sites; also improves Featured Snippet and PAA selection)
+4. First paragraph after each heading: direct 40-60 word answer
+5. Paragraphs of 2-4 sentences (40-60 words); content sections of 120-180 words
+6. Semantic elements: `<article>`, `<section>`, `<nav>`, `<aside>`, `<header>`, `<footer>`, `<main>`
 7. `lang` attribute on `<html>` tag
-8. Descriptive `alt` text on every `<img>`
+8. Descriptive `alt` text on every `<img>`; descriptive file names with keywords
 9. Meaningful anchor text on every `<a>` — never "click here"
-10. `<table>` for comparison data (32.5% of AI-cited content uses tables)
-11. `<ol>` and `<ul>` for lists (78% of AI answers include list formats)
-12. `<blockquote cite="...">` for expert quotations (+28-40% AI visibility)
-13. `<time datetime="YYYY-MM-DD">` for all dates
-14. `<dfn>` for term definitions; `<abbr title="...">` for acronyms on first use
-15. `id` attributes on all `<h2>` and `<h3>` elements
+10. `<table>` for comparison data; `<ol>` and `<ul>` for lists; `<blockquote cite="...">` for quotations
+11. `<time datetime="YYYY-MM-DD">` for dates; `<dfn>` for definitions; `<abbr title="...">` for acronyms
+12. `id` attributes on all `<h2>` and `<h3>` elements
 
-Flag any content rendered exclusively by JavaScript — AI crawlers often cannot execute JS.
+Flag any content rendered exclusively by JavaScript.
 
-### Step 2: Audit Semantic Writing Quality
+### Step 4: Audit Content Intent and Search Positioning
 
-This is a newer and underweighted audit area. AI citation systems retrieve at the sentence and paragraph level, not the page level.
+Before auditing content quality, verify content targets the right intent format. Study the top 5 results for each target keyword. Content targeting the wrong intent format does not rank regardless of other optimizations.
 
-**Entity salience:** Check that the primary entity appears as the grammatical subject in active voice. "Open Paws documented 34% adoption growth in 2025" (salience: 0.74) vs. "34% adoption growth was documented in 2025" (salience: 0.11). Every sentence should identify its subject explicitly.
+| Intent type | Expected format to match |
+|-------------|--------------------------|
+| Informational | How-to guides, tutorials, explainers, definitions |
+| Commercial investigation | Comparison articles, review roundups, "best of" lists |
+| Transactional | Product/service pages, pricing pages, application forms |
+| Navigational | Homepage, specific brand/product pages |
 
-**Atomic claims:** Verify that sentences are self-contained semantic triples (subject + verb + object with explicit context). Eliminate vague pronouns — every sentence must make sense in isolation. Vague: "It increased significantly." Citable: "Factory farm enforcement actions increased 34% between 2023 and 2025 according to USDA's annual report."
+Also check: Does the content completely satisfy user intent in one visit (Helpful Content System standard)? Does it demonstrate genuine first-hand knowledge and experience? Does it include specific, dated citations rather than vague attribution?
 
-**Proper noun density:** AI-cited text averages 20.6% proper nouns versus 5-8% in standard English. Check whether the content names organizations, researchers, reports, and years specifically. Vague attribution ("experts say") never gets cited.
+### Step 5: Audit Semantic Writing Quality
 
-**Content density:** Pages under 5,000 characters get approximately 66% of their content used by AI systems; pages over 20,000 characters get only 12%. Gemini allocates roughly 380 words per webpage per query. Check whether pages are focused and dense rather than exhaustive and padded.
+AI citation systems retrieve at the sentence and paragraph level. Check:
 
-**Paragraph structure:** 71% of AI-cited paragraphs contain four lines or fewer. 64% include explicit feature or capability lists. Verify that every major section opens with a 40-60 word declarative answer.
+**Entity salience:** Is the primary entity the grammatical subject in active voice? Active voice gives subject salience 0.74; passive voice drops it to 0.11. Check for passive constructions and fix them.
 
-### Step 3: Audit Wikipedia and Wikidata Presence
+**Atomic claims:** Are sentences self-contained semantic triples? Eliminate vague pronouns — every sentence must make sense in isolation.
 
-This is the highest-leverage off-site GEO action. Wikipedia accounts for 47.9% of ChatGPT's top-10 cited sources. Organizations visible in Wikidata get Google Knowledge Panels within 7 days and begin appearing consistently in AI answers.
+**Proper noun density:** AI-cited text averages 20.6% proper nouns versus 5-8% standard. Check whether content names organizations, researchers, reports, and years specifically rather than using vague attribution.
+
+**Content density:** Pages under 5,000 characters get approximately 66% of content used; pages over 20,000 characters get only 12%. Check whether pages are focused and dense.
+
+**Opening structure:** Every major section should open with a 40-60 word declarative answer. Information buried deep in paragraphs is rarely retrieved by AI systems.
+
+### Step 6: Audit E-E-A-T Signals
+
+Check for Experience, Expertise, Authoritativeness, Trustworthiness on every content page:
+- Original data, case studies, screenshots, specific processes (Experience)
+- Detailed author bio with verifiable credentials (Expertise)
+- Specific citations from credible sources with names, organizations, and dates (Expertise)
+- Third-party coverage, organizational partnerships, industry recognition (Authoritativeness)
+- Clear contact information, privacy policy, transparent organizational identity (Trustworthiness)
+
+**Author attribution audit:** Every content page must have a visible author name, credentials, and link to an author profile page. The author page must have Person schema with `name`, `url`, `jobTitle`, `description`, `image`, and `sameAs` (LinkedIn, external profiles). Content with proper author metadata gets 40% more AI citations.
+
+### Step 7: Audit Wikipedia and Wikidata Presence
+
+Wikipedia accounts for 47.9% of ChatGPT's top-10 cited sources. Organizations visible in Wikidata get Knowledge Panels within 7 days and begin appearing consistently in AI answers.
 
 Check:
-1. Does the organization have a Wikipedia article? Is it accurate, cited, and maintained?
-2. Does the organization have a Wikidata entry (Q-ID)? Is it complete with: organization type, founding date, location, founders, official website, social media profiles?
-3. Is the Wikidata Q-ID referenced in the site's Organization schema `sameAs` array?
-4. Is there an entity web connecting: organization → key tools/platforms → key people → related organizations → policy areas?
-5. Does the site's structured data match what Wikipedia and Wikidata say? Inconsistency reduces AI confidence.
-6. Does the Wikipedia article or Wikidata entry need updating to reflect the organization's current work?
+1. Does the organization have a Wikipedia article? Is it accurate, cited, current?
+2. Does the organization have a Wikidata entry (Q-ID)? Is it complete with: type, founding date, location, founders, official website, social profiles?
+3. Is the Wikidata Q-ID in the site's Organization schema `sameAs` array?
+4. Is Wikipedia URL in the site's Organization schema `sameAs` array?
+5. Is there an entity web: organization → tools → people → related orgs → policy areas?
+6. Does the site's structured data match Wikipedia and Wikidata? Inconsistency reduces AI confidence.
 
-If no Wikipedia page exists: document this as a **High** finding. A Wikipedia article requires reliable third-party sources — check whether sufficient coverage exists in press, academic papers, or NGO reports to support notability. If sources exist, creating the article should be prioritized over almost any on-site optimization.
+If no Wikipedia article exists: document as **High** finding. Check whether sufficient third-party coverage exists to support notability. If yes, creating the article should be prioritized over almost any on-site optimization.
 
-### Step 4: Audit Structured Data (JSON-LD)
+### Step 8: Audit Structured Data (JSON-LD)
 
 Sites with structured data achieve 41% AI citation rates vs 15% without. Only 12.4% of websites implement it.
 
-For every page, verify:
+For every page verify:
+- **Organization + WebSite schema** on every page: `name`, `url`, `logo`, `sameAs` (LinkedIn, Twitter, GitHub, Wikipedia URL, Wikidata URL), `description`
+- **Article schema** on every content page: `headline`, `author` (with `name`, `url`, `jobTitle`), `publisher`, `datePublished`, `dateModified`, `image`, `description`
+- **FAQPage schema** on any page with Q&A content
+- **BreadcrumbList schema** on all non-homepage pages
+- **Person schema** on all author/team profile pages
+- Additional applicable types: HowTo, SoftwareApplication, Event, Dataset, VideoObject
 
-**Organization + WebSite schema (required on every page):**
-- `@type: Organization` with `name`, `url`, `logo`, `sameAs` (LinkedIn, Twitter, GitHub, Wikipedia URL, Wikidata URL), `description`
-- `@type: WebSite` with `url`, `name`, `publisher` linking to Organization via `@id`
-- Both in a `@graph` array
+Validate all schema at schema.org/validator and Google's Rich Results Test. `dateModified` must reflect actual update dates.
 
-**Article schema (every content page):**
-- `headline`, `author` (with `name`, `url`, `jobTitle`), `publisher` (via `@id`), `datePublished`, `dateModified`, `image`, `description`
-
-**FAQPage schema (any page with Q&A content):**
-- Each question: `@type: Question` with `name` and `acceptedAnswer.text` (40-80 word direct answer)
-
-**Also implement when applicable:** HowTo, BreadcrumbList, SoftwareApplication, Event, Dataset, Person.
-
-Validate all schema at schema.org/validator and Google's Rich Results Test. `dateModified` must reflect actual update dates — never fake it.
-
-### Step 5: Audit Meta Tags and Head Elements
+### Step 9: Audit Meta Tags and Head Elements
 
 For every page:
 - `<title>`: `Primary Keyword — Brand Name`, 50-60 chars, keywords first, unique per page
-- `<meta name="description">`: 150-160 chars, direct factual answer to the primary query, one specific statistic, unique per page
-- `<link rel="canonical">` pointing to the canonical URL
+- `<meta name="description">`: 150-160 chars, direct answer to primary query, one statistic, unique
+- `<link rel="canonical">` pointing to canonical URL
 - Open Graph tags: `og:title`, `og:description`, `og:type`, `og:url`, `og:image`, `og:site_name`
-- Twitter Card tags: `twitter:card` (summary_large_image), `twitter:title`, `twitter:description`, `twitter:image`
+- Twitter Card: `twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`
 - Article timestamps: `article:published_time`, `article:modified_time` (ISO 8601)
 
-### Step 6: Audit Robots.txt
+### Step 10: Audit Robots.txt
 
-Verify the site allows AI citation crawlers:
+Verify AI citation crawlers are allowed:
+- **Must allow** (power AI answers): `OAI-SearchBot`, `ChatGPT-User`, `PerplexityBot`, `ClaudeBot`, `Claude-SearchBot`, `Applebot`, `Amazonbot`
+- **May block** (training only): `GPTBot`, `CCBot`, `Google-Extended`, `meta-externalagent`, `Bytespider`
+- **Never block**: `Googlebot` (blocks both Search and AI Overviews simultaneously)
 
-**Must allow (these power AI answers):**
-- `OAI-SearchBot`, `ChatGPT-User`, `PerplexityBot`, `ClaudeBot`, `Claude-SearchBot`, `Applebot`, `Amazonbot`
+Note: 226+ AI crawlers exist. Verify list is current. Some AI agents use standard browser user-agent strings and ignore robots.txt.
 
-**May optionally block (training, not answers):**
-- `GPTBot`, `CCBot`, `Google-Extended`, `meta-externalagent`, `Bytespider`
+### Step 11: Audit XML Sitemap and IndexNow
 
-Note: blocking `Googlebot` blocks both Google Search AND Google AI Overviews. There are now 226+ identified AI crawlers — verify the list is current. Some AI agents use standard browser user-agent strings and ignore robots.txt entirely; treat this as best-effort control.
-
-### Step 7: Audit XML Sitemap
-
+**Sitemap:**
 - Exists at `/sitemap.xml`
 - Contains only canonical, indexable URLs
-- `<lastmod>` dates reflect actual content update dates
-- Sitemap referenced in robots.txt
+- `<lastmod>` dates reflect actual content update dates (never faked)
+- Referenced in robots.txt
 - Submitted to Google Search Console and Bing Webmaster Tools
 - Auto-regenerates when content changes
 
-### Step 8: Audit IndexNow Integration
+**IndexNow:**
+- API key file at `https://yoursite.com/{key}.txt`
+- Ping fires on every publish/update event
+- Integrated in CI/CD pipeline or CMS publish hooks
 
-IndexNow notifies Bing (which feeds ChatGPT) instantly when content changes. Check:
-1. API key file exists at `https://yoursite.com/{key}.txt`
-2. Ping fires on every publish/update event
-3. Integration is in CI/CD pipeline or CMS publish hooks
+### Step 12: Audit Site Architecture and Content Freshness
 
-### Step 9: Audit Site Architecture and Content Freshness
+**Architecture:**
+- URL structure: descriptive hyphenated lowercase, under 75 characters, max 3 levels deep, canonical tags, 301 redirects for changed URLs
+- No important page more than 3 clicks from homepage
+- Breadcrumb navigation with BreadcrumbList schema
+- Topic cluster structure: pillar pages + 8-15 cluster pages with bidirectional links?
+- Orphan pages (no internal links pointing to them)?
 
-URLs: descriptive hyphenated lowercase, under 75 characters, max 3 levels deep, canonical tags on every page, 301 redirects for URL changes.
-
-Topic cluster architecture (citation rate 12% → 41%):
-- Is there a pillar page (2,000-4,000 words) for each major advocacy topic?
-- Does each pillar have 8-15 cluster pages on specific subtopics?
-- Are all links bidirectional?
-- Are cluster pages siloed from each other, or is content fragmented?
-
-Content freshness:
+**Content freshness:**
 - "Last Updated: [date]" visible on every content page using `<time datetime="YYYY-MM-DD">`
 - `dateModified` in Article schema synchronized with visible dates
-- 76% of most-cited AI content was updated within 30 days; Perplexity gives 3.4× advantage to content under 30 days old
+- Content genuinely updated (not just date-changed) — Google detects date freshness hacking
+- 76% of most-cited AI content updated within 30 days; Perplexity gives 3.4× advantage to content under 30 days old
 
-**First-mover check:** For emerging topics in the advocacy space with few authoritative sources, verify the site is publishing content before competitors claim those citation positions.
+**First-mover check:** For emerging advocacy topics with few authoritative sources, is the site publishing before competitors claim citation positions?
 
-### Step 10: Audit Platform Presence and Cross-Platform Consistency
+### Step 13: Audit Platform Presence and Brand Signals
 
-85% of AI brand mentions come from third-party pages. Check:
-1. **Reddit:** Active, authentic participation in relevant subreddits? Note: AI systems have visibility into Reddit's moderation pipeline — inauthentic content carries negative weight.
-2. **YouTube:** Channel exists with transcripts enabled? Transcripts are crawlable text.
-3. **LinkedIn:** Organization page active with substantive posts?
+85% of AI brand mentions come from third-party pages. Brand mentions now account for 55% of off-page ranking weight.
+
+Check:
+1. **Reddit:** Active, authentic presence in relevant subreddits? AI systems have visibility into Reddit's moderation pipeline — inauthentic content carries negative weight.
+2. **YouTube:** Channel with transcripts enabled?
+3. **LinkedIn:** Active organization page with substantive posts?
 4. **GitHub:** Documentation, datasets, or reports published as Markdown?
-5. **Authoritative databases:** Data submitted to Our World in Data, government data portals, or relevant academic databases?
+5. **Unlinked brand mentions:** Monitor with Google Alerts or Ahrefs. Convert high-authority mentions to backlinks — close rate typically above 30%.
+6. **Cross-platform consistency:** Key facts (founding date, mission, statistics) consistent across site, Wikipedia, Wikidata, LinkedIn, GitHub?
 
-Cross-platform consistency: verify that key factual claims (founding date, mission statement, key statistics) are consistent across the site, Wikipedia, Wikidata, LinkedIn, and GitHub. Inconsistency reduces AI confidence in citations.
+Platform-specific behavior: Only 11% of domains are cited by both ChatGPT and Perplexity for the same queries. Citation volatility is 40-60% monthly. Build multi-platform presence.
 
-Platform-specific behavior: only 11% of domains are cited by both ChatGPT and Perplexity for the same queries — each platform has different citation patterns. Citation volatility is extreme: 40-60% monthly turnover is normal. Build multi-platform presence rather than optimizing for any single system.
+### Step 14: Audit Link Profile
 
-### Step 11: Audit Performance
+Backlinks remain the #2 ranking factor. Topical relevance between linking and linked domains (r=0.4) now outweighs raw domain authority.
 
-AI crawlers timeout at 1-5 seconds:
-- TTFB < 200ms
-- LCP < 2.5s
-- CLS < 0.1
-- Total page weight < 1MB (18% of pages over 1MB are abandoned by AI crawlers)
+Check:
+- Natural anchor text distribution: ~40-50% branded, ~20-30% generic, ~15-25% partial match, ~5-10% exact match. Sites below 30% diversity saw -15 average position drops in March 2026 spam update.
+- Links in editorial context (body content), not footers/sidebars/author bios
+- Top-performing link building tactics: original research/data (156% more links vs generic how-to), digital PR campaigns, unlinked mention conversion
+- Any links from PBNs, sponsored guest posts on generalist sites, or niche edits on thin domains — these were specifically devalued in March 2026
 
-Verify: SSR or SSG, gzip or brotli, modern image formats (WebP/AVIF), HTTPS, mobile-responsive.
-
-### Step 12: Audit Content Patterns
+### Step 15: Audit Content Patterns
 
 Check whether content templates implement high-citation patterns:
 
 **Citable paragraph:** every major claim follows `[fact]. [statistic with attribution]. [elaboration]. [Source: Org, Date]`
 
-**FAQ block:** `<h2>` with exact question, 40-60 word direct answer immediately following, FAQPage schema.
+**FAQ block:** `<h2>` with exact question, 40-60 word direct answer immediately following, FAQPage schema. Also improves Featured Snippet and People Also Ask selection.
 
-**Definition block:** `<section id="what-is-term"><h2>What is [Term]?</h2><p><dfn>[Term]</dfn> is [direct definition]...</p></section>`
+**Definition block:** `<section id="what-is-term"><h2>What is [Term]?</h2><p><dfn>[Term]</dfn> is [direct definition].</p></section>`
 
-**Author attribution:** visible name, credentials, profile page link, Person schema. +40% citations.
+**Original data:** Pages with proprietary data get 4.31× more citations per URL. Check whether any unique organizational data can become dedicated, permanently-addressable pages.
 
-**Proprietary data:** pages with original data or research get 4.31× more citations per URL. Check whether any unique datasets, survey results, or original research can be published as dedicated pages.
+**VideoObject schema:** If any video content exists, verify VideoObject schema with `name`, `description`, `thumbnailUrl`, `uploadDate`, and `contentUrl`.
 
-### Step 13: Defensive Review
+### Step 16: Defensive Review
 
-Check for techniques that would violate platform guidelines and expose the site to penalties:
+Check for techniques that would violate platform guidelines:
 
-**Hidden text:** verify no content is hidden via `display:none`, `visibility:hidden`, white-on-white text, zero-size fonts, or negative positioning. Google's SpamBrain and detection tools like PhantomLint compare parsed text against OCR-rendered images. Penalties are domain-wide.
+**Hidden text:** Verify no content is hidden via `display:none`, `visibility:hidden`, white-on-white text, zero-size fonts, negative positioning, or invisible Unicode (U+E0000 to U+E007F). Google's SpamBrain and PhantomLint compare parsed text against OCR-rendered images.
 
-**Agent-aware cloaking:** verify the server does not serve different content to AI crawlers vs human visitors based on User-Agent detection. This is explicitly prohibited by all major platforms and carries domain-wide penalty risk.
+**Agent-aware cloaking:** Verify the server does not serve different content to AI crawlers vs human visitors based on User-Agent detection. Explicitly prohibited; domain-wide penalty risk.
 
-**Scaled AI content:** verify all published content has meaningful human review. The March 2024 Google core update caused sites relying on scaled AI content to lose up to 80% of organic traffic overnight.
+**Scaled AI content:** Verify all published content has meaningful human review. Manual actions issued by Google since June 2025 for "scaled content abuse."
 
-**Injection risk in user-generated content:** if the site hosts comments, forum posts, or user submissions, verify they are sanitized before being served to crawlers. Third-party injection into UGC is an emerging attack vector.
+**User-generated content injection:** If the site hosts comments or forum posts, verify they are sanitized before being served to crawlers.
 
-### Step 14: Findings Report
+### Step 17: Findings Report
 
 Document findings by priority:
 
@@ -200,34 +253,40 @@ Document findings by priority:
 - Missing `<h1>` or broken heading hierarchy
 - Missing canonical tags
 - robots.txt blocking AI citation crawlers
-- Missing HTTPS
+- Missing HTTPS or expired SSL
+- LCP > 4s or page weight > 3MB
 - Agent-aware cloaking detected
 
 **High (implement before significant content investment)**
+- LCP > 2.0s (failing updated March 2026 threshold)
+- INP > 200ms (43% of sites fail this)
 - No Wikipedia article when sufficient notability sources exist
 - No Wikidata entry
 - Missing structured data (JSON-LD schema)
 - Content siloed with no topic cluster architecture
 - Pages not SSR or SSG
-- LCP > 2.5s or page weight > 1MB
-- `sameAs` links missing Wikipedia/Wikidata URLs
+- Missing `sameAs` links to Wikipedia/Wikidata in Organization schema
+- Content not matching search intent format for target keywords
 
 **Medium (implement in next sprint)**
 - Question-format headings not used
 - Answer-first paragraph pattern not followed
-- Missing entity salience (passive voice, vague pronouns)
+- Missing entity salience (passive voice, vague pronouns, weak proper noun density)
 - Content density outside optimal range
-- Missing author attribution
+- Missing E-E-A-T signals (author attribution, sourcing, experience signals)
+- Missing author profile pages with Person schema
 - Missing IndexNow integration
-- Outdated or missing `dateModified` values
-- No Reddit or YouTube presence
+- Outdated or inconsistent `dateModified` values
+- No Reddit, YouTube, or LinkedIn presence
 - Key facts inconsistent across platforms
+- Anchor text distribution outside recommended ranges
 
 **Low (optimize over time)**
 - llms.txt not implemented (low current value but zero-cost)
 - Individual content not following citable paragraph pattern
 - Missing comparison tables on decision-relevant pages
 - No proprietary data or original research pages
-- GitHub presence not established
+- VideoObject schema not implemented for video content
+- Security headers incomplete (HSTS, CSP)
 
 For each finding: the specific page or component affected, what is missing or incorrect, and the exact implementation needed.
