@@ -17,3 +17,4 @@ Each rule file can include optional `paths:` YAML frontmatter. When the file you
 | `advocacy-domain.md` | Ubiquitous language dictionary, bounded contexts, anti-corruption layers, entity definitions | (no path filter) |
 | `accessibility.md` | Internationalization, low-bandwidth optimization, offline-first architecture, mesh networking, graceful degradation | `**/ui/**`, `**/frontend/**`, `**/i18n/**`, `**/l10n/**` |
 | `emotional-safety.md` | Progressive disclosure of traumatic content, content warnings, investigation footage handling, burnout prevention | `**/content/**`, `**/media/**`, `**/display/**`, `**/upload/**` |
+| `geo-seo.md` | SEO + GEO optimization for AI citation, structured data, Core Web Vitals, Wikipedia/Wikidata presence, defensive awareness | `**/*.html`, `**/robots.txt`, `**/sitemap.xml`, `**/llms.txt`, `**/[Hh]ead/**`, `**/[Ss]eo/**`, `**/[Mm]eta/**`, `**/[Ss]chema/**`, `**/[Ss]tructured-[Dd]ata/**`, `**/[Ll]ayout.*`, `**/[Bb]ase[Hh]ead.*` |

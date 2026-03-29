@@ -1,3 +1,7 @@
+---
+source: claude-code/.claude/rules/geo-seo.md
+last_synced: "2026-03-29T00:00:00Z"
+---
 # SEO + GEO Rules for Animal Advocacy Websites
 
 Websites built for animal advocacy serve two discovery channels: traditional search engines and AI answer systems (ChatGPT, Perplexity, Google AI Overviews, Claude, Gemini, Bing Copilot). The game has shifted from optimizing for keyword matching to optimizing for **intent satisfaction** (does your content completely solve the user's problem?), **entity authority** (does Google recognize your brand as a trusted entity in its knowledge graph?), and **technical excellence** (can crawlers efficiently process your site?). Approximately 60% of searches end without a click — appearing in search results is no longer enough; you need to be the source Google trusts enough to synthesize into AI-generated answers.
