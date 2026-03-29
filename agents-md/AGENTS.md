@@ -539,7 +539,7 @@ Hub-and-spoke topic cluster model increases AI citation rates from 12% to 41%; b
 
 ### Robots.txt, Sitemap, and IndexNow
 
-Allow citation crawlers (OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot) in robots.txt — there are 226+ identified AI crawlers (last verified 2026-03-01; source: DarkVisitors); blocking Googlebot blocks AI Overviews too. Sitemaps: canonical URLs only, accurate `<lastmod>`, submit to Search Console and Bing Webmaster Tools. IndexNow pings Bing (which feeds ChatGPT) instantly on publish — integrate into CI/CD.
+Allow citation crawlers (OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot, Claude-SearchBot, Applebot, Amazonbot) in robots.txt — there are 226+ identified AI crawlers (last verified 2026-03-01; source: DarkVisitors); blocking Googlebot blocks AI Overviews too. To block training crawlers without affecting citation, explicitly disallow CCBot and GPTBot (these harvest training data but do not power AI answer systems). Sitemaps: canonical URLs only, accurate `<lastmod>`, submit to Search Console and Bing Webmaster Tools. IndexNow pings Bing (which feeds ChatGPT) instantly on publish — integrate into CI/CD.
 
 ### Platform Presence and Link Building
 
@@ -563,7 +563,7 @@ Place at `/llms.txt`. Current value is effectively zero per multiple studies —
 
 ### Citation Volatility and Defensive Awareness
 
-40–60% monthly citation turnover is normal; only 11% of domains are cited by both ChatGPT and Perplexity for the same queries. Build multi-platform presence rather than depending on any single system. Avoid: hidden text injection (invisible Unicode U+E0000–U+E007F, white-on-white text) — actively detected by SpamBrain with domain-wide penalties; agent-aware cloaking (serving different content to AI crawlers) — explicitly prohibited; scaled AI content without human review — sites lost up to 80% of organic traffic overnight. FTC "Operation AI Comply" (September 2024): using AI to deceive is illegal with no AI exemption.
+40–60% monthly citation turnover is normal; only 11% of domains are cited by both ChatGPT and Perplexity for the same queries. Build multi-platform presence rather than depending on any single system. Avoid: hidden text injection (invisible Unicode U+E0000–U+E007F, white-on-white text) — actively detected by SpamBrain with domain-wide penalties; agent-aware cloaking (serving different content to AI crawlers) — explicitly prohibited; scaled AI content without human review — sites lost up to 80% of organic traffic overnight. FTC "Operation AI Comply" (September 2024): using AI to deceive is illegal with no AI exemption. Add a CI job or pre-commit hook that scans all committed files for invisible Unicode (U+E0000–U+E007F) and zero-width characters and fails the pipeline if any are found — this prevents inadvertent injection and provides a clear audit trail.
 
 ### Key Statistics
 

@@ -459,7 +459,7 @@ Hub-and-spoke topic cluster model increases AI citation rates from 12% to 41%; b
 
 ### Robots.txt, Sitemap, and IndexNow
 
-Allow citation crawlers (OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot) in robots.txt — there are 226+ identified AI crawlers (last verified 2026-03-01; source: DarkVisitors); blocking Googlebot blocks AI Overviews too. Sitemaps: canonical URLs only, accurate `<lastmod>`, submit to Search Console and Bing Webmaster Tools. IndexNow pings Bing (which feeds ChatGPT) instantly on publish — integrate into CI/CD.
+Allow citation crawlers (OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot, Claude-SearchBot, Applebot, Amazonbot) in robots.txt — there are 226+ identified AI crawlers (last verified 2026-03-01; source: DarkVisitors); blocking Googlebot blocks AI Overviews too. To block training crawlers without affecting citation, explicitly disallow GPTBot and CCBot. Sitemaps: canonical URLs only, accurate `<lastmod>`, submit to Search Console and Bing Webmaster Tools. IndexNow pings Bing (which feeds ChatGPT) instantly on publish — integrate into CI/CD.
 
 ### Platform Presence and Link Building
 
