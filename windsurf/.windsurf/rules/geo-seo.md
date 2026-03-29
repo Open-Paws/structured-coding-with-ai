@@ -16,7 +16,15 @@ Keep paragraphs to 2-4 sentences (40-60 words). Structure content as self-contai
 
 Use semantic HTML correctly: `<article>`, `<section>`, `<nav>`, `<aside>`, `<header>`, `<footer>`, `<main>`. Add `lang` attribute to `<html>`. Every `<img>` must have a descriptive `alt` attribute. Every `<a>` must have meaningful anchor text — never "click here".
 
-Use `<table>` for comparison data (32.5% of AI-cited content uses tables). Use `<ol>` and `<ul>` for lists (78% of AI answers include list formats). Use `<blockquote cite="...">` for expert quotations (+28-40% AI visibility). Use `<time datetime="YYYY-MM-DD">` for dates. Use `<dfn>` for term definitions. Use `<abbr title="full term">` on first use. Add `id` attributes to all `<h2>` and `<h3>` elements.
+Prefer these semantic elements for structured data:
+
+- `<table>` for comparison data (32.5% of AI-cited content uses tables)
+- `<ol>` and `<ul>` for lists (78% of AI answers include list formats)
+- `<blockquote cite="...">` for expert quotations (+28-40% AI visibility)
+- `<time datetime="YYYY-MM-DD">` for dates
+- `<dfn>` for term definitions
+- `<abbr title="full term">` on first use
+- Add `id` attributes to all `<h2>` and `<h3>` elements
 
 **Do NOT:**
 - Hide content behind JavaScript-only rendering — AI crawlers often cannot execute JS, and relying on JS rendering increases crawl cost for search engines. All critical content must be in the initial HTML response (SSR or pre-rendered).
@@ -390,7 +398,7 @@ Disallow: /
 Sitemap: https://yoursite.com/sitemap.xml
 ```
 
-Critical: blocking `Googlebot` blocks both Google Search AND AI Overviews — there is no way to allow one without the other. There are now 226+ identified AI crawlers; review quarterly. Some AI agents use standard browser user-agent strings and ignore robots.txt — treat this as best-effort.
+Critical: blocking `Googlebot` blocks both Google Search AND AI Overviews — there is no way to allow one without the other. There are now 226+ identified AI crawlers (last verified 2026-03-01; source: DarkVisitors); review quarterly. Some AI agents use standard browser user-agent strings and ignore robots.txt — treat this as best-effort.
 
 ---
 
@@ -405,7 +413,7 @@ Include only canonical, indexable URLs. `<lastmod>` must reflect actual update d
 IndexNow notifies Bing (which feeds ChatGPT) instantly when content is published or updated. Place a key file at `https://yoursite.com/{key}.txt` and ping on every publish:
 
 ```txt
-GET https://api.indexnow.org/indexnow?url=https://yoursite.com/new-page&key=YOUR_KEY
+GET https://api.indexnow.org/indexnow?url=https%3A%2F%2Fyoursite.com%2Fnew-page&key=YOUR_KEY
 ```
 
 Integrate into CI/CD pipeline or CMS publish hooks. Supported by Bing, Yandex, Seznam, Naver. Rate limit: 10,000 URLs/day.
