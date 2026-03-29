@@ -538,7 +538,7 @@ For multilingual advocacy sites, use **next-intl** (1.8M weekly downloads) with 
 
 The `lang` attribute determines text-to-speech pronunciation in screen readers. Hreflang tags must be self-referencing and reciprocal on every page — 31% of international sites have broken hreflang. Use `alternates.languages` in Next.js `generateMetadata` to generate hreflang automatically.
 
-Arabic requires all 6 CLDR plural categories — use ICU MessageFormat, not string concatenation. CSS logical properties (`ps-4`, `pe-4`, `text-start`) handle RTL layout mirroring automatically without separate stylesheets.
+Arabic requires all 6 CLDR plural categories — use ICU MessageFormat, not string concatenation. Native CSS logical properties (`padding-inline-start`, `padding-inline-end`, `text-align: start`) handle RTL layout mirroring automatically without separate stylesheets; Tailwind equivalents are `ps-4`, `pe-4`, `text-start`.
 
 For Devanagari and Arabic scripts, use Google's **Noto** family with `unicode-range` in `@font-face` to lazy-load only the glyphs needed for each script. Always `font-display: swap` and WOFF2 format.
 
