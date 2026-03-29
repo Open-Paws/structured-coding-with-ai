@@ -58,7 +58,7 @@ cp agents-md/AGENTS.md your-project/
 |------|-----------|------:|--------------|
 | Claude Code | `claude-code/` | 17 | CLAUDE.md + 8 scoped rules + 7 skills + hooks template |
 | Cursor | `cursor/` | 14 | .cursorrules + 13 .mdc files with 4 activation modes |
-| GitHub Copilot | `github-copilot/` | 22 | copilot-instructions.md + 7 instructions + 6 prompts + 2 chat modes + 7 skills |
+| GitHub Copilot | `github-copilot/` | 23 | copilot-instructions.md + 7 instructions + 6 prompts + 2 chat modes + 7 skills |
 | Windsurf | `windsurf/` | 14 | 14 .md files in .windsurf/rules/ with 4 trigger types, within 6K/12K char limits |
 | Kilo Code | `kilo-code/` | 21 | 5 mode files + 3 Memory Bank files + 7 concerns + 6 skills |
 | Cline | `cline/` | 14 | 14 .md files in .clinerules/ with Plan/Act paradigm |
@@ -68,7 +68,7 @@ cp agents-md/AGENTS.md your-project/
 | Gemini CLI | `gemini-cli/` | 1 | Single GEMINI.md with all content as sections |
 | JetBrains / Junie | `jetbrains-junie/` | 1 | Single .junie/guidelines.md, always loaded |
 | AGENTS.md | `agents-md/` | 1 | Single vendor-neutral file, supported by 20+ tools |
-| **Total** | | **139** | |
+| **Total** | | **140** | |
 
 ---
 
