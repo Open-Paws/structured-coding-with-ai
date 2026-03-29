@@ -391,7 +391,7 @@ Wikipedia accounts for 47.9% of ChatGPT's top-10 cited sources. Wikidata serves 
 
 ### Structured Data (JSON-LD)
 
-Sites with structured data achieve 41% AI citation rates vs 15% without; only 12.4% of websites implement it. Implement JSON-LD in `<head>` on every page: Organization + WebSite schema (every page); Article schema with `datePublished`, `dateModified`, author `@id` (every content page); FAQPage schema for Q&A sections; BreadcrumbList for navigation; Person schema for author pages. Always use `@id` to connect entities. Keep `dateModified` accurate and synchronized with the visible date. Validate at schema.org/validator.
+Sites with structured data achieve 41% AI citation rates vs 15% without; only 12.4% of websites implement it. Implement JSON-LD in `<head>` on every page: Organization + WebSite schema (every page); Article schema with `datePublished`, `dateModified`, author `@id` (every content page); FAQPage schema for Q&A sections; BreadcrumbList for navigation; Person schema for author pages. Always use `@id` to connect entities. Keep `dateModified` accurate and synchronized with the visible date. Validate at https://validator.schema.org/.
 
 ### Meta Tags and Technical SEO
 

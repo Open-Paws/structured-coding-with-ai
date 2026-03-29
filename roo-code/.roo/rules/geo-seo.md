@@ -207,7 +207,7 @@ Implement JSON-LD schema in the `<head>` of every page. Sites with structured da
 </script>
 ```
 
-Also implement when applicable: **HowTo**, **BreadcrumbList**, **SoftwareApplication**, **Event**, **Dataset**, **Person**, **VideoObject** (for video content), **LocalBusiness** (for location-based entities). Always JSON-LD (not Microdata). Use `@id` to connect entities. Keep `dateModified` accurate. Validate at schema.org/validator.
+Also implement when applicable: **HowTo**, **BreadcrumbList**, **SoftwareApplication**, **Event**, **Dataset**, **Person**, **VideoObject** (for video content), **LocalBusiness** (for location-based entities). Always JSON-LD (not Microdata). Use `@id` to connect entities. Keep `dateModified` accurate. Validate at https://validator.schema.org/.
 
 ---
 

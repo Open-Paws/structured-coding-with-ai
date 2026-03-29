@@ -160,7 +160,7 @@ For every page verify:
 - **Person schema** on all author/team profile pages
 - Additional applicable types: HowTo, SoftwareApplication, Event, Dataset, VideoObject
 
-Validate all schema at schema.org/validator and Google's Rich Results Test. `dateModified` must reflect actual update dates.
+Validate all schema at https://validator.schema.org/ and Google's Rich Results Test. `dateModified` must reflect actual update dates.
 
 ### Step 9: Audit Meta Tags and Head Elements
 
