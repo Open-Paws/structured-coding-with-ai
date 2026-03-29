@@ -352,6 +352,8 @@ Implement all of these — they are expected signals in 2026. For Next.js, set v
 - `X-Content-Type-Options: nosniff`
 - `X-Frame-Options: DENY`
 - `Referrer-Policy: strict-origin-when-cross-origin`
+- `Permissions-Policy: camera=(), microphone=(), geolocation=()` — disable powerful features by default
+- `Cross-Origin-Opener-Policy: same-origin` — enables cross-origin isolation when paired with COEP
 - Fix all mixed content (HTTP resources on HTTPS pages)
 - Remove `X-Powered-By` header (information disclosure)
 
