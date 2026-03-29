@@ -14,7 +14,7 @@ AI citation systems retrieve at the sentence level, not the page level. Verify t
 
 ## Step 3: Audit Structured Data (JSON-LD)
 
-Structured data is the single highest-leverage GEO action: 41% citation rate with schema vs 15% without. Verify Organization + WebSite schema on every page (in a `@graph` array) with `sameAs` pointing to Wikipedia and Wikidata URLs. Verify Article schema on every content page with `headline`, `author` (name, url, jobTitle), `publisher`, `datePublished`, `dateModified`, `image`, `description`. Verify FAQPage schema on any page with Q&A content. Check whether HowTo, BreadcrumbList, Person, VideoObject, SoftwareApplication, Event, Dataset schema applies. Validate all schema at schema.org/validator. Confirm `dateModified` reflects actual update dates.
+Structured data is the single highest-leverage GEO action: 41% citation rate with schema vs 15% without. Verify Organization + WebSite schema on every page (in a `@graph` array) with `sameAs` pointing to Wikipedia and Wikidata URLs. Verify Article schema on every content page with `headline`, `author` (name, url, jobTitle), `publisher`, `datePublished`, `dateModified`, `image`, `description`. Verify FAQPage schema on any page with Q&A content. Check whether HowTo, BreadcrumbList, Person, VideoObject, SoftwareApplication, Event, Dataset schema applies. Validate all schema at https://validator.schema.org/. Confirm `dateModified` reflects actual update dates.
 
 ## Step 4: Audit Meta Tags
 
