@@ -282,7 +282,7 @@ Check for techniques that would violate platform guidelines:
 
 **User-generated content injection:** If the site hosts comments or forum posts, verify they are sanitized before being served to crawlers.
 
-### Step 18: Findings Report
+### Findings Report
 
 Document findings by priority:
 
