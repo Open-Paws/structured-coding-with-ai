@@ -69,6 +69,8 @@ Sites with INP above 200ms average -0.8 position drops. Pages with LCP above 3 s
 - `X-Content-Type-Options: nosniff`
 - `X-Frame-Options: DENY`
 - `Referrer-Policy: strict-origin-when-cross-origin`
+- `Permissions-Policy: camera=(), microphone=(), geolocation=()`
+- `Cross-Origin-Opener-Policy: same-origin`
 - Remove `X-Powered-By` header
 
 **Supply chain:**

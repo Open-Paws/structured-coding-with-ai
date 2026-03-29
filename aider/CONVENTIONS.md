@@ -205,9 +205,11 @@ Use Aider's automatic commit feature — every change is committed with a sensib
 ## Testing Strategy
 
 ### When to Use
+
 When writing or generating any tests, reviewing AI-generated test code, or when test quality is in question.
 
 ### Process
+
 1. **Read the specification.** Identify acceptance criteria before writing any test. Without a spec, AI generates tests mirroring implementation rather than intent.
 2. **Write failing tests from spec.** Generate tests from specification BEFORE implementation. Each test encodes a business rule stated in words. Verify tests fail for the right reason.
 3. **Implement until tests pass.** Write minimum code the tests demand.
@@ -215,6 +217,7 @@ When writing or generating any tests, reviewing AI-generated test code, or when 
 5. **Run mutation testing.** Surviving mutants reveal weak assertions. Feed surviving mutants to the AI and ask for tests that kill them.
 
 ### Five Generation Patterns
+
 1. **Implementation-first** — Dangerous: tests mirror code. Use only for characterization tests on legacy code.
 2. **Spec-first** — Preferred. Produces tests encoding intent, not behavior.
 3. **Edge-case generation** — Give AI a function signature; ask for: empty inputs, boundaries, null, unicode, timezones, concurrency, overflow.
@@ -222,6 +225,7 @@ When writing or generating any tests, reviewing AI-generated test code, or when 
 5. **Mutation-guided** — Run mutation testing, feed surviving mutants to AI, generate targeted tests.
 
 ### Five Anti-Patterns to Reject
+
 1. **Snapshot trap** — Tests snapshotting current output. Pass today, break on any correct change. Verify nothing about correctness.
 2. **Mock everything** — Over-mocked tests verify mock behavior, not real code. Mock only at system boundaries.
 3. **Happy path only** — AI tests overwhelmingly test success paths. Explicitly demand error, boundary, and adversarial input tests.
@@ -233,9 +237,11 @@ When writing or generating any tests, reviewing AI-generated test code, or when 
 ## Requirements Gathering
 
 ### When to Use
+
 Starting a new feature, when requirements are ambiguous, before writing specifications.
 
 ### Process
+
 Ask one question at a time. Multiple choice when possible.
 
 **Phase 1 — Purpose:** What are we building? Who are the users? What does success look like? What does this replace?
@@ -255,9 +261,11 @@ Ask one question at a time. Multiple choice when possible.
 ## Plan-First Development
 
 ### When to Use
+
 Starting any significant work. Beginning a new session. Changes across multiple files. Use Aider's `/architect` mode for Steps 1-4, then switch to `/code` mode for Step 5.
 
 ### Process
+
 1. **Read existing code.** Understand structure, naming, utilities, patterns. Search before writing.
 2. **Identify change scope.** State in one sentence. If you cannot, decompose further. Identify affected bounded context.
 3. **Write specification.** Requirements before implementation: what it does, inputs, outputs, error conditions, security properties, data sensitivity, seizure behavior, coalition boundaries.
@@ -266,6 +274,7 @@ Starting any significant work. Beginning a new session. Changes across multiple 
 6. **Comprehension check.** Explain what the AI generated in your own words before committing. AI-assisted developers score 17 percentage points lower on comprehension tests. Use the **generation-then-comprehension** pattern: generate code, immediately ask the AI to explain it, verify your understanding matches. This preserves learning while leveraging speed. If you cannot explain the code, do not commit it.
 
 ### Context Management
+
 Start sessions fresh. Break work into chunks completing within half the context window. After two failed fixes, clear conversation and restart with better prompt.
 
 ---
@@ -273,6 +282,7 @@ Start sessions fresh. Break work into chunks completing within half the context 
 ## Code Review
 
 ### When to Use
+
 Reviewing any code before merge. Preparing code for review. When a PR is tagged AI-Assisted. When changes touch investigation data, coalition boundaries, or emotional safety.
 
 ### Layered Review Pipeline
@@ -308,9 +318,11 @@ Reviewing any code before merge. Preparing code for review. When a PR is tagged 
 ## Security Audit
 
 ### When to Use
+
 Before deploying changes. When new dependencies are added. When code touches investigation data, witness identities, or coalition coordination.
 
 ### Process
+
 1. **Dependency audit — slopsquatting defense.** For EVERY dependency: verify package exists in registry, has legitimate maintainers, version is published. ~20% of AI-recommended packages are hallucinated.
 2. **API retention policy audit.** Verify zero-retention contractually for every external API touching sensitive data.
 3. **Storage encryption audit.** Verify encrypted volumes with plausible deniability. Check for temp files, swap files, crash dumps with decrypted content.

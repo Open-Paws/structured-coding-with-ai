@@ -1,5 +1,5 @@
 ---
-applyTo: "**/*.html,**/robots.txt,**/sitemap.xml,**/layout.*,**/head/**"
+applyTo: "**/*.html,**/robots.txt,**/sitemap.xml,**/[Ll]ayout.*,**/[Hh]ead/**,**/[Bb]ase[Hh]ead.*"
 ---
 # SEO + GEO Rules for Animal Advocacy Websites
 
