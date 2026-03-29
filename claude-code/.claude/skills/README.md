@@ -16,3 +16,4 @@ Skills are invoked on demand -- they are not loaded automatically into every con
 | `plan-first-development/` | plan-first-development | Read-plan-code-verify workflow with spec writing, subtask decomposition, comprehension checks, and context management |
 | `advocacy-code-review/` | advocacy-code-review | Five-layer review pipeline: automated checks, AI-assisted first pass, Ousterhout red flags, AI failure patterns, advocacy-specific concerns |
 | `security-audit/` | security-audit | Ten-step audit: dependency verification, API retention, storage encryption, input validation, instruction file integrity, MCP servers, device seizure, ag-gag exposure, coalition boundaries, findings report |
+| `geo-seo-audit/` | geo-seo-audit | Eleven-step GEO + SEO audit: HTML structure, structured data (JSON-LD schema), meta tags, robots.txt, sitemap, IndexNow, topic cluster architecture, performance, AI citation content patterns, llms.txt, findings report |
