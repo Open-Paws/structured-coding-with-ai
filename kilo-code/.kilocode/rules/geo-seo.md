@@ -1,3 +1,7 @@
+---
+source: claude-code/.claude/rules/geo-seo.md
+last_synced: "2026-03-29T00:00:00Z"
+---
 # SEO + GEO Rules for Animal Advocacy Websites
 
 Websites built for animal advocacy serve two discovery channels: traditional search engines and AI answer systems (ChatGPT, Perplexity, Google AI Overviews, Claude, Gemini, Bing Copilot). The game has shifted from optimizing for keyword matching to optimizing for **intent satisfaction** (does your content completely solve the user's problem?), **entity authority** (does Google recognize your brand as a trusted entity in its knowledge graph?), and **technical excellence** (can crawlers efficiently process your site?). Approximately 60% of searches end without a click — appearing in search results is no longer enough; you need to be the source Google trusts enough to synthesize into AI-generated answers.
@@ -336,6 +340,8 @@ Implement all of these — they are expected signals in 2026. For Next.js, set v
 - `X-Content-Type-Options: nosniff`
 - `X-Frame-Options: DENY`
 - `Referrer-Policy: strict-origin-when-cross-origin`
+- `Permissions-Policy: camera=(), microphone=(), geolocation=()` — disable powerful features by default
+- `Cross-Origin-Opener-Policy: same-origin` — enables cross-origin isolation when paired with COEP
 - Fix all mixed content (HTTP resources on HTTPS pages)
 - Remove `X-Powered-By` header (information disclosure)
 
