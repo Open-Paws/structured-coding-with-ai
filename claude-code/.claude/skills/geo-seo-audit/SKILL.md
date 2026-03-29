@@ -270,7 +270,7 @@ Check whether content templates implement high-citation patterns:
 - Subdirectory URL strategy (`/en/`, `/hi/`, `/ar/`) for domain authority consolidation?
 - ICU MessageFormat used for plural/gender forms (Arabic requires 6 CLDR plural categories)?
 
-### Step 17: Defensive Review
+### Defensive Review
 
 Check for techniques that would violate platform guidelines:
 
@@ -282,7 +282,7 @@ Check for techniques that would violate platform guidelines:
 
 **User-generated content injection:** If the site hosts comments or forum posts, verify they are sanitized before being served to crawlers.
 
-### Step 18: Findings Report
+### Step 17: Findings Report
 
 Document findings by priority:
 

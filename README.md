@@ -68,7 +68,7 @@ cp agents-md/AGENTS.md your-project/
 | Gemini CLI | `gemini-cli/` | 1 | Single GEMINI.md with all content as sections |
 | JetBrains / Junie | `jetbrains-junie/` | 1 | Single .junie/guidelines.md, always loaded |
 | AGENTS.md | `agents-md/` | 1 | Single vendor-neutral file, supported by 20+ tools |
-| **Total** | | **137** | |
+| **Total** | | **139** | |
 
 ---
 
