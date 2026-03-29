@@ -30,7 +30,15 @@ Keep paragraphs to 2-4 sentences (40-60 words). Structure content as self-contai
 
 Use semantic HTML correctly: `<article>`, `<section>`, `<nav>`, `<aside>`, `<header>`, `<footer>`, `<main>`. Add `lang` attribute to `<html>`. Every `<img>` must have a descriptive `alt` attribute. Every `<a>` must have meaningful anchor text — never "click here".
 
-Use `<table>` for comparison data (32.5% of AI-cited content uses tables). Use `<ol>` and `<ul>` for lists (78% of AI answers include list formats). Use `<blockquote cite="...">` for expert quotations (+28-40% AI visibility). Use `<time datetime="YYYY-MM-DD">` for dates. Use `<dfn>` for term definitions. Use `<abbr title="full term">` on first use. Add `id` attributes to all `<h2>` and `<h3>` elements.
+Prefer these semantic elements for structured data:
+
+- `<table>` for comparison data (32.5% of AI-cited content uses tables)
+- `<ol>` and `<ul>` for lists (78% of AI answers include list formats)
+- `<blockquote cite="...">` for expert quotations (+28-40% AI visibility)
+- `<time datetime="YYYY-MM-DD">` for dates
+- `<dfn>` for term definitions
+- `<abbr title="full term">` on first use
+- Add `id` attributes to all `<h2>` and `<h3>` elements
 
 **Do NOT:**
 - Hide content behind JavaScript-only rendering — AI crawlers often cannot execute JS, and relying on JS rendering increases crawl cost for search engines. All critical content must be in the initial HTML response (SSR or pre-rendered).
@@ -259,7 +267,7 @@ Google's Core Web Vitals are confirmed ranking factors measured via real Chrome 
 | INP (Interaction to Next Paint) | ≤ 200ms (target ≤ 150ms) | 200–500ms | > 500ms |
 | CLS (Cumulative Layout Shift) | ≤ 0.1 | 0.1–0.25 | > 0.25 |
 
-**Ranking impact:** Pages at position 1 show a 10% higher CWV pass rate than position 9. Sites with INP above 200ms saw average position drops of 0.8 places; above 500ms dropped 2-4 positions. Pages with LCP above 3 seconds experienced 23% more traffic loss than faster competitors. 43% of sites still fail the 200ms INP threshold in 2026.
+**Ranking impact:** Pages at position 1 show a 10% higher CWV pass rate than position 9. Sites with INP above 200ms saw an average ranking drop of 0.8 positions; above 500ms dropped 2-4 positions. Pages with LCP above 3 seconds experienced 23% more traffic loss than faster competitors. 43% of sites still fail the 200ms INP threshold in 2026.
 
 **INP — the hardest metric to fix.** INP requires restructuring how JavaScript executes. The primary technique is `scheduler.yield()` (Chrome-native, with `setTimeout` fallback), which sends remaining work to the front of the task queue while letting the browser handle user input:
 
@@ -404,7 +412,7 @@ Disallow: /
 Sitemap: https://yoursite.com/sitemap.xml
 ```
 
-Critical: blocking `Googlebot` blocks both Google Search AND AI Overviews — there is no way to allow one without the other. There are now 226+ identified AI crawlers; review quarterly. Some AI agents use standard browser user-agent strings and ignore robots.txt — treat this as best-effort.
+Critical: blocking `Googlebot` blocks both Google Search AND AI Overviews — there is no way to allow one without the other. There are now 226+ identified AI crawlers (last verified 2026-03-01; source: DarkVisitors); review quarterly. Some AI agents use standard browser user-agent strings and ignore robots.txt — treat this as best-effort.
 
 ---
 
@@ -419,7 +427,7 @@ Include only canonical, indexable URLs. `<lastmod>` must reflect actual update d
 IndexNow notifies Bing (which feeds ChatGPT) instantly when content is published or updated. Place a key file at `https://yoursite.com/{key}.txt` and ping on every publish:
 
 ```txt
-GET https://api.indexnow.org/indexnow?url=https://yoursite.com/new-page&key=YOUR_KEY
+GET https://api.indexnow.org/indexnow?url=https%3A%2F%2Fyoursite.com%2Fnew-page&key=YOUR_KEY
 ```
 
 Integrate into CI/CD pipeline or CMS publish hooks. Supported by Bing, Yandex, Seznam, Naver. Rate limit: 10,000 URLs/day.
