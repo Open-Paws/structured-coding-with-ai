@@ -253,7 +253,7 @@ Google's Core Web Vitals are confirmed ranking factors measured via real Chrome 
 | INP (Interaction to Next Paint) | ≤ 200ms (target ≤ 150ms) | 200–500ms | > 500ms |
 | CLS (Cumulative Layout Shift) | ≤ 0.1 | 0.1–0.25 | > 0.25 |
 
-**Ranking impact:** Pages at position 1 show a 10% higher CWV pass rate than position 9. Sites with INP above 200ms saw average position drops of 0.8 places; above 500ms dropped 2-4 positions. Pages with LCP above 3 seconds experienced 23% more traffic loss than faster competitors. 43% of sites still fail the 200ms INP threshold in 2026.
+**Ranking impact:** Pages at position 1 show a 10% higher CWV pass rate than position 9. Sites with INP above 200ms saw an average ranking drop of 0.8 positions; above 500ms dropped 2-4 positions. Pages with LCP above 3 seconds experienced 23% more traffic loss than faster competitors. 43% of sites still fail the 200ms INP threshold in 2026.
 
 **INP — the hardest metric to fix.** INP requires restructuring how JavaScript executes. The primary technique is `scheduler.yield()` (Chrome-native, with `setTimeout` fallback), which sends remaining work to the front of the task queue while letting the browser handle user input:
 
