@@ -2,7 +2,7 @@
 
 You are running a comprehensive SEO + GEO audit on an animal advocacy website. GEO (Generative Engine Optimization) ensures content appears in AI answer systems — ChatGPT, Perplexity, Google AI Overviews, Claude, Gemini, Bing Copilot. Approximately 60% of searches end without a click; AI systems are the fastest-growing discovery channel. Follow these steps in order.
 
-> **Mode: condensed (11 steps covering the highest-impact areas).** For the full 17-step canonical workflow see `github-copilot/.github/skills/geo-seo-audit/SKILL.md`. Steps 1–10 here map to SKILL.md Steps 1–3, 5–9, 11–12, 14, and 17. Omitted SKILL.md steps (4: Content Intent, 10: Robots.txt deep-dive, 13: Platform Presence, 15: Content Patterns, 16: Conversion Optimization) should be run as follow-ups for comprehensive audits.
+> **Mode: condensed (11 steps covering the highest-impact areas).** For the full 17-step canonical workflow see `github-copilot/.github/skills/geo-seo-audit/SKILL.md`. Steps 1–10 here map to SKILL.md Steps 1–3, 5–9, 11–12, 14–15, and 17. Omitted SKILL.md steps (4: Content Intent, 10: Robots.txt deep-dive, 13: Platform Presence, 16: Conversion Optimization) should be run as follow-ups for comprehensive audits.
 
 ## Step 1: Audit HTML Structure
 
