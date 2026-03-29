@@ -519,6 +519,8 @@ Match search intent before writing — study top-5 results to understand what fo
 
 Wikipedia accounts for 47.9% of ChatGPT's top-10 cited sources. Wikidata serves 11 million queries daily across 119 million entities; companies have gained Knowledge Panels within 7 days of creating a Wikidata entry. Add Wikidata Q-ID and Wikipedia URL to Organization schema `sameAs`. Build an entity web: organization → key tools → key people → related organizations → policy areas. Ensure structured data is consistent with Wikipedia — inconsistency reduces AI confidence.
 
+**Wikipedia COI (mandatory):** Never directly edit your own organization's Wikipedia article. Disclose affiliation on the Talk page. Propose edits through Talk-page requests or neutral editors. Use only independent, reliable sources. Follow Wikipedia's Conflict of Interest and Notability guidelines.
+
 ### Structured Data (JSON-LD)
 
 Sites with structured data achieve 41% AI citation rates vs 15% without; only 12.4% of websites implement it. Implement JSON-LD in `<head>` on every page: Organization + WebSite schema (every page); Article schema with `datePublished`, `dateModified`, author `@id` (every content page); FAQPage schema for Q&A sections; BreadcrumbList for navigation; Person schema for author pages. Always use `@id` to connect entities. Keep `dateModified` accurate and synchronized with the visible date. Validate at https://validator.schema.org/.

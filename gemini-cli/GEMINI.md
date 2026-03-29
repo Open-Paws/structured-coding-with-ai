@@ -447,6 +447,8 @@ SEO and GEO (Generative Engine Optimization) ensure advocacy content ranks in se
 
 **Wikipedia and Wikidata (highest-leverage off-site action):** Wikipedia = 47.9% of ChatGPT's top-10 citations. Organizations with Wikidata entries get Knowledge Panels within 7 days. Add Wikipedia URL and Wikidata Q-ID to Organization schema `sameAs`. Build entity web: organization → tools → people → related orgs → policy areas.
 
+**Wikipedia COI (mandatory):** Never directly edit your own organization's Wikipedia article. Disclose affiliation on the Talk page. Propose edits through Talk-page requests or neutral editors. Use only independent, reliable sources.
+
 **Structured data (JSON-LD):** 41% AI citation rate with schema vs 15% without. Required on every page: Organization + WebSite schema (with `sameAs` to Wikipedia and Wikidata). Required on content pages: Article schema with `author`, `datePublished`, `dateModified`. Required on Q&A pages: FAQPage schema. Also implement: BreadcrumbList, Person (author pages), HowTo, VideoObject. Use `@id` to connect entities. Validate at https://validator.schema.org/.
 
 **Meta tags:** Title: `Primary Keyword — Brand Name`, 50-60 chars, unique per page. Description: 150-160 chars, direct answer + one statistic, unique. `<link rel="canonical">` on every page. Full Open Graph and Twitter Card tags. Article timestamps in ISO 8601 format.

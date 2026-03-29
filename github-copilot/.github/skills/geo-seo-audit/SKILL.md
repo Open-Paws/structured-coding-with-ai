@@ -144,7 +144,9 @@ Check:
 5. Is there an entity web: organization → tools → people → related orgs → policy areas?
 6. Does the site's structured data match Wikipedia and Wikidata? Inconsistency reduces AI confidence.
 
-If no Wikipedia article exists: document as **High** finding. Check whether sufficient third-party coverage exists to support notability. If yes, creating the article should be prioritized over almost any on-site optimization.
+If no Wikipedia article exists: document as **High** finding. Check whether sufficient independent secondary coverage exists to support notability. If yes, creating the article should be prioritized over almost any on-site optimization.
+
+**Wikipedia COI policy (mandatory):** Never directly edit your own organization's Wikipedia article. Disclose any affiliation on the Talk page. Propose edits through Talk-page requests or experienced neutral editors. Use only independent, reliable sources. Follow Wikipedia's Conflict of Interest and Notability guidelines. Document the disclosure and source list for audit purposes.
 
 ### Step 8: Audit Structured Data (JSON-LD)
 

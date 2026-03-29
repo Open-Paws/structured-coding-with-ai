@@ -448,6 +448,8 @@ For any organization this site represents:
 - Build an entity web: organization → key tools → key people → related organizations → policy areas
 - Ensure site structured data is consistent with Wikipedia and Wikidata — inconsistency reduces AI confidence
 
+**Wikipedia COI (mandatory):** Never directly edit your own organization's Wikipedia article. Disclose affiliation on the Talk page. Propose edits through Talk-page requests or neutral editors. Use only independent, reliable sources. Follow Wikipedia's Conflict of Interest and Notability guidelines.
+
 ---
 
 ## Authoritative Platform Publishing and Brand Signals
