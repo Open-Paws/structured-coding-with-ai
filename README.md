@@ -86,7 +86,7 @@ Every tool covers the same material, adapted to its native format. Tools with mu
 - **Accessibility** -- i18n, offline-first, low-bandwidth, low-literacy design, mesh networking, device seizure resilience
 - **Emotional safety** -- Progressive disclosure of traumatic content, configurable detail levels, content warnings, secondary trauma mitigation
 
-**6 process skills** (workflow guides invoked on demand):
+**7 process skills** (workflow guides invoked on demand):
 
 - **git-workflow** -- Atomic commits, ephemeral branches, PR curation, AI-Assisted tags, code survival rate tracking
 - **testing-strategy** -- Spec-first generation, five anti-patterns to avoid (snapshot trap, mock everything, happy path only, test-after-commit, coverage theater), mutation-guided improvement

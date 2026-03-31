@@ -501,7 +501,7 @@ Google confirmed CWV as ranking factors measured via real Chrome user data at th
 | INP (Interaction to Next Paint) | ≤ 200ms | 200–500ms | > 500ms |
 | CLS (Cumulative Layout Shift) | ≤ 0.1 | 0.1–0.25 | > 0.25 |
 
-43% of sites still fail the INP threshold. Sites with INP above 200ms saw average position drops of 0.8 places; LCP above 3s causes 23% more traffic loss vs faster competitors. The primary INP technique is `scheduler.yield()` (Chrome-native, with `setTimeout` fallback) — breaks long tasks so the browser can handle user input between them.
+43% of sites still fail the INP threshold. Sites with INP above 200ms saw an average ranking drop of 0.8 positions; LCP above 3s causes 23% more traffic loss vs faster competitors. The primary INP technique is `scheduler.yield()` (Chrome-native, with `setTimeout` fallback) — breaks long tasks so the browser can handle user input between them.
 
 ### HTML Structure
 

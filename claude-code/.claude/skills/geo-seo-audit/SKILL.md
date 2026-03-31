@@ -160,7 +160,7 @@ For every page verify:
 - **FAQPage schema** on any page with Q&A content
 - **BreadcrumbList schema** on all non-homepage pages
 - **Person schema** on all author/team profile pages
-- Additional applicable types: HowTo, SoftwareApplication, Event, Dataset, VideoObject
+- Additional applicable types: HowTo, SoftwareApplication, Event, Dataset, VideoObject, LocalBusiness
 
 Validate all schema at https://validator.schema.org/ and Google's Rich Results Test. `dateModified` must reflect actual update dates.
 
@@ -261,7 +261,7 @@ Check whether content templates implement high-citation patterns:
 - Single-step form? (multi-step forms see 52% drop in completions)
 - Site header navigation removed during donation flow?
 - Form embedded on-site, not redirecting to third-party processor?
-- `autoComplete` attributes on all form fields?
+- `autocomplete` attributes on all form fields? (React JSX: `autoComplete`)
 
 **Analytics:**
 - Using cookieless analytics (Plausible or Umami) as primary?

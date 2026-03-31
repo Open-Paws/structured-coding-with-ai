@@ -504,7 +504,7 @@ Backlinks remain the #2 ranking factor but their nature has changed. Topical rel
 
 For nonprofit donation pages: present 3-4 preset amounts with the middle option pre-selected and pair amounts with impact descriptions ("$40/month provides clean water for 12 families"). Pre-select monthly giving — monthly donors become more valuable than one-time donors within 5.25 months, yet 64% of nonprofits still default to one-time. Single-step forms vastly outperform multi-step (52% drop in completions with multi-step). Eliminating site header navigation during the donation flow produced a documented 195% conversion increase. Embed the form directly on-site; never redirect to a third-party processor.
 
-For all forms: target 3-5 essential fields maximum — each additional field costs ~11% in conversion. Start with easy, non-threatening questions. Make optional fields clearly optional (+25-35% completion). Support browser autofill with correct `autoComplete` attributes (also required for WCAG 2.2 AA SC 1.3.5).
+For all forms: target 3-5 essential fields maximum — each additional field costs ~11% in conversion. Start with easy, non-threatening questions. Make optional fields clearly optional (+25-35% completion). Support browser autofill with correct `autocomplete` attributes (HTML standard; React JSX uses `autoComplete`) (also required for WCAG 2.2 AA SC 1.3.5).
 
 Trust signals with documented impact: charity rating badges increase giving likelihood for 72% of donors; video testimonials are 80-86% more effective than text; specific quantified impact numbers with real names beat generic claims.
 
