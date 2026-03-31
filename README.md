@@ -122,15 +122,15 @@ For Claude Code specifically, see `hooks-template.md` for setting up determinist
 
 **Windsurf** -- `.windsurf/rules/*.md` with four trigger types: Always On, Model Decision, Glob, and Manual. Hard constraint of 6,000 characters per file and 12,000 characters combined. Always On files budgeted to ~8K total to leave headroom for contextually loaded files. Note: Windsurf generates persistent memories about your codebase -- review and clear regularly for sensitive projects.
 
-**Kilo Code** -- `.kilocode/rules/` with five mode-specific rule files (Ask, Architect, Code, Debug, Orchestrator), a Memory Bank (`brief.md`, `context.md`, `history.md`) for progressive context disclosure, seven concern files, and six process skills in `.kilocode/skills/`.
+**Kilo Code** -- `.kilocode/rules/` with five mode-specific rule files (Ask, Architect, Code, Debug, Orchestrator), a Memory Bank (`brief.md`, `context.md`, `history.md`) for progressive context disclosure, seven concern files, and seven process skills in `.kilocode/skills/`.
 
 **Cline** -- `.clinerules/` directory with 14 Markdown files. Emphasizes Cline's Plan/Act paradigm: explore in Plan Mode before changing anything in Act Mode. All concern and skill content as separate rule files.
 
-**Roo Code** -- `.roomodes` JSON defining custom modes (Review and Interview) with tool restrictions and model assignments, plus `.roo/rules/` containing five mode-specific rule files (Architect, Code, Debug, Review, Interview), seven concern files, and six skill files. Supports Boomerang Task delegation between modes.
+**Roo Code** -- `.roomodes` JSON defining custom modes (Review and Interview) with tool restrictions and model assignments, plus `.roo/rules/` containing five mode-specific rule files (Architect, Code, Debug, Review, Interview), seven concern files, and seven skill files. Supports Boomerang Task delegation between modes.
 
 **Augment Code** -- `.augment/rules/*.md` with a `main.md` core file plus 13 concern and skill files. All files loaded as directory-based rules.
 
-**Aider** -- Single `CONVENTIONS.md` file loaded as read-only context. All seven concerns and six skills condensed into clearly-headed sections. Adapted for Aider's `/architect` and `/code` mode workflow.
+**Aider** -- Single `CONVENTIONS.md` file loaded as read-only context. All seven concerns and seven skills condensed into clearly-headed sections. Adapted for Aider's `/architect` and `/code` mode workflow.
 
 **Gemini CLI** -- Single `GEMINI.md` file at project root. All content as sections in one self-contained file.
 
