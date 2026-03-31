@@ -1,6 +1,6 @@
 # GitHub Copilot Path-Specific Instructions
 
-7 instruction files with `applyTo:` YAML frontmatter. Copilot loads a file automatically when the active file matches its glob pattern.
+8 instruction files with `applyTo:` YAML frontmatter. Copilot loads a file automatically when the active file matches its glob pattern.
 
 ## Files
 
@@ -13,5 +13,6 @@
 | `advocacy-domain.md` | (no `applyTo:`) | Ubiquitous language dictionary, bounded contexts, anti-corruption layers, entity definitions |
 | `accessibility.md` | `**/ui/**,**/frontend/**,**/i18n/**,**/l10n/**` | Internationalization, low-bandwidth optimization, offline-first, mesh networking, graceful degradation |
 | `emotional-safety.md` | `**/content/**,**/media/**,**/display/**,**/upload/**` | Progressive disclosure, content warnings, investigation footage handling, burnout prevention |
+| `geo-seo.md` | `**/*.html,**/robots.txt,**/sitemap.xml,**/[Ll]ayout.*,**/[Hh]ead/**,**/[Bb]ase[Hh]ead.*,**/[Ss]eo/**,**/[Mm]eta/**,**/[Ss]chema/**,**/[Ss]tructured-[Dd]ata/**,**/llms.txt` | SEO + GEO optimization for AI citation, structured data, Core Web Vitals, Wikipedia/Wikidata presence |
 
 Files without `applyTo:` frontmatter (`cost-optimization.md`, `advocacy-domain.md`) are available as general reference and may be loaded based on context or referenced from the repo-wide `copilot-instructions.md`.

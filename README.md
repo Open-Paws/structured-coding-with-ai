@@ -56,9 +56,9 @@ cp agents-md/AGENTS.md your-project/
 
 | Tool | Directory | Files | Format Notes |
 |------|-----------|------:|--------------|
-| Claude Code | `claude-code/` | 15 | CLAUDE.md + 7 scoped rules + 6 skills + hooks template |
+| Claude Code | `claude-code/` | 17 | CLAUDE.md + 8 scoped rules + 7 skills + hooks template |
 | Cursor | `cursor/` | 14 | .cursorrules + 13 .mdc files with 4 activation modes |
-| GitHub Copilot | `github-copilot/` | 22 | copilot-instructions.md + 7 instructions + 6 prompts + 2 chat modes + 6 skills |
+| GitHub Copilot | `github-copilot/` | 23 | copilot-instructions.md + 7 instructions + 6 prompts + 2 chat modes + 7 skills |
 | Windsurf | `windsurf/` | 14 | 14 .md files in .windsurf/rules/ with 4 trigger types, within 6K/12K char limits |
 | Kilo Code | `kilo-code/` | 21 | 5 mode files + 3 Memory Bank files + 7 concerns + 6 skills |
 | Cline | `cline/` | 14 | 14 .md files in .clinerules/ with Plan/Act paradigm |
@@ -68,7 +68,7 @@ cp agents-md/AGENTS.md your-project/
 | Gemini CLI | `gemini-cli/` | 1 | Single GEMINI.md with all content as sections |
 | JetBrains / Junie | `jetbrains-junie/` | 1 | Single .junie/guidelines.md, always loaded |
 | AGENTS.md | `agents-md/` | 1 | Single vendor-neutral file, supported by 20+ tools |
-| **Total** | | **137** | |
+| **Total** | | **140** | |
 
 ---
 
@@ -86,7 +86,7 @@ Every tool covers the same material, adapted to its native format. Tools with mu
 - **Accessibility** -- i18n, offline-first, low-bandwidth, low-literacy design, mesh networking, device seizure resilience
 - **Emotional safety** -- Progressive disclosure of traumatic content, configurable detail levels, content warnings, secondary trauma mitigation
 
-**6 process skills** (workflow guides invoked on demand):
+**7 process skills** (workflow guides invoked on demand):
 
 - **git-workflow** -- Atomic commits, ephemeral branches, PR curation, AI-Assisted tags, code survival rate tracking
 - **testing-strategy** -- Spec-first generation, five anti-patterns to avoid (snapshot trap, mock everything, happy path only, test-after-commit, coverage theater), mutation-guided improvement
@@ -94,6 +94,7 @@ Every tool covers the same material, adapted to its native format. Tools with mu
 - **plan-first-development** -- Spec, design, decompose, implement one subtask at a time, generation-then-comprehension pattern
 - **code-review** -- Layered review pipeline, Ousterhout red flags, AI-specific failure patterns, advocacy-specific data leak checks
 - **security-audit** -- Advocacy threat model assessment, slopsquatting defense, prompt injection / rules file backdoor detection, MCP server security
+- **geo-seo-audit** -- GEO/SEO verification workflow (Core Web Vitals, structured data, indexing controls, AI citation-risk checks)
 
 ---
 
@@ -121,15 +122,15 @@ For Claude Code specifically, see `hooks-template.md` for setting up determinist
 
 **Windsurf** -- `.windsurf/rules/*.md` with four trigger types: Always On, Model Decision, Glob, and Manual. Hard constraint of 6,000 characters per file and 12,000 characters combined. Always On files budgeted to ~8K total to leave headroom for contextually loaded files. Note: Windsurf generates persistent memories about your codebase -- review and clear regularly for sensitive projects.
 
-**Kilo Code** -- `.kilocode/rules/` with five mode-specific rule files (Ask, Architect, Code, Debug, Orchestrator), a Memory Bank (`brief.md`, `context.md`, `history.md`) for progressive context disclosure, seven concern files, and six process skills in `.kilocode/skills/`.
+**Kilo Code** -- `.kilocode/rules/` with five mode-specific rule files (Ask, Architect, Code, Debug, Orchestrator), a Memory Bank (`brief.md`, `context.md`, `history.md`) for progressive context disclosure, seven concern files, and seven process skills in `.kilocode/skills/`.
 
 **Cline** -- `.clinerules/` directory with 14 Markdown files. Emphasizes Cline's Plan/Act paradigm: explore in Plan Mode before changing anything in Act Mode. All concern and skill content as separate rule files.
 
-**Roo Code** -- `.roomodes` JSON defining custom modes (Review and Interview) with tool restrictions and model assignments, plus `.roo/rules/` containing five mode-specific rule files (Architect, Code, Debug, Review, Interview), seven concern files, and six skill files. Supports Boomerang Task delegation between modes.
+**Roo Code** -- `.roomodes` JSON defining custom modes (Review and Interview) with tool restrictions and model assignments, plus `.roo/rules/` containing five mode-specific rule files (Architect, Code, Debug, Review, Interview), seven concern files, and seven skill files. Supports Boomerang Task delegation between modes.
 
 **Augment Code** -- `.augment/rules/*.md` with a `main.md` core file plus 13 concern and skill files. All files loaded as directory-based rules.
 
-**Aider** -- Single `CONVENTIONS.md` file loaded as read-only context. All seven concerns and six skills condensed into clearly-headed sections. Adapted for Aider's `/architect` and `/code` mode workflow.
+**Aider** -- Single `CONVENTIONS.md` file loaded as read-only context. All seven concerns and seven skills condensed into clearly-headed sections. Adapted for Aider's `/architect` and `/code` mode workflow.
 
 **Gemini CLI** -- Single `GEMINI.md` file at project root. All content as sections in one self-contained file.
 

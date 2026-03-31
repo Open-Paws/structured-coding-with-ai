@@ -1,6 +1,6 @@
 # Skills Directory
 
-Six skill packages for Kilo Code. Each skill lives in its own subdirectory and contains a `SKILL.md` file that defines the skill's name, description, and detailed instructions.
+Seven skill packages for Kilo Code. Each skill lives in its own subdirectory and contains a `SKILL.md` file that defines the skill's name, description, and detailed instructions.
 
 ## Skills
 
@@ -12,6 +12,7 @@ Six skill packages for Kilo Code. Each skill lives in its own subdirectory and c
 | `plan-first-development/` | plan-first-development | Read-plan-code-verify workflow with spec writing and subtask decomposition |
 | `code-review/` | code-review | Layered review pipeline: automated checks, AI-assisted review, human review with Ousterhout red flags |
 | `security-audit/` | security-audit | Dependency verification, zero-retention compliance, slopsquatting defense, device seizure readiness |
+| `geo-seo-audit/` | geo-seo-audit | SEO + GEO audit workflow — Core Web Vitals, HTML structure, semantic writing, E-E-A-T, structured data, crawl budget, topic clusters, link building, conversion optimization, AI citation-risk checks |
 
 ## How Skills Work
 

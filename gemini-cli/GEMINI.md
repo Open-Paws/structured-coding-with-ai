@@ -430,3 +430,55 @@ This GEMINI.md is the only instruction file Gemini CLI reads. It loads into ever
 **Tool confirmations.** Gemini CLI prompts for confirmation before executing certain tool actions. Do not auto-approve tool confirmations in advocacy projects handling sensitive data. Review each confirmation to verify the action is appropriate — especially file writes, network requests, and command execution. A malicious prompt injection through code comments or dependency files could trigger tool actions that exfiltrate data.
 
 **Context budget.** This file consumes context in every prompt. Every line must earn its place. If Gemini CLI behavior degrades, check whether this file has grown beyond the effective instruction budget (~150-200 instructions reliably followed by frontier models). Prefer dense, high-signal content over verbose explanations.
+
+## GEO + SEO — Advocacy Website Visibility
+
+SEO and GEO (Generative Engine Optimization) ensure advocacy content ranks in search engines and appears in AI answer systems (ChatGPT, Perplexity, Google AI Overviews, Claude, Gemini). ~60% of searches now end without a click. Apply these rules when building or modifying any public-facing advocacy website.
+
+**How AI citation works:** Google generates an answer first, then scores content using embedding distance. Only 17-32% of AI Overview citations come from pages ranking in the top 10. Domain Authority correlates with AI citations at r=0.18; topical authority (r=0.40) and brand mentions (r=0.664) are the real predictors.
+
+**Core Web Vitals (March 2026 thresholds):** LCP ≤ 2.5s, INP ≤ 200ms (replaced FID), CLS ≤ 0.1. Use `scheduler.yield()` to break long tasks for INP. Require SSR or SSG — AI crawlers do not execute JavaScript. Target TTFB < 200ms; page weight < 1MB. Preload LCP element; add explicit `width`/`height` on all images; use `loading="lazy"` for below-fold images; use WebP/AVIF with `<picture>` fallbacks.
+
+**HTML structure:** One `<h1>` per page. Question-format `<h2>` headings (7× AI citation impact for smaller sites). Answer-first paragraphs: 40-60 words. Self-contained 120-180 word content modules. Semantic HTML, `lang` attribute on `<html>`, descriptive `alt` text, meaningful anchor text. `<table>` for comparisons, `<ol>`/`<ul>` for lists, `<blockquote cite="...">` for quotations (+28-40% AI visibility). `id` attributes on all headings.
+
+**Semantic writing for AI retrieval:** Primary entity as grammatical subject in active voice (salience 0.74 vs passive 0.11). Self-contained atomic claims — every sentence makes sense in isolation. Proper noun density 20.6% (vs 5-8% standard). Content density 5,000-20,000 characters for optimal AI retrieval. Open every section with a 40-60 word declarative answer.
+
+**Content strategy:** Match the intent format of top-ranking results before writing. Helpful Content System: content must be primarily for users, not search engines. E-E-A-T: demonstrate Experience (original data, case studies), Expertise (specific citations with named sources and dates), Authoritativeness (third-party coverage), Trustworthiness (contact info, privacy policy, HTTPS). Every content page: visible author name, credentials, link to author profile with Person schema (+40% AI citations).
+
+**Wikipedia and Wikidata (highest-leverage off-site action):** Wikipedia = 47.9% of ChatGPT's top-10 citations. Organizations with Wikidata entries get Knowledge Panels within 7 days. Add Wikipedia URL and Wikidata Q-ID to Organization schema `sameAs`. Build entity web: organization → tools → people → related orgs → policy areas.
+
+**Wikipedia COI (mandatory):** Never directly edit your own organization's Wikipedia article. Disclose affiliation on the Talk page. Propose edits through Talk-page requests or neutral editors. Use only independent, reliable sources.
+
+**Structured data (JSON-LD):** 41% AI citation rate with schema vs 15% without. Required on every page: Organization + WebSite schema (with `sameAs` to Wikipedia and Wikidata). Required on content pages: Article schema with `author`, `datePublished`, `dateModified`. Required on Q&A pages: FAQPage schema. Also implement: BreadcrumbList, Person (author pages), HowTo, VideoObject. Use `@id` to connect entities. Validate at https://validator.schema.org/.
+
+**Meta tags:** Title: `Primary Keyword — Brand Name`, 50-60 chars, unique per page. Description: 150-160 chars, direct answer + one statistic, unique. `<link rel="canonical">` on every page. Full Open Graph and Twitter Card tags. Article timestamps in ISO 8601 format.
+
+**Robots.txt — allow AI citation crawlers:** `OAI-SearchBot`, `ChatGPT-User`, `PerplexityBot`, `ClaudeBot`, `Claude-SearchBot`, `Applebot`, `Amazonbot`. Blocking Googlebot blocks both Google Search and AI Overviews. Add `Sitemap:` directive.
+
+**Sitemap + IndexNow:** Canonical URLs only; `<lastmod>` reflects actual updates (never faked). Submit to Google Search Console and Bing Webmaster Tools. IndexNow notifies Bing (which feeds ChatGPT) instantly on publish — integrate into CI/CD.
+
+**Site architecture:** Descriptive hyphenated lowercase URLs, max 3 levels deep, canonical tags, 301 redirects. Hub-and-spoke topic clusters: pillar page (2,000-4,000 words) + 8-15 cluster pages + bidirectional links = citation rate 12% → 41%. Content freshness: visible `<time>` Last Updated dates, `dateModified` synchronized, genuinely updated not just date-changed.
+
+**Platform presence and brand signals:** 85% of AI brand mentions from third-party pages. Platform trust: YouTube (~23.3% AI citations), Wikipedia (~18.4%), Reddit (up to 46.5% Perplexity citations). Authentic participation in relevant subreddits, YouTube transcripts, LinkedIn posts, GitHub documentation. Monitor unlinked brand mentions; convert high-authority ones to backlinks (>30% close rate).
+
+**Conversion optimization:** Donation pages: 3-4 preset amounts with middle pre-selected and impact descriptions. Pre-select monthly giving (64% of nonprofits still default one-time). Single-step forms (52% drop with multi-step). Remove header navigation during donation flow. 3-5 form fields maximum. Dark patterns carry FTC legal risk.
+
+**Analytics:** Use Plausible or Umami as primary (no cookies, ~1KB script). Track AI referral traffic with a custom GA4 channel group matching `chatgpt.com`, `perplexity.ai`, `claude.ai`, `gemini.google.com`. AI referral traffic grew 357% YoY to 1.1B visits (June 2025). Mark conversions: `donation_completed`, `newsletter_signup`, `volunteer_form_submit`. **i18n:** Use next-intl with subdirectory URLs (`/en/`, `/hi/`, `/ar/`). Set `lang` and `dir` on `<html>`. Hreflang must be self-referencing and reciprocal — 31% of international sites have broken hreflang. Use ICU MessageFormat for plurals (Arabic requires 6 CLDR plural categories).
+
+**Defensive awareness:** Prohibited and actively detected: hidden text (white-on-white, zero-size fonts, invisible Unicode U+E0000-U+E007F), agent-aware cloaking (serving different content to AI crawlers), scaled AI content without human review (Google manual actions since June 2025). Penalties are domain-wide.
+
+**Key statistics:**
+
+| Signal | Impact |
+|--------|--------|
+| LCP ≤ 2.5s (Good threshold) | Sites above 3s see 23% more traffic loss |
+| INP > 200ms | -0.8 average position drop; 43% of sites fail |
+| Structured data (schema) | 73% higher AI selection rate |
+| Wikipedia/Wikidata presence | Knowledge Panel within 7 days |
+| Topic cluster architecture | Citation rate 12% → 41% |
+| Fresh content (within 30 days) | 76% of most-cited; 3.4× Perplexity advantage |
+| Original or proprietary data | 4.31× citations per URL; 156% more links |
+| Author metadata | +40% citations |
+| Brand mentions vs AI citations | r=0.664 — strongest signal |
+| AI referral traffic growth | 357% YoY to 1.1B visits (June 2025) |
+| Pre-selecting monthly giving | 31% of nonprofit online revenue |
