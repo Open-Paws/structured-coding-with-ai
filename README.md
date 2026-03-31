@@ -94,6 +94,7 @@ Every tool covers the same material, adapted to its native format. Tools with mu
 - **plan-first-development** -- Spec, design, decompose, implement one subtask at a time, generation-then-comprehension pattern
 - **code-review** -- Layered review pipeline, Ousterhout red flags, AI-specific failure patterns, advocacy-specific data leak checks
 - **security-audit** -- Advocacy threat model assessment, slopsquatting defense, prompt injection / rules file backdoor detection, MCP server security
+- **geo-seo-audit** -- GEO/SEO verification workflow (Core Web Vitals, structured data, indexing controls, AI citation-risk checks)
 
 ---
 
