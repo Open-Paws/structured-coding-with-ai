@@ -143,7 +143,7 @@ Check:
 2. Does the organization have a Wikidata entry (Q-ID)? Is it complete with: type, founding date, location, founders, official website, social profiles?
 3. Is the Wikidata Q-ID in the site's Organization schema `sameAs` array?
 4. Is Wikipedia URL in the site's Organization schema `sameAs` array?
-5. Is there an entity web: organization → tools → people → related orgs → policy areas?
+5. Does an entity web exist connecting organization → tools → people → related orgs → policy areas?
 6. Does the site's structured data match Wikipedia and Wikidata? Inconsistency reduces AI confidence.
 
 If no Wikipedia article exists: document as **High** finding. Check whether sufficient independent secondary coverage exists to support notability per Wikipedia's guidelines. If yes, creating the article should be prioritized over almost any on-site optimization.
