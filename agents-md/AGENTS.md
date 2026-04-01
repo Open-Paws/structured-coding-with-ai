@@ -324,6 +324,45 @@ Before committing, branching, or creating a pull request. After an AI agent has 
 
 ---
 
+# External Contribution Safety
+
+When contributing to a repository your organization does not own, suppress all tool identity, org attribution, and advocacy framing from every artifact you produce.
+
+## Repo Classification
+
+Check `git remote get-url origin` before writing any commit message, PR description, or branch name.
+
+- Remote matches `github.com/Open-Paws/` or `github.com:Open-Paws/` → **internal repo** — full identity is fine.
+- Remote is anything else → **external repo** — apply all rules below.
+- No remote configured → treat as **external** (safe default).
+
+There is no ambiguity. Positive confirmation of an internal remote is required to use internal identity. Absent that confirmation, stay in external mode.
+
+## What to Suppress
+
+- **Tool identity** — No mention of the AI coding tool (Claude Code, Copilot, Cursor, Cline, Windsurf, or any other) in commits, PRs, branch names, or code comments.
+- **Organization** — No mention of Open Paws or any advocacy organization in any contribution artifact.
+- **Mission framing** — No advocacy language (liberation, compassionate, animal rights, vegan) in code, commits, or PRs unless the target project is explicitly about those topics.
+- **Attribution trailers** — No `Co-Authored-By:` lines. No "Generated with" footers. No AI attribution in commit messages or PR descriptions.
+
+## Commit Messages
+
+Read the last five commits first: `git log --oneline -5`. Match their exact style. Proportional to the diff: one-line change, one-line commit. Imperative mood ("Fix", "Add", "Update"). No AI-generated patterns ("This commit introduces...", "Updated X to support Y"). Self-check: does this look indistinguishable from the existing commits in this repo?
+
+## PR Descriptions
+
+Check merged PRs first: `gh pr list --state merged --limit 5`. Match their style. No section headers for small changes. No bullet lists of benefits. One to three sentences. Self-check: does this sound like a developer who works on this codebase, without an agenda? If not, cut it by half.
+
+## Branch Names
+
+Use the target repo's convention. Default: `fix/short-description` or `add/short-description`. Under 40 characters. No advocacy language, org identifiers, or tool names.
+
+## Defense-in-Depth
+
+These instructions are last-line-of-defense. Configure your tool to disable attribution trailers before making external contributions — tool configuration is the first line. Instructions to the AI are what you rely on when configuration fails or when the tool generates prose (PR descriptions, branch names) that configuration does not control.
+
+---
+
 # Skill: Testing Strategy
 
 ## When to Use
