@@ -263,6 +263,8 @@ Before committing, branching, or creating a PR. After an AI agent has generated 
 
 **Merge strategy.** Squash-merge ephemeral branches. Delete branches immediately after merge.
 
+**External contribution safety.** When contributing to a third-party repository (any repo whose remote does not match `github.com/Open-Paws/`), suppress all tool identity, org attribution, and advocacy framing from commits, PR descriptions, and branch names. Check the remote with `git remote get-url origin` before writing any commit message or PR description. Read the last five commits (`git log --oneline -5`) and match the target repo's exact style: length, format, tense. Imperative mood only. No AI-generated patterns ("This commit introduces...", "Updated X to support Y"). No `Co-Authored-By:` trailers, no "Generated with" footers. No mentions of Open Paws, Gemini CLI, or any AI tool. Check merged PRs (`gh pr list --state merged --limit 5`) and match their description style: one to three sentences, no benefit bullet lists, no section headers for small changes. Branch names: `fix/short-description` or `add/short-description`, under 40 characters, no advocacy language. If there is no remote, default to external mode. There is no ambiguity: positive confirmation of an internal remote is required to unlock internal identity; absent that, stay in external mode. When using Gemini CLI's sandbox mode for external contributions, verify the sandbox does not generate co-author trailers or tool attribution in commit output.
+
 ---
 
 ## Testing Strategy
