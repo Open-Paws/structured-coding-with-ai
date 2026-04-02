@@ -1,0 +1,11 @@
+repos:
+  - repo: local
+    hooks:
+      - id: unicode-integrity-check
+        name: Unicode integrity check (Rules File Backdoor detection)
+        language: python
+        entry: python3 scripts/check-unicode-integrity.py
+        pass_filenames: false
+        types: []
+        files: \.(md|yaml|yml|json|cursorrules|mdc)$
+        always_run: true

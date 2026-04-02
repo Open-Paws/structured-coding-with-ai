@@ -1,0 +1,30 @@
+name: Unicode Integrity Check
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  schedule:
+    # Daily at 06:00 UTC — catches supply-chain attacks on dependencies
+    # that land between PRs without triggering a push event.
+    - cron: "0 6 * * *"
+
+jobs:
+  unicode-integrity:
+    name: Scan for hidden Unicode (Rules File Backdoor)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Scan instruction files for suspicious Unicode
+        run: python3 scripts/check-unicode-integrity.py .
