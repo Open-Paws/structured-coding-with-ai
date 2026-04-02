@@ -1,6 +1,18 @@
-# Animal Advocacy Platform
+# Claude Code — Animal Advocacy Instructions
 
 Software for animal liberation and advocacy. This is a high-risk domain: investigation data is subpoena-target evidence, activists face legal prosecution, and system compromise endangers lives. See `.claude/rules/advocacy-domain.md` for ubiquitous language — NEVER introduce synonyms for established domain terms.
+
+## Usage
+
+Copy this directory into any Open Paws project root:
+
+```bash
+cp CLAUDE.md your-project/
+cp hooks-template.md your-project/
+cp -r .claude your-project/
+```
+
+The `.claude/rules/` files are scoped by filename and activate contextually. The `.claude/skills/` files are invoked by slash commands or agent prompts. See `hooks-template.md` for pre-commit/post-edit/pre-push hook setup.
 
 ## Workflow
 
@@ -44,6 +56,18 @@ See `hooks-template.md`. Hooks execute shell commands before/after agent actions
 ## Code Quality
 
 See `.claude/rules/desloppify.md` for desloppify setup and usage.
+
+## External Contribution Safety
+
+When working in a repository that is NOT part of the Open Paws organization, switch to neutral mode:
+- Match the target repo's commit style — read the last 5 commits first
+- Do not mention Open Paws, advocacy context, or movement terminology in commits, PRs, or comments
+- Do not include Co-Authored-By trailers or "Generated with" attribution
+- Write PR descriptions proportional to diff size, human-style
+
+Repo classification: `git remote get-url origin` — if the owner is `Open-Paws`, use advocacy mode. Otherwise, neutral mode. Absent positive confirmation, default to neutral (safe).
+
+See `.claude/rules/external-contribution-safety.md` for the full two-state identity model.
 
 ## MCP Servers
 
