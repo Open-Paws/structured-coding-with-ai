@@ -10,6 +10,8 @@ Ready-to-use AI coding instruction files for 12 tools, tailored for animal advoc
 
 **External contribution safety (2026-04-01):** All 12 tool directories now include `external-contribution-safety.md` (or equivalent for the tool's format). This file teaches the two-state identity model: advocacy mode for Open Paws repos, neutral mode (org identity suppressed, commit hygiene enforced) for external repos. The `agents-md/AGENTS.md` is the vendor-neutral version of the same. This was implemented in PR #13.
 
+**Clean-room agent architecture rollout (2026-04-09):** The clean-room reuse pattern (closed decision 2026-04-01) is being rolled out across the ecosystem using instruction files from this repo. Status: PCC#13 merged, platform#42 merged, docs#7 merged. Tools-Platform#1 repo verification is still pending — do not mark the rollout complete until that PR is verified.
+
 **Unicode integrity (CI):** A CI action checks all instruction files for hidden Unicode characters (Rules File Backdoor attack). The `scripts/check-unicode-integrity.py` script is the underlying tool.
 
 **Strategy references:**
