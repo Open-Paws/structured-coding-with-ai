@@ -9,3 +9,7 @@ repos:
         types: []
         files: \.(md|yaml|yml|json|cursorrules|mdc)$
         always_run: true
+  - repo: https://github.com/Open-Paws/no-animal-violence-pre-commit
+    rev: v0.2.0
+    hooks:
+      - id: no-animal-violence
