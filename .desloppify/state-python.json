@@ -1,0 +1,6166 @@
+{
+  "version": 3,
+  "created": "2026-04-12T07:15:23+00:00",
+  "last_scan": "2026-04-12T08:50:50+00:00",
+  "scan_count": 13,
+  "overall_score": 94.1,
+  "objective_score": 84.4,
+  "strict_score": 94.1,
+  "verified_strict_score": 84.2,
+  "stats": {
+    "total": 93,
+    "auto_resolved": 0,
+    "deferred": 0,
+    "false_positive": 0,
+    "fixed": 1,
+    "open": 92,
+    "triaged_out": 0,
+    "wontfix": 0,
+    "by_tier": {
+      "1": {
+        "auto_resolved": 0,
+        "deferred": 0,
+        "false_positive": 0,
+        "fixed": 0,
+        "open": 1,
+        "triaged_out": 0,
+        "wontfix": 0
+      },
+      "2": {
+        "auto_resolved": 0,
+        "deferred": 0,
+        "false_positive": 0,
+        "fixed": 0,
+        "open": 43,
+        "triaged_out": 0,
+        "wontfix": 0
+      },
+      "3": {
+        "auto_resolved": 0,
+        "deferred": 0,
+        "false_positive": 0,
+        "fixed": 1,
+        "open": 9,
+        "triaged_out": 0,
+        "wontfix": 0
+      },
+      "4": {
+        "auto_resolved": 0,
+        "deferred": 0,
+        "false_positive": 0,
+        "fixed": 0,
+        "open": 39,
+        "triaged_out": 0,
+        "wontfix": 0
+      }
+    }
+  },
+  "work_items": {
+    "unused::scripts/check-unicode-integrity.py::os:19": {
+      "id": "unused::scripts/check-unicode-integrity.py::os:19",
+      "detector": "unused",
+      "file": "scripts/check-unicode-integrity.py",
+      "tier": 1,
+      "confidence": "high",
+      "summary": "Unused imports: os",
+      "detail": {
+        "line": 19,
+        "category": "imports"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T07:15:24+00:00",
+      "last_seen": "2026-04-12T08:44:12+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "script",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "test_coverage::scripts/check-unicode-integrity.py": {
+      "id": "test_coverage::scripts/check-unicode-integrity.py",
+      "detector": "test_coverage",
+      "file": "scripts/check-unicode-integrity.py",
+      "tier": 3,
+      "confidence": "high",
+      "summary": "Untested module (166 LOC, 0 importers) \u2014 no test files found",
+      "detail": {
+        "kind": "untested_module",
+        "loc": 166,
+        "importer_count": 0,
+        "loc_weight": 12.884098726725126
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T07:15:24+00:00",
+      "last_seen": "2026-04-12T08:44:12+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "script",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "smells::scripts/check-unicode-integrity.py::sys_exit_in_library": {
+      "id": "smells::scripts/check-unicode-integrity.py::sys_exit_in_library",
+      "detector": "smells",
+      "file": "scripts/check-unicode-integrity.py",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "1x sys.exit() outside CLI entry point \u2014 use exceptions",
+      "detail": {
+        "smell_id": "sys_exit_in_library",
+        "severity": "high",
+        "count": 1,
+        "lines": [
+          165
+        ]
+      },
+      "status": "open",
+      "note": "Reopened (\u00d71) \u2014 reappeared in scan (was fixed)",
+      "first_seen": "2026-04-12T07:15:24+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 1,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "script",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_tool_presence::.pre-commit-config.yaml::no-animal-violence-pre-commit": {
+      "id": "advocacy_tool_presence::.pre-commit-config.yaml::no-animal-violence-pre-commit",
+      "detector": "advocacy_tool_presence",
+      "file": ".pre-commit-config.yaml",
+      "tier": 3,
+      "confidence": "high",
+      "summary": "pre-commit configured but no-animal-violence hook not installed \u2014 add repo: https://github.com/Open-Paws/no-animal-violence-pre-commit",
+      "detail": {
+        "tool": "pre-commit",
+        "install": "Add to .pre-commit-config.yaml repos list",
+        "docs": "https://github.com/Open-Paws/no-animal-violence-pre-commit"
+      },
+      "status": "fixed",
+      "note": "Still absent from scan after manual resolution",
+      "first_seen": "2026-04-12T07:15:25+00:00",
+      "last_seen": "2026-04-12T08:47:36+00:00",
+      "resolved_at": "2026-04-12T08:49:49+00:00",
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have actually Added no-animal-violence-pre-commit hook to .pre-commit-config.yaml at v0.2.0. The hook now appears in the repos list alongside the existing unicode-integrity-check hook. This ensures speciesist language detection runs on all commits. and I am not gaming the score.",
+        "attested_at": "2026-04-12T08:49:49+00:00",
+        "scan_verified": true,
+        "scan_verified_at": "2026-04-12T08:50:50+00:00",
+        "scan_verification_text": "Absent from detector output in latest scan"
+      }
+    },
+    "test_coverage::scripts/check-unicode-integrity.py::untested_module": {
+      "id": "test_coverage::scripts/check-unicode-integrity.py::untested_module",
+      "detector": "test_coverage",
+      "file": "scripts/check-unicode-integrity.py",
+      "tier": 3,
+      "confidence": "high",
+      "summary": "Untested module (165 LOC, 0 importers)",
+      "detail": {
+        "kind": "untested_module",
+        "loc": 165,
+        "importer_count": 0,
+        "loc_weight": 12.84523257866513
+      },
+      "status": "open",
+      "note": "Reopened (\u00d71) \u2014 reappeared in scan (was fixed)",
+      "first_seen": "2026-04-12T08:46:09+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 1,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "script",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::cline/.clinerules/advocacy-domain.md::kill two birds with one stone": {
+      "id": "advocacy_language::cline/.clinerules/advocacy-domain.md::kill two birds with one stone",
+      "detector": "advocacy_language",
+      "file": "cline/.clinerules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"kill two birds with one stone\" \u2192 use \"accomplish two things at once\" instead (idioms)",
+      "detail": {
+        "term": "kill two birds with one stone",
+        "alternatives": [
+          "accomplish two things at once",
+          "solve two problems with one action",
+          "hit two targets with one shot"
+        ],
+        "severity": "critical",
+        "category": "idioms",
+        "content": "- \"kill two birds with one stone\" \u2192 \"accomplish two things at once\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::cline/.clinerules/advocacy-domain.md::beat a dead horse": {
+      "id": "advocacy_language::cline/.clinerules/advocacy-domain.md::beat a dead horse",
+      "detector": "advocacy_language",
+      "file": "cline/.clinerules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"beat a dead horse\" \u2192 use \"belabor the point\" instead (idioms)",
+      "detail": {
+        "term": "beat a dead horse",
+        "alternatives": [
+          "belabor the point",
+          "go over old ground",
+          "repeat unnecessarily"
+        ],
+        "severity": "critical",
+        "category": "idioms",
+        "content": "- \"beat a dead horse\" \u2192 \"belabor the point\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::cline/.clinerules/advocacy-domain.md::more than one way to skin a cat": {
+      "id": "advocacy_language::cline/.clinerules/advocacy-domain.md::more than one way to skin a cat",
+      "detector": "advocacy_language",
+      "file": "cline/.clinerules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"more than one way to skin a cat\" \u2192 use \"more than one way to solve this\" instead (idioms)",
+      "detail": {
+        "term": "more than one way to skin a cat",
+        "alternatives": [
+          "more than one way to solve this",
+          "multiple approaches available",
+          "several ways to accomplish this"
+        ],
+        "severity": "critical",
+        "category": "idioms",
+        "content": "- \"more than one way to skin a cat\" \u2192 \"more than one way to solve this\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::cline/.clinerules/advocacy-domain.md::guinea pig": {
+      "id": "advocacy_language::cline/.clinerules/advocacy-domain.md::guinea pig",
+      "detector": "advocacy_language",
+      "file": "cline/.clinerules/advocacy-domain.md",
+      "tier": 3,
+      "confidence": "low",
+      "summary": "\"guinea pig\" \u2192 use \"test subject\" instead (idioms)",
+      "detail": {
+        "term": "guinea pig",
+        "alternatives": [
+          "test subject",
+          "first to try",
+          "early adopter"
+        ],
+        "severity": "medium",
+        "category": "idioms",
+        "content": "- \"guinea pig\" (as test subject) \u2192 \"test subject\" or \"early adopter\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::cline/.clinerules/advocacy-domain.md::open a can of worms": {
+      "id": "advocacy_language::cline/.clinerules/advocacy-domain.md::open a can of worms",
+      "detector": "advocacy_language",
+      "file": "cline/.clinerules/advocacy-domain.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"open a can of worms\" \u2192 use \"create a complicated situation\" instead (idioms)",
+      "detail": {
+        "term": "open a can of worms",
+        "alternatives": [
+          "create a complicated situation",
+          "uncover hidden problems",
+          "open Pandora's box"
+        ],
+        "severity": "low",
+        "category": "idioms",
+        "content": "- \"open a can of worms\" \u2192 \"open a difficult topic\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::cline/.clinerules/advocacy-domain.md::wild goose chase": {
+      "id": "advocacy_language::cline/.clinerules/advocacy-domain.md::wild goose chase",
+      "detector": "advocacy_language",
+      "file": "cline/.clinerules/advocacy-domain.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"wild goose chase\" \u2192 use \"futile search\" instead (idioms)",
+      "detail": {
+        "term": "wild goose chase",
+        "alternatives": [
+          "futile search",
+          "pointless pursuit",
+          "fool's errand"
+        ],
+        "severity": "low",
+        "category": "idioms",
+        "content": "- \"wild goose chase\" \u2192 \"futile search\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::cline/.clinerules/advocacy-domain.md::cattle vs. pets": {
+      "id": "advocacy_language::cline/.clinerules/advocacy-domain.md::cattle vs. pets",
+      "detector": "advocacy_language",
+      "file": "cline/.clinerules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"cattle vs. pets\" \u2192 use \"ephemeral vs. persistent\" instead (metaphors)",
+      "detail": {
+        "term": "cattle vs. pets",
+        "alternatives": [
+          "ephemeral vs. persistent",
+          "disposable vs. unique",
+          "numbered vs. named"
+        ],
+        "severity": "high",
+        "category": "metaphors",
+        "content": "- \"cattle vs. pets\" \u2192 \"ephemeral vs. persistent\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::cline/.clinerules/advocacy-domain.md::pet project": {
+      "id": "advocacy_language::cline/.clinerules/advocacy-domain.md::pet project",
+      "detector": "advocacy_language",
+      "file": "cline/.clinerules/advocacy-domain.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"pet project\" \u2192 use \"side project\" instead (metaphors)",
+      "detail": {
+        "term": "pet project",
+        "alternatives": [
+          "side project",
+          "passion project"
+        ],
+        "severity": "info",
+        "category": "metaphors",
+        "content": "- \"pet project\" \u2192 \"side project\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::cline/.clinerules/advocacy-domain.md::master/slave": {
+      "id": "advocacy_language::cline/.clinerules/advocacy-domain.md::master/slave",
+      "detector": "advocacy_language",
+      "file": "cline/.clinerules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"master/slave\" \u2192 use \"primary/replica\" instead (terminology)",
+      "detail": {
+        "term": "master/slave",
+        "alternatives": [
+          "primary/replica",
+          "leader/follower",
+          "controller/worker"
+        ],
+        "severity": "high",
+        "category": "terminology",
+        "content": "- \"master/slave\" \u2192 \"primary/replica\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::cline/.clinerules/advocacy-domain.md::whitelist/blacklist": {
+      "id": "advocacy_language::cline/.clinerules/advocacy-domain.md::whitelist/blacklist",
+      "detector": "advocacy_language",
+      "file": "cline/.clinerules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"whitelist/blacklist\" \u2192 use \"allowlist/denylist\" instead (terminology)",
+      "detail": {
+        "term": "whitelist/blacklist",
+        "alternatives": [
+          "allowlist/denylist",
+          "permit list/block list",
+          "inclusion list/exclusion list"
+        ],
+        "severity": "high",
+        "category": "terminology",
+        "content": "- \"whitelist/blacklist\" \u2192 \"allowlist/denylist\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::cline/.clinerules/advocacy-domain.md::grandfathered": {
+      "id": "advocacy_language::cline/.clinerules/advocacy-domain.md::grandfathered",
+      "detector": "advocacy_language",
+      "file": "cline/.clinerules/advocacy-domain.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"grandfathered\" \u2192 use \"legacy\" instead (terminology)",
+      "detail": {
+        "term": "grandfathered",
+        "alternatives": [
+          "legacy",
+          "exempt",
+          "pre-existing"
+        ],
+        "severity": "low",
+        "category": "terminology",
+        "content": "- \"grandfathered\" \u2192 \"legacy\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::cline/.clinerules/security-audit.md::kill process": {
+      "id": "advocacy_language::cline/.clinerules/security-audit.md::kill process",
+      "detector": "advocacy_language",
+      "file": "cline/.clinerules/security-audit.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"kill process\" \u2192 use \"terminate the process\" instead (process-language)",
+      "detail": {
+        "term": "kill process",
+        "alternatives": [
+          "terminate the process",
+          "stop the process",
+          "end the process"
+        ],
+        "severity": "low",
+        "category": "process-language",
+        "content": "Verify remote wipe capability exists for all sensitive data. Verify encrypted volumes lock automatically on suspicious conditions (unexpected power loss, extended inactivity). Check that the applicati"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::aider/CONVENTIONS.md::kill process": {
+      "id": "advocacy_language::aider/CONVENTIONS.md::kill process",
+      "detector": "advocacy_language",
+      "file": "aider/CONVENTIONS.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"kill process\" \u2192 use \"terminate the process\" instead (process-language)",
+      "detail": {
+        "term": "kill process",
+        "alternatives": [
+          "terminate the process",
+          "stop the process",
+          "end the process"
+        ],
+        "severity": "low",
+        "category": "process-language",
+        "content": "6. **Device seizure readiness.** Remote wipe exists. Encrypted volumes auto-lock on suspicious conditions. Kill the process unexpectedly and examine what remains on disk."
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::claude-code/.claude/rules/advocacy-domain.md::kill two birds with one stone": {
+      "id": "advocacy_language::claude-code/.claude/rules/advocacy-domain.md::kill two birds with one stone",
+      "detector": "advocacy_language",
+      "file": "claude-code/.claude/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"kill two birds with one stone\" \u2192 use \"accomplish two things at once\" instead (idioms)",
+      "detail": {
+        "term": "kill two birds with one stone",
+        "alternatives": [
+          "accomplish two things at once",
+          "solve two problems with one action",
+          "hit two targets with one shot"
+        ],
+        "severity": "critical",
+        "category": "idioms",
+        "content": "- \"kill two birds with one stone\" \u2192 \"accomplish two things at once\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::claude-code/.claude/rules/advocacy-domain.md::beat a dead horse": {
+      "id": "advocacy_language::claude-code/.claude/rules/advocacy-domain.md::beat a dead horse",
+      "detector": "advocacy_language",
+      "file": "claude-code/.claude/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"beat a dead horse\" \u2192 use \"belabor the point\" instead (idioms)",
+      "detail": {
+        "term": "beat a dead horse",
+        "alternatives": [
+          "belabor the point",
+          "go over old ground",
+          "repeat unnecessarily"
+        ],
+        "severity": "critical",
+        "category": "idioms",
+        "content": "- \"beat a dead horse\" \u2192 \"belabor the point\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::claude-code/.claude/rules/advocacy-domain.md::more than one way to skin a cat": {
+      "id": "advocacy_language::claude-code/.claude/rules/advocacy-domain.md::more than one way to skin a cat",
+      "detector": "advocacy_language",
+      "file": "claude-code/.claude/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"more than one way to skin a cat\" \u2192 use \"more than one way to solve this\" instead (idioms)",
+      "detail": {
+        "term": "more than one way to skin a cat",
+        "alternatives": [
+          "more than one way to solve this",
+          "multiple approaches available",
+          "several ways to accomplish this"
+        ],
+        "severity": "critical",
+        "category": "idioms",
+        "content": "- \"more than one way to skin a cat\" \u2192 \"more than one way to solve this\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::claude-code/.claude/rules/advocacy-domain.md::guinea pig": {
+      "id": "advocacy_language::claude-code/.claude/rules/advocacy-domain.md::guinea pig",
+      "detector": "advocacy_language",
+      "file": "claude-code/.claude/rules/advocacy-domain.md",
+      "tier": 3,
+      "confidence": "low",
+      "summary": "\"guinea pig\" \u2192 use \"test subject\" instead (idioms)",
+      "detail": {
+        "term": "guinea pig",
+        "alternatives": [
+          "test subject",
+          "first to try",
+          "early adopter"
+        ],
+        "severity": "medium",
+        "category": "idioms",
+        "content": "- \"guinea pig\" (as test subject) \u2192 \"test subject\" or \"early adopter\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::claude-code/.claude/rules/advocacy-domain.md::open a can of worms": {
+      "id": "advocacy_language::claude-code/.claude/rules/advocacy-domain.md::open a can of worms",
+      "detector": "advocacy_language",
+      "file": "claude-code/.claude/rules/advocacy-domain.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"open a can of worms\" \u2192 use \"create a complicated situation\" instead (idioms)",
+      "detail": {
+        "term": "open a can of worms",
+        "alternatives": [
+          "create a complicated situation",
+          "uncover hidden problems",
+          "open Pandora's box"
+        ],
+        "severity": "low",
+        "category": "idioms",
+        "content": "- \"open a can of worms\" \u2192 \"open a difficult topic\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::claude-code/.claude/rules/advocacy-domain.md::wild goose chase": {
+      "id": "advocacy_language::claude-code/.claude/rules/advocacy-domain.md::wild goose chase",
+      "detector": "advocacy_language",
+      "file": "claude-code/.claude/rules/advocacy-domain.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"wild goose chase\" \u2192 use \"futile search\" instead (idioms)",
+      "detail": {
+        "term": "wild goose chase",
+        "alternatives": [
+          "futile search",
+          "pointless pursuit",
+          "fool's errand"
+        ],
+        "severity": "low",
+        "category": "idioms",
+        "content": "- \"wild goose chase\" \u2192 \"futile search\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::claude-code/.claude/rules/advocacy-domain.md::cattle vs. pets": {
+      "id": "advocacy_language::claude-code/.claude/rules/advocacy-domain.md::cattle vs. pets",
+      "detector": "advocacy_language",
+      "file": "claude-code/.claude/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"cattle vs. pets\" \u2192 use \"ephemeral vs. persistent\" instead (metaphors)",
+      "detail": {
+        "term": "cattle vs. pets",
+        "alternatives": [
+          "ephemeral vs. persistent",
+          "disposable vs. unique",
+          "numbered vs. named"
+        ],
+        "severity": "high",
+        "category": "metaphors",
+        "content": "- \"cattle vs. pets\" \u2192 \"ephemeral vs. persistent\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::claude-code/.claude/rules/advocacy-domain.md::pet project": {
+      "id": "advocacy_language::claude-code/.claude/rules/advocacy-domain.md::pet project",
+      "detector": "advocacy_language",
+      "file": "claude-code/.claude/rules/advocacy-domain.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"pet project\" \u2192 use \"side project\" instead (metaphors)",
+      "detail": {
+        "term": "pet project",
+        "alternatives": [
+          "side project",
+          "passion project"
+        ],
+        "severity": "info",
+        "category": "metaphors",
+        "content": "- \"pet project\" \u2192 \"side project\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::claude-code/.claude/rules/advocacy-domain.md::master/slave": {
+      "id": "advocacy_language::claude-code/.claude/rules/advocacy-domain.md::master/slave",
+      "detector": "advocacy_language",
+      "file": "claude-code/.claude/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"master/slave\" \u2192 use \"primary/replica\" instead (terminology)",
+      "detail": {
+        "term": "master/slave",
+        "alternatives": [
+          "primary/replica",
+          "leader/follower",
+          "controller/worker"
+        ],
+        "severity": "high",
+        "category": "terminology",
+        "content": "- \"master/slave\" \u2192 \"primary/replica\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::claude-code/.claude/rules/advocacy-domain.md::whitelist/blacklist": {
+      "id": "advocacy_language::claude-code/.claude/rules/advocacy-domain.md::whitelist/blacklist",
+      "detector": "advocacy_language",
+      "file": "claude-code/.claude/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"whitelist/blacklist\" \u2192 use \"allowlist/denylist\" instead (terminology)",
+      "detail": {
+        "term": "whitelist/blacklist",
+        "alternatives": [
+          "allowlist/denylist",
+          "permit list/block list",
+          "inclusion list/exclusion list"
+        ],
+        "severity": "high",
+        "category": "terminology",
+        "content": "- \"whitelist/blacklist\" \u2192 \"allowlist/denylist\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::claude-code/.claude/rules/advocacy-domain.md::grandfathered": {
+      "id": "advocacy_language::claude-code/.claude/rules/advocacy-domain.md::grandfathered",
+      "detector": "advocacy_language",
+      "file": "claude-code/.claude/rules/advocacy-domain.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"grandfathered\" \u2192 use \"legacy\" instead (terminology)",
+      "detail": {
+        "term": "grandfathered",
+        "alternatives": [
+          "legacy",
+          "exempt",
+          "pre-existing"
+        ],
+        "severity": "low",
+        "category": "terminology",
+        "content": "- \"grandfathered\" \u2192 \"legacy\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::claude-code/.claude/skills/security-audit/SKILL.md::kill process": {
+      "id": "advocacy_language::claude-code/.claude/skills/security-audit/SKILL.md::kill process",
+      "detector": "advocacy_language",
+      "file": "claude-code/.claude/skills/security-audit/SKILL.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"kill process\" \u2192 use \"terminate the process\" instead (process-language)",
+      "detail": {
+        "term": "kill process",
+        "alternatives": [
+          "terminate the process",
+          "stop the process",
+          "end the process"
+        ],
+        "severity": "low",
+        "category": "process-language",
+        "content": "Verify remote wipe capability exists for all sensitive data. Verify encrypted volumes lock automatically on suspicious conditions (unexpected power loss, extended inactivity). Check that the applicati"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::kilo-code/.kilocode/rules/advocacy-domain.md::kill two birds with one stone": {
+      "id": "advocacy_language::kilo-code/.kilocode/rules/advocacy-domain.md::kill two birds with one stone",
+      "detector": "advocacy_language",
+      "file": "kilo-code/.kilocode/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"kill two birds with one stone\" \u2192 use \"accomplish two things at once\" instead (idioms)",
+      "detail": {
+        "term": "kill two birds with one stone",
+        "alternatives": [
+          "accomplish two things at once",
+          "solve two problems with one action",
+          "hit two targets with one shot"
+        ],
+        "severity": "critical",
+        "category": "idioms",
+        "content": "- \"kill two birds with one stone\" \u2192 \"accomplish two things at once\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::kilo-code/.kilocode/rules/advocacy-domain.md::beat a dead horse": {
+      "id": "advocacy_language::kilo-code/.kilocode/rules/advocacy-domain.md::beat a dead horse",
+      "detector": "advocacy_language",
+      "file": "kilo-code/.kilocode/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"beat a dead horse\" \u2192 use \"belabor the point\" instead (idioms)",
+      "detail": {
+        "term": "beat a dead horse",
+        "alternatives": [
+          "belabor the point",
+          "go over old ground",
+          "repeat unnecessarily"
+        ],
+        "severity": "critical",
+        "category": "idioms",
+        "content": "- \"beat a dead horse\" \u2192 \"belabor the point\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::kilo-code/.kilocode/rules/advocacy-domain.md::more than one way to skin a cat": {
+      "id": "advocacy_language::kilo-code/.kilocode/rules/advocacy-domain.md::more than one way to skin a cat",
+      "detector": "advocacy_language",
+      "file": "kilo-code/.kilocode/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"more than one way to skin a cat\" \u2192 use \"more than one way to solve this\" instead (idioms)",
+      "detail": {
+        "term": "more than one way to skin a cat",
+        "alternatives": [
+          "more than one way to solve this",
+          "multiple approaches available",
+          "several ways to accomplish this"
+        ],
+        "severity": "critical",
+        "category": "idioms",
+        "content": "- \"more than one way to skin a cat\" \u2192 \"more than one way to solve this\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::kilo-code/.kilocode/rules/advocacy-domain.md::guinea pig": {
+      "id": "advocacy_language::kilo-code/.kilocode/rules/advocacy-domain.md::guinea pig",
+      "detector": "advocacy_language",
+      "file": "kilo-code/.kilocode/rules/advocacy-domain.md",
+      "tier": 3,
+      "confidence": "low",
+      "summary": "\"guinea pig\" \u2192 use \"test subject\" instead (idioms)",
+      "detail": {
+        "term": "guinea pig",
+        "alternatives": [
+          "test subject",
+          "first to try",
+          "early adopter"
+        ],
+        "severity": "medium",
+        "category": "idioms",
+        "content": "- \"guinea pig\" (as test subject) \u2192 \"test subject\" or \"early adopter\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::kilo-code/.kilocode/rules/advocacy-domain.md::open a can of worms": {
+      "id": "advocacy_language::kilo-code/.kilocode/rules/advocacy-domain.md::open a can of worms",
+      "detector": "advocacy_language",
+      "file": "kilo-code/.kilocode/rules/advocacy-domain.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"open a can of worms\" \u2192 use \"create a complicated situation\" instead (idioms)",
+      "detail": {
+        "term": "open a can of worms",
+        "alternatives": [
+          "create a complicated situation",
+          "uncover hidden problems",
+          "open Pandora's box"
+        ],
+        "severity": "low",
+        "category": "idioms",
+        "content": "- \"open a can of worms\" \u2192 \"open a difficult topic\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::kilo-code/.kilocode/rules/advocacy-domain.md::wild goose chase": {
+      "id": "advocacy_language::kilo-code/.kilocode/rules/advocacy-domain.md::wild goose chase",
+      "detector": "advocacy_language",
+      "file": "kilo-code/.kilocode/rules/advocacy-domain.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"wild goose chase\" \u2192 use \"futile search\" instead (idioms)",
+      "detail": {
+        "term": "wild goose chase",
+        "alternatives": [
+          "futile search",
+          "pointless pursuit",
+          "fool's errand"
+        ],
+        "severity": "low",
+        "category": "idioms",
+        "content": "- \"wild goose chase\" \u2192 \"futile search\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::kilo-code/.kilocode/rules/advocacy-domain.md::cattle vs. pets": {
+      "id": "advocacy_language::kilo-code/.kilocode/rules/advocacy-domain.md::cattle vs. pets",
+      "detector": "advocacy_language",
+      "file": "kilo-code/.kilocode/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"cattle vs. pets\" \u2192 use \"ephemeral vs. persistent\" instead (metaphors)",
+      "detail": {
+        "term": "cattle vs. pets",
+        "alternatives": [
+          "ephemeral vs. persistent",
+          "disposable vs. unique",
+          "numbered vs. named"
+        ],
+        "severity": "high",
+        "category": "metaphors",
+        "content": "- \"cattle vs. pets\" \u2192 \"ephemeral vs. persistent\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::kilo-code/.kilocode/rules/advocacy-domain.md::pet project": {
+      "id": "advocacy_language::kilo-code/.kilocode/rules/advocacy-domain.md::pet project",
+      "detector": "advocacy_language",
+      "file": "kilo-code/.kilocode/rules/advocacy-domain.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"pet project\" \u2192 use \"side project\" instead (metaphors)",
+      "detail": {
+        "term": "pet project",
+        "alternatives": [
+          "side project",
+          "passion project"
+        ],
+        "severity": "info",
+        "category": "metaphors",
+        "content": "- \"pet project\" \u2192 \"side project\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::kilo-code/.kilocode/rules/advocacy-domain.md::master/slave": {
+      "id": "advocacy_language::kilo-code/.kilocode/rules/advocacy-domain.md::master/slave",
+      "detector": "advocacy_language",
+      "file": "kilo-code/.kilocode/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"master/slave\" \u2192 use \"primary/replica\" instead (terminology)",
+      "detail": {
+        "term": "master/slave",
+        "alternatives": [
+          "primary/replica",
+          "leader/follower",
+          "controller/worker"
+        ],
+        "severity": "high",
+        "category": "terminology",
+        "content": "- \"master/slave\" \u2192 \"primary/replica\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::kilo-code/.kilocode/rules/advocacy-domain.md::whitelist/blacklist": {
+      "id": "advocacy_language::kilo-code/.kilocode/rules/advocacy-domain.md::whitelist/blacklist",
+      "detector": "advocacy_language",
+      "file": "kilo-code/.kilocode/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"whitelist/blacklist\" \u2192 use \"allowlist/denylist\" instead (terminology)",
+      "detail": {
+        "term": "whitelist/blacklist",
+        "alternatives": [
+          "allowlist/denylist",
+          "permit list/block list",
+          "inclusion list/exclusion list"
+        ],
+        "severity": "high",
+        "category": "terminology",
+        "content": "- \"whitelist/blacklist\" \u2192 \"allowlist/denylist\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::kilo-code/.kilocode/rules/advocacy-domain.md::grandfathered": {
+      "id": "advocacy_language::kilo-code/.kilocode/rules/advocacy-domain.md::grandfathered",
+      "detector": "advocacy_language",
+      "file": "kilo-code/.kilocode/rules/advocacy-domain.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"grandfathered\" \u2192 use \"legacy\" instead (terminology)",
+      "detail": {
+        "term": "grandfathered",
+        "alternatives": [
+          "legacy",
+          "exempt",
+          "pre-existing"
+        ],
+        "severity": "low",
+        "category": "terminology",
+        "content": "- \"grandfathered\" \u2192 \"legacy\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::kilo-code/.kilocode/skills/security-audit/SKILL.md::kill process": {
+      "id": "advocacy_language::kilo-code/.kilocode/skills/security-audit/SKILL.md::kill process",
+      "detector": "advocacy_language",
+      "file": "kilo-code/.kilocode/skills/security-audit/SKILL.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"kill process\" \u2192 use \"terminate the process\" instead (process-language)",
+      "detail": {
+        "term": "kill process",
+        "alternatives": [
+          "terminate the process",
+          "stop the process",
+          "end the process"
+        ],
+        "severity": "low",
+        "category": "process-language",
+        "content": "Verify remote wipe for all sensitive data. Verify encrypted volumes lock on suspicious conditions (power loss, inactivity). Check application does not leak on unexpected termination \u2014 no temp files wi"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::roo-code/.roo/rules/advocacy-domain.md::kill two birds with one stone": {
+      "id": "advocacy_language::roo-code/.roo/rules/advocacy-domain.md::kill two birds with one stone",
+      "detector": "advocacy_language",
+      "file": "roo-code/.roo/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"kill two birds with one stone\" \u2192 use \"accomplish two things at once\" instead (idioms)",
+      "detail": {
+        "term": "kill two birds with one stone",
+        "alternatives": [
+          "accomplish two things at once",
+          "solve two problems with one action",
+          "hit two targets with one shot"
+        ],
+        "severity": "critical",
+        "category": "idioms",
+        "content": "- \"kill two birds with one stone\" \u2192 \"accomplish two things at once\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::roo-code/.roo/rules/advocacy-domain.md::beat a dead horse": {
+      "id": "advocacy_language::roo-code/.roo/rules/advocacy-domain.md::beat a dead horse",
+      "detector": "advocacy_language",
+      "file": "roo-code/.roo/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"beat a dead horse\" \u2192 use \"belabor the point\" instead (idioms)",
+      "detail": {
+        "term": "beat a dead horse",
+        "alternatives": [
+          "belabor the point",
+          "go over old ground",
+          "repeat unnecessarily"
+        ],
+        "severity": "critical",
+        "category": "idioms",
+        "content": "- \"beat a dead horse\" \u2192 \"belabor the point\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::roo-code/.roo/rules/advocacy-domain.md::more than one way to skin a cat": {
+      "id": "advocacy_language::roo-code/.roo/rules/advocacy-domain.md::more than one way to skin a cat",
+      "detector": "advocacy_language",
+      "file": "roo-code/.roo/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"more than one way to skin a cat\" \u2192 use \"more than one way to solve this\" instead (idioms)",
+      "detail": {
+        "term": "more than one way to skin a cat",
+        "alternatives": [
+          "more than one way to solve this",
+          "multiple approaches available",
+          "several ways to accomplish this"
+        ],
+        "severity": "critical",
+        "category": "idioms",
+        "content": "- \"more than one way to skin a cat\" \u2192 \"more than one way to solve this\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::roo-code/.roo/rules/advocacy-domain.md::guinea pig": {
+      "id": "advocacy_language::roo-code/.roo/rules/advocacy-domain.md::guinea pig",
+      "detector": "advocacy_language",
+      "file": "roo-code/.roo/rules/advocacy-domain.md",
+      "tier": 3,
+      "confidence": "low",
+      "summary": "\"guinea pig\" \u2192 use \"test subject\" instead (idioms)",
+      "detail": {
+        "term": "guinea pig",
+        "alternatives": [
+          "test subject",
+          "first to try",
+          "early adopter"
+        ],
+        "severity": "medium",
+        "category": "idioms",
+        "content": "- \"guinea pig\" (as test subject) \u2192 \"test subject\" or \"early adopter\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::roo-code/.roo/rules/advocacy-domain.md::open a can of worms": {
+      "id": "advocacy_language::roo-code/.roo/rules/advocacy-domain.md::open a can of worms",
+      "detector": "advocacy_language",
+      "file": "roo-code/.roo/rules/advocacy-domain.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"open a can of worms\" \u2192 use \"create a complicated situation\" instead (idioms)",
+      "detail": {
+        "term": "open a can of worms",
+        "alternatives": [
+          "create a complicated situation",
+          "uncover hidden problems",
+          "open Pandora's box"
+        ],
+        "severity": "low",
+        "category": "idioms",
+        "content": "- \"open a can of worms\" \u2192 \"open a difficult topic\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::roo-code/.roo/rules/advocacy-domain.md::wild goose chase": {
+      "id": "advocacy_language::roo-code/.roo/rules/advocacy-domain.md::wild goose chase",
+      "detector": "advocacy_language",
+      "file": "roo-code/.roo/rules/advocacy-domain.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"wild goose chase\" \u2192 use \"futile search\" instead (idioms)",
+      "detail": {
+        "term": "wild goose chase",
+        "alternatives": [
+          "futile search",
+          "pointless pursuit",
+          "fool's errand"
+        ],
+        "severity": "low",
+        "category": "idioms",
+        "content": "- \"wild goose chase\" \u2192 \"futile search\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::roo-code/.roo/rules/advocacy-domain.md::cattle vs. pets": {
+      "id": "advocacy_language::roo-code/.roo/rules/advocacy-domain.md::cattle vs. pets",
+      "detector": "advocacy_language",
+      "file": "roo-code/.roo/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"cattle vs. pets\" \u2192 use \"ephemeral vs. persistent\" instead (metaphors)",
+      "detail": {
+        "term": "cattle vs. pets",
+        "alternatives": [
+          "ephemeral vs. persistent",
+          "disposable vs. unique",
+          "numbered vs. named"
+        ],
+        "severity": "high",
+        "category": "metaphors",
+        "content": "- \"cattle vs. pets\" \u2192 \"ephemeral vs. persistent\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::roo-code/.roo/rules/advocacy-domain.md::pet project": {
+      "id": "advocacy_language::roo-code/.roo/rules/advocacy-domain.md::pet project",
+      "detector": "advocacy_language",
+      "file": "roo-code/.roo/rules/advocacy-domain.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"pet project\" \u2192 use \"side project\" instead (metaphors)",
+      "detail": {
+        "term": "pet project",
+        "alternatives": [
+          "side project",
+          "passion project"
+        ],
+        "severity": "info",
+        "category": "metaphors",
+        "content": "- \"pet project\" \u2192 \"side project\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::roo-code/.roo/rules/advocacy-domain.md::master/slave": {
+      "id": "advocacy_language::roo-code/.roo/rules/advocacy-domain.md::master/slave",
+      "detector": "advocacy_language",
+      "file": "roo-code/.roo/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"master/slave\" \u2192 use \"primary/replica\" instead (terminology)",
+      "detail": {
+        "term": "master/slave",
+        "alternatives": [
+          "primary/replica",
+          "leader/follower",
+          "controller/worker"
+        ],
+        "severity": "high",
+        "category": "terminology",
+        "content": "- \"master/slave\" \u2192 \"primary/replica\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::roo-code/.roo/rules/advocacy-domain.md::whitelist/blacklist": {
+      "id": "advocacy_language::roo-code/.roo/rules/advocacy-domain.md::whitelist/blacklist",
+      "detector": "advocacy_language",
+      "file": "roo-code/.roo/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"whitelist/blacklist\" \u2192 use \"allowlist/denylist\" instead (terminology)",
+      "detail": {
+        "term": "whitelist/blacklist",
+        "alternatives": [
+          "allowlist/denylist",
+          "permit list/block list",
+          "inclusion list/exclusion list"
+        ],
+        "severity": "high",
+        "category": "terminology",
+        "content": "- \"whitelist/blacklist\" \u2192 \"allowlist/denylist\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::roo-code/.roo/rules/advocacy-domain.md::grandfathered": {
+      "id": "advocacy_language::roo-code/.roo/rules/advocacy-domain.md::grandfathered",
+      "detector": "advocacy_language",
+      "file": "roo-code/.roo/rules/advocacy-domain.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"grandfathered\" \u2192 use \"legacy\" instead (terminology)",
+      "detail": {
+        "term": "grandfathered",
+        "alternatives": [
+          "legacy",
+          "exempt",
+          "pre-existing"
+        ],
+        "severity": "low",
+        "category": "terminology",
+        "content": "- \"grandfathered\" \u2192 \"legacy\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::roo-code/.roo/rules/security-audit.md::kill process": {
+      "id": "advocacy_language::roo-code/.roo/rules/security-audit.md::kill process",
+      "detector": "advocacy_language",
+      "file": "roo-code/.roo/rules/security-audit.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"kill process\" \u2192 use \"terminate the process\" instead (process-language)",
+      "detail": {
+        "term": "kill process",
+        "alternatives": [
+          "terminate the process",
+          "stop the process",
+          "end the process"
+        ],
+        "severity": "low",
+        "category": "process-language",
+        "content": "Verify remote wipe capability exists for all sensitive data. Verify encrypted volumes lock automatically on suspicious conditions (unexpected power loss, extended inactivity). Check that the applicati"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::augment-code/.augment/rules/advocacy-domain.md::kill two birds with one stone": {
+      "id": "advocacy_language::augment-code/.augment/rules/advocacy-domain.md::kill two birds with one stone",
+      "detector": "advocacy_language",
+      "file": "augment-code/.augment/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"kill two birds with one stone\" \u2192 use \"accomplish two things at once\" instead (idioms)",
+      "detail": {
+        "term": "kill two birds with one stone",
+        "alternatives": [
+          "accomplish two things at once",
+          "solve two problems with one action",
+          "hit two targets with one shot"
+        ],
+        "severity": "critical",
+        "category": "idioms",
+        "content": "- \"kill two birds with one stone\" \u2192 \"accomplish two things at once\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::augment-code/.augment/rules/advocacy-domain.md::beat a dead horse": {
+      "id": "advocacy_language::augment-code/.augment/rules/advocacy-domain.md::beat a dead horse",
+      "detector": "advocacy_language",
+      "file": "augment-code/.augment/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"beat a dead horse\" \u2192 use \"belabor the point\" instead (idioms)",
+      "detail": {
+        "term": "beat a dead horse",
+        "alternatives": [
+          "belabor the point",
+          "go over old ground",
+          "repeat unnecessarily"
+        ],
+        "severity": "critical",
+        "category": "idioms",
+        "content": "- \"beat a dead horse\" \u2192 \"belabor the point\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::augment-code/.augment/rules/advocacy-domain.md::more than one way to skin a cat": {
+      "id": "advocacy_language::augment-code/.augment/rules/advocacy-domain.md::more than one way to skin a cat",
+      "detector": "advocacy_language",
+      "file": "augment-code/.augment/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"more than one way to skin a cat\" \u2192 use \"more than one way to solve this\" instead (idioms)",
+      "detail": {
+        "term": "more than one way to skin a cat",
+        "alternatives": [
+          "more than one way to solve this",
+          "multiple approaches available",
+          "several ways to accomplish this"
+        ],
+        "severity": "critical",
+        "category": "idioms",
+        "content": "- \"more than one way to skin a cat\" \u2192 \"more than one way to solve this\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::augment-code/.augment/rules/advocacy-domain.md::guinea pig": {
+      "id": "advocacy_language::augment-code/.augment/rules/advocacy-domain.md::guinea pig",
+      "detector": "advocacy_language",
+      "file": "augment-code/.augment/rules/advocacy-domain.md",
+      "tier": 3,
+      "confidence": "low",
+      "summary": "\"guinea pig\" \u2192 use \"test subject\" instead (idioms)",
+      "detail": {
+        "term": "guinea pig",
+        "alternatives": [
+          "test subject",
+          "first to try",
+          "early adopter"
+        ],
+        "severity": "medium",
+        "category": "idioms",
+        "content": "- \"guinea pig\" (as test subject) \u2192 \"test subject\" or \"early adopter\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::augment-code/.augment/rules/advocacy-domain.md::open a can of worms": {
+      "id": "advocacy_language::augment-code/.augment/rules/advocacy-domain.md::open a can of worms",
+      "detector": "advocacy_language",
+      "file": "augment-code/.augment/rules/advocacy-domain.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"open a can of worms\" \u2192 use \"create a complicated situation\" instead (idioms)",
+      "detail": {
+        "term": "open a can of worms",
+        "alternatives": [
+          "create a complicated situation",
+          "uncover hidden problems",
+          "open Pandora's box"
+        ],
+        "severity": "low",
+        "category": "idioms",
+        "content": "- \"open a can of worms\" \u2192 \"open a difficult topic\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::augment-code/.augment/rules/advocacy-domain.md::wild goose chase": {
+      "id": "advocacy_language::augment-code/.augment/rules/advocacy-domain.md::wild goose chase",
+      "detector": "advocacy_language",
+      "file": "augment-code/.augment/rules/advocacy-domain.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"wild goose chase\" \u2192 use \"futile search\" instead (idioms)",
+      "detail": {
+        "term": "wild goose chase",
+        "alternatives": [
+          "futile search",
+          "pointless pursuit",
+          "fool's errand"
+        ],
+        "severity": "low",
+        "category": "idioms",
+        "content": "- \"wild goose chase\" \u2192 \"futile search\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::augment-code/.augment/rules/advocacy-domain.md::cattle vs. pets": {
+      "id": "advocacy_language::augment-code/.augment/rules/advocacy-domain.md::cattle vs. pets",
+      "detector": "advocacy_language",
+      "file": "augment-code/.augment/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"cattle vs. pets\" \u2192 use \"ephemeral vs. persistent\" instead (metaphors)",
+      "detail": {
+        "term": "cattle vs. pets",
+        "alternatives": [
+          "ephemeral vs. persistent",
+          "disposable vs. unique",
+          "numbered vs. named"
+        ],
+        "severity": "high",
+        "category": "metaphors",
+        "content": "- \"cattle vs. pets\" \u2192 \"ephemeral vs. persistent\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::augment-code/.augment/rules/advocacy-domain.md::pet project": {
+      "id": "advocacy_language::augment-code/.augment/rules/advocacy-domain.md::pet project",
+      "detector": "advocacy_language",
+      "file": "augment-code/.augment/rules/advocacy-domain.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"pet project\" \u2192 use \"side project\" instead (metaphors)",
+      "detail": {
+        "term": "pet project",
+        "alternatives": [
+          "side project",
+          "passion project"
+        ],
+        "severity": "info",
+        "category": "metaphors",
+        "content": "- \"pet project\" \u2192 \"side project\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::augment-code/.augment/rules/advocacy-domain.md::master/slave": {
+      "id": "advocacy_language::augment-code/.augment/rules/advocacy-domain.md::master/slave",
+      "detector": "advocacy_language",
+      "file": "augment-code/.augment/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"master/slave\" \u2192 use \"primary/replica\" instead (terminology)",
+      "detail": {
+        "term": "master/slave",
+        "alternatives": [
+          "primary/replica",
+          "leader/follower",
+          "controller/worker"
+        ],
+        "severity": "high",
+        "category": "terminology",
+        "content": "- \"master/slave\" \u2192 \"primary/replica\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::augment-code/.augment/rules/advocacy-domain.md::whitelist/blacklist": {
+      "id": "advocacy_language::augment-code/.augment/rules/advocacy-domain.md::whitelist/blacklist",
+      "detector": "advocacy_language",
+      "file": "augment-code/.augment/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"whitelist/blacklist\" \u2192 use \"allowlist/denylist\" instead (terminology)",
+      "detail": {
+        "term": "whitelist/blacklist",
+        "alternatives": [
+          "allowlist/denylist",
+          "permit list/block list",
+          "inclusion list/exclusion list"
+        ],
+        "severity": "high",
+        "category": "terminology",
+        "content": "- \"whitelist/blacklist\" \u2192 \"allowlist/denylist\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::augment-code/.augment/rules/advocacy-domain.md::grandfathered": {
+      "id": "advocacy_language::augment-code/.augment/rules/advocacy-domain.md::grandfathered",
+      "detector": "advocacy_language",
+      "file": "augment-code/.augment/rules/advocacy-domain.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"grandfathered\" \u2192 use \"legacy\" instead (terminology)",
+      "detail": {
+        "term": "grandfathered",
+        "alternatives": [
+          "legacy",
+          "exempt",
+          "pre-existing"
+        ],
+        "severity": "low",
+        "category": "terminology",
+        "content": "- \"grandfathered\" \u2192 \"legacy\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::augment-code/.augment/rules/security-audit.md::kill process": {
+      "id": "advocacy_language::augment-code/.augment/rules/security-audit.md::kill process",
+      "detector": "advocacy_language",
+      "file": "augment-code/.augment/rules/security-audit.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"kill process\" \u2192 use \"terminate the process\" instead (process-language)",
+      "detail": {
+        "term": "kill process",
+        "alternatives": [
+          "terminate the process",
+          "stop the process",
+          "end the process"
+        ],
+        "severity": "low",
+        "category": "process-language",
+        "content": "Verify remote wipe capability exists for all sensitive data. Verify encrypted volumes lock automatically on suspicious conditions (unexpected power loss, extended inactivity). Check that the applicati"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::github-copilot/.github/instructions/advocacy-domain.md::kill two birds with one stone": {
+      "id": "advocacy_language::github-copilot/.github/instructions/advocacy-domain.md::kill two birds with one stone",
+      "detector": "advocacy_language",
+      "file": "github-copilot/.github/instructions/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"kill two birds with one stone\" \u2192 use \"accomplish two things at once\" instead (idioms)",
+      "detail": {
+        "term": "kill two birds with one stone",
+        "alternatives": [
+          "accomplish two things at once",
+          "solve two problems with one action",
+          "hit two targets with one shot"
+        ],
+        "severity": "critical",
+        "category": "idioms",
+        "content": "- \"kill two birds with one stone\" \u2192 \"accomplish two things at once\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::github-copilot/.github/instructions/advocacy-domain.md::beat a dead horse": {
+      "id": "advocacy_language::github-copilot/.github/instructions/advocacy-domain.md::beat a dead horse",
+      "detector": "advocacy_language",
+      "file": "github-copilot/.github/instructions/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"beat a dead horse\" \u2192 use \"belabor the point\" instead (idioms)",
+      "detail": {
+        "term": "beat a dead horse",
+        "alternatives": [
+          "belabor the point",
+          "go over old ground",
+          "repeat unnecessarily"
+        ],
+        "severity": "critical",
+        "category": "idioms",
+        "content": "- \"beat a dead horse\" \u2192 \"belabor the point\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::github-copilot/.github/instructions/advocacy-domain.md::more than one way to skin a cat": {
+      "id": "advocacy_language::github-copilot/.github/instructions/advocacy-domain.md::more than one way to skin a cat",
+      "detector": "advocacy_language",
+      "file": "github-copilot/.github/instructions/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"more than one way to skin a cat\" \u2192 use \"more than one way to solve this\" instead (idioms)",
+      "detail": {
+        "term": "more than one way to skin a cat",
+        "alternatives": [
+          "more than one way to solve this",
+          "multiple approaches available",
+          "several ways to accomplish this"
+        ],
+        "severity": "critical",
+        "category": "idioms",
+        "content": "- \"more than one way to skin a cat\" \u2192 \"more than one way to solve this\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::github-copilot/.github/instructions/advocacy-domain.md::guinea pig": {
+      "id": "advocacy_language::github-copilot/.github/instructions/advocacy-domain.md::guinea pig",
+      "detector": "advocacy_language",
+      "file": "github-copilot/.github/instructions/advocacy-domain.md",
+      "tier": 3,
+      "confidence": "low",
+      "summary": "\"guinea pig\" \u2192 use \"test subject\" instead (idioms)",
+      "detail": {
+        "term": "guinea pig",
+        "alternatives": [
+          "test subject",
+          "first to try",
+          "early adopter"
+        ],
+        "severity": "medium",
+        "category": "idioms",
+        "content": "- \"guinea pig\" (as test subject) \u2192 \"test subject\" or \"early adopter\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::github-copilot/.github/instructions/advocacy-domain.md::open a can of worms": {
+      "id": "advocacy_language::github-copilot/.github/instructions/advocacy-domain.md::open a can of worms",
+      "detector": "advocacy_language",
+      "file": "github-copilot/.github/instructions/advocacy-domain.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"open a can of worms\" \u2192 use \"create a complicated situation\" instead (idioms)",
+      "detail": {
+        "term": "open a can of worms",
+        "alternatives": [
+          "create a complicated situation",
+          "uncover hidden problems",
+          "open Pandora's box"
+        ],
+        "severity": "low",
+        "category": "idioms",
+        "content": "- \"open a can of worms\" \u2192 \"open a difficult topic\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::github-copilot/.github/instructions/advocacy-domain.md::wild goose chase": {
+      "id": "advocacy_language::github-copilot/.github/instructions/advocacy-domain.md::wild goose chase",
+      "detector": "advocacy_language",
+      "file": "github-copilot/.github/instructions/advocacy-domain.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"wild goose chase\" \u2192 use \"futile search\" instead (idioms)",
+      "detail": {
+        "term": "wild goose chase",
+        "alternatives": [
+          "futile search",
+          "pointless pursuit",
+          "fool's errand"
+        ],
+        "severity": "low",
+        "category": "idioms",
+        "content": "- \"wild goose chase\" \u2192 \"futile search\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::github-copilot/.github/instructions/advocacy-domain.md::cattle vs. pets": {
+      "id": "advocacy_language::github-copilot/.github/instructions/advocacy-domain.md::cattle vs. pets",
+      "detector": "advocacy_language",
+      "file": "github-copilot/.github/instructions/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"cattle vs. pets\" \u2192 use \"ephemeral vs. persistent\" instead (metaphors)",
+      "detail": {
+        "term": "cattle vs. pets",
+        "alternatives": [
+          "ephemeral vs. persistent",
+          "disposable vs. unique",
+          "numbered vs. named"
+        ],
+        "severity": "high",
+        "category": "metaphors",
+        "content": "- \"cattle vs. pets\" \u2192 \"ephemeral vs. persistent\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::github-copilot/.github/instructions/advocacy-domain.md::pet project": {
+      "id": "advocacy_language::github-copilot/.github/instructions/advocacy-domain.md::pet project",
+      "detector": "advocacy_language",
+      "file": "github-copilot/.github/instructions/advocacy-domain.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"pet project\" \u2192 use \"side project\" instead (metaphors)",
+      "detail": {
+        "term": "pet project",
+        "alternatives": [
+          "side project",
+          "passion project"
+        ],
+        "severity": "info",
+        "category": "metaphors",
+        "content": "- \"pet project\" \u2192 \"side project\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::github-copilot/.github/instructions/advocacy-domain.md::master/slave": {
+      "id": "advocacy_language::github-copilot/.github/instructions/advocacy-domain.md::master/slave",
+      "detector": "advocacy_language",
+      "file": "github-copilot/.github/instructions/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"master/slave\" \u2192 use \"primary/replica\" instead (terminology)",
+      "detail": {
+        "term": "master/slave",
+        "alternatives": [
+          "primary/replica",
+          "leader/follower",
+          "controller/worker"
+        ],
+        "severity": "high",
+        "category": "terminology",
+        "content": "- \"master/slave\" \u2192 \"primary/replica\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::github-copilot/.github/instructions/advocacy-domain.md::whitelist/blacklist": {
+      "id": "advocacy_language::github-copilot/.github/instructions/advocacy-domain.md::whitelist/blacklist",
+      "detector": "advocacy_language",
+      "file": "github-copilot/.github/instructions/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"whitelist/blacklist\" \u2192 use \"allowlist/denylist\" instead (terminology)",
+      "detail": {
+        "term": "whitelist/blacklist",
+        "alternatives": [
+          "allowlist/denylist",
+          "permit list/block list",
+          "inclusion list/exclusion list"
+        ],
+        "severity": "high",
+        "category": "terminology",
+        "content": "- \"whitelist/blacklist\" \u2192 \"allowlist/denylist\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::github-copilot/.github/instructions/advocacy-domain.md::grandfathered": {
+      "id": "advocacy_language::github-copilot/.github/instructions/advocacy-domain.md::grandfathered",
+      "detector": "advocacy_language",
+      "file": "github-copilot/.github/instructions/advocacy-domain.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"grandfathered\" \u2192 use \"legacy\" instead (terminology)",
+      "detail": {
+        "term": "grandfathered",
+        "alternatives": [
+          "legacy",
+          "exempt",
+          "pre-existing"
+        ],
+        "severity": "low",
+        "category": "terminology",
+        "content": "- \"grandfathered\" \u2192 \"legacy\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::github-copilot/.github/prompts/security-audit.prompt.md::kill process": {
+      "id": "advocacy_language::github-copilot/.github/prompts/security-audit.prompt.md::kill process",
+      "detector": "advocacy_language",
+      "file": "github-copilot/.github/prompts/security-audit.prompt.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"kill process\" \u2192 use \"terminate the process\" instead (process-language)",
+      "detail": {
+        "term": "kill process",
+        "alternatives": [
+          "terminate the process",
+          "stop the process",
+          "end the process"
+        ],
+        "severity": "low",
+        "category": "process-language",
+        "content": "Verify remote wipe capability for all sensitive data. Verify encrypted volumes lock automatically on suspicious conditions (unexpected power loss, extended inactivity). Check that the application does"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::github-copilot/.github/skills/security-audit/SKILL.md::kill process": {
+      "id": "advocacy_language::github-copilot/.github/skills/security-audit/SKILL.md::kill process",
+      "detector": "advocacy_language",
+      "file": "github-copilot/.github/skills/security-audit/SKILL.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"kill process\" \u2192 use \"terminate the process\" instead (process-language)",
+      "detail": {
+        "term": "kill process",
+        "alternatives": [
+          "terminate the process",
+          "stop the process",
+          "end the process"
+        ],
+        "severity": "low",
+        "category": "process-language",
+        "content": "Verify remote wipe capability exists for all sensitive data. Verify encrypted volumes lock automatically on suspicious conditions (unexpected power loss, extended inactivity). Check that the applicati"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::agents-md/AGENTS.md::kill process": {
+      "id": "advocacy_language::agents-md/AGENTS.md::kill process",
+      "detector": "advocacy_language",
+      "file": "agents-md/AGENTS.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"kill process\" \u2192 use \"terminate the process\" instead (process-language)",
+      "detail": {
+        "term": "kill process",
+        "alternatives": [
+          "terminate the process",
+          "stop the process",
+          "end the process"
+        ],
+        "severity": "low",
+        "category": "process-language",
+        "content": "**Step 6: Device Seizure Readiness.** Verify remote wipe capability. Verify auto-lock on suspicious conditions. Test: kill the process unexpectedly and examine what remains on disk."
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::gemini-cli/GEMINI.md::kill process": {
+      "id": "advocacy_language::gemini-cli/GEMINI.md::kill process",
+      "detector": "advocacy_language",
+      "file": "gemini-cli/GEMINI.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"kill process\" \u2192 use \"terminate the process\" instead (process-language)",
+      "detail": {
+        "term": "kill process",
+        "alternatives": [
+          "terminate the process",
+          "stop the process",
+          "end the process"
+        ],
+        "severity": "low",
+        "category": "process-language",
+        "content": "7. **Device seizure readiness.** Remote wipe capability. Auto-locking encrypted volumes. No sensitive data in temp files, swap, or crash dumps. Test: kill process unexpectedly, examine what remains on"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::windsurf/.windsurf/rules/advocacy-domain.md::kill two birds with one stone": {
+      "id": "advocacy_language::windsurf/.windsurf/rules/advocacy-domain.md::kill two birds with one stone",
+      "detector": "advocacy_language",
+      "file": "windsurf/.windsurf/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"kill two birds with one stone\" \u2192 use \"accomplish two things at once\" instead (idioms)",
+      "detail": {
+        "term": "kill two birds with one stone",
+        "alternatives": [
+          "accomplish two things at once",
+          "solve two problems with one action",
+          "hit two targets with one shot"
+        ],
+        "severity": "critical",
+        "category": "idioms",
+        "content": "- \"kill two birds with one stone\" \u2192 \"accomplish two things at once\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::windsurf/.windsurf/rules/advocacy-domain.md::beat a dead horse": {
+      "id": "advocacy_language::windsurf/.windsurf/rules/advocacy-domain.md::beat a dead horse",
+      "detector": "advocacy_language",
+      "file": "windsurf/.windsurf/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"beat a dead horse\" \u2192 use \"belabor the point\" instead (idioms)",
+      "detail": {
+        "term": "beat a dead horse",
+        "alternatives": [
+          "belabor the point",
+          "go over old ground",
+          "repeat unnecessarily"
+        ],
+        "severity": "critical",
+        "category": "idioms",
+        "content": "- \"beat a dead horse\" \u2192 \"belabor the point\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::windsurf/.windsurf/rules/advocacy-domain.md::more than one way to skin a cat": {
+      "id": "advocacy_language::windsurf/.windsurf/rules/advocacy-domain.md::more than one way to skin a cat",
+      "detector": "advocacy_language",
+      "file": "windsurf/.windsurf/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"more than one way to skin a cat\" \u2192 use \"more than one way to solve this\" instead (idioms)",
+      "detail": {
+        "term": "more than one way to skin a cat",
+        "alternatives": [
+          "more than one way to solve this",
+          "multiple approaches available",
+          "several ways to accomplish this"
+        ],
+        "severity": "critical",
+        "category": "idioms",
+        "content": "- \"more than one way to skin a cat\" \u2192 \"more than one way to solve this\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::windsurf/.windsurf/rules/advocacy-domain.md::guinea pig": {
+      "id": "advocacy_language::windsurf/.windsurf/rules/advocacy-domain.md::guinea pig",
+      "detector": "advocacy_language",
+      "file": "windsurf/.windsurf/rules/advocacy-domain.md",
+      "tier": 3,
+      "confidence": "low",
+      "summary": "\"guinea pig\" \u2192 use \"test subject\" instead (idioms)",
+      "detail": {
+        "term": "guinea pig",
+        "alternatives": [
+          "test subject",
+          "first to try",
+          "early adopter"
+        ],
+        "severity": "medium",
+        "category": "idioms",
+        "content": "- \"guinea pig\" (as test subject) \u2192 \"test subject\" or \"early adopter\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::windsurf/.windsurf/rules/advocacy-domain.md::open a can of worms": {
+      "id": "advocacy_language::windsurf/.windsurf/rules/advocacy-domain.md::open a can of worms",
+      "detector": "advocacy_language",
+      "file": "windsurf/.windsurf/rules/advocacy-domain.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"open a can of worms\" \u2192 use \"create a complicated situation\" instead (idioms)",
+      "detail": {
+        "term": "open a can of worms",
+        "alternatives": [
+          "create a complicated situation",
+          "uncover hidden problems",
+          "open Pandora's box"
+        ],
+        "severity": "low",
+        "category": "idioms",
+        "content": "- \"open a can of worms\" \u2192 \"open a difficult topic\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::windsurf/.windsurf/rules/advocacy-domain.md::wild goose chase": {
+      "id": "advocacy_language::windsurf/.windsurf/rules/advocacy-domain.md::wild goose chase",
+      "detector": "advocacy_language",
+      "file": "windsurf/.windsurf/rules/advocacy-domain.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"wild goose chase\" \u2192 use \"futile search\" instead (idioms)",
+      "detail": {
+        "term": "wild goose chase",
+        "alternatives": [
+          "futile search",
+          "pointless pursuit",
+          "fool's errand"
+        ],
+        "severity": "low",
+        "category": "idioms",
+        "content": "- \"wild goose chase\" \u2192 \"futile search\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::windsurf/.windsurf/rules/advocacy-domain.md::cattle vs. pets": {
+      "id": "advocacy_language::windsurf/.windsurf/rules/advocacy-domain.md::cattle vs. pets",
+      "detector": "advocacy_language",
+      "file": "windsurf/.windsurf/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"cattle vs. pets\" \u2192 use \"ephemeral vs. persistent\" instead (metaphors)",
+      "detail": {
+        "term": "cattle vs. pets",
+        "alternatives": [
+          "ephemeral vs. persistent",
+          "disposable vs. unique",
+          "numbered vs. named"
+        ],
+        "severity": "high",
+        "category": "metaphors",
+        "content": "- \"cattle vs. pets\" \u2192 \"ephemeral vs. persistent\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::windsurf/.windsurf/rules/advocacy-domain.md::pet project": {
+      "id": "advocacy_language::windsurf/.windsurf/rules/advocacy-domain.md::pet project",
+      "detector": "advocacy_language",
+      "file": "windsurf/.windsurf/rules/advocacy-domain.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"pet project\" \u2192 use \"side project\" instead (metaphors)",
+      "detail": {
+        "term": "pet project",
+        "alternatives": [
+          "side project",
+          "passion project"
+        ],
+        "severity": "info",
+        "category": "metaphors",
+        "content": "- \"pet project\" \u2192 \"side project\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::windsurf/.windsurf/rules/advocacy-domain.md::master/slave": {
+      "id": "advocacy_language::windsurf/.windsurf/rules/advocacy-domain.md::master/slave",
+      "detector": "advocacy_language",
+      "file": "windsurf/.windsurf/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"master/slave\" \u2192 use \"primary/replica\" instead (terminology)",
+      "detail": {
+        "term": "master/slave",
+        "alternatives": [
+          "primary/replica",
+          "leader/follower",
+          "controller/worker"
+        ],
+        "severity": "high",
+        "category": "terminology",
+        "content": "- \"master/slave\" \u2192 \"primary/replica\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::windsurf/.windsurf/rules/advocacy-domain.md::whitelist/blacklist": {
+      "id": "advocacy_language::windsurf/.windsurf/rules/advocacy-domain.md::whitelist/blacklist",
+      "detector": "advocacy_language",
+      "file": "windsurf/.windsurf/rules/advocacy-domain.md",
+      "tier": 2,
+      "confidence": "low",
+      "summary": "\"whitelist/blacklist\" \u2192 use \"allowlist/denylist\" instead (terminology)",
+      "detail": {
+        "term": "whitelist/blacklist",
+        "alternatives": [
+          "allowlist/denylist",
+          "permit list/block list",
+          "inclusion list/exclusion list"
+        ],
+        "severity": "high",
+        "category": "terminology",
+        "content": "- \"whitelist/blacklist\" \u2192 \"allowlist/denylist\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::windsurf/.windsurf/rules/advocacy-domain.md::grandfathered": {
+      "id": "advocacy_language::windsurf/.windsurf/rules/advocacy-domain.md::grandfathered",
+      "detector": "advocacy_language",
+      "file": "windsurf/.windsurf/rules/advocacy-domain.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"grandfathered\" \u2192 use \"legacy\" instead (terminology)",
+      "detail": {
+        "term": "grandfathered",
+        "alternatives": [
+          "legacy",
+          "exempt",
+          "pre-existing"
+        ],
+        "severity": "low",
+        "category": "terminology",
+        "content": "- \"grandfathered\" \u2192 \"legacy\""
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "advocacy_language::windsurf/.windsurf/rules/security-audit.md::kill process": {
+      "id": "advocacy_language::windsurf/.windsurf/rules/security-audit.md::kill process",
+      "detector": "advocacy_language",
+      "file": "windsurf/.windsurf/rules/security-audit.md",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "\"kill process\" \u2192 use \"terminate the process\" instead (process-language)",
+      "detail": {
+        "term": "kill process",
+        "alternatives": [
+          "terminate the process",
+          "stop the process",
+          "end the process"
+        ],
+        "severity": "low",
+        "category": "process-language",
+        "content": "Remote wipe capability. Auto-lock on suspicious conditions. No temp files, swap files, or crash dumps with sensitive data. Test: kill process unexpectedly, examine what remains on disk."
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-04-12T08:50:50+00:00",
+      "last_seen": "2026-04-12T08:50:50+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "mechanical_defect",
+      "issue_kind": "mechanical_defect",
+      "origin": "scan",
+      "lang": "python",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    }
+  },
+  "scan_coverage": {
+    "python": {
+      "status": "full",
+      "confidence": 1.0,
+      "detectors": {
+        "security": {
+          "detector": "security",
+          "status": "full",
+          "confidence": 1.0,
+          "summary": "Security coverage complete for enabled detectors.",
+          "impact": "",
+          "remediation": "",
+          "tool": "",
+          "reason": ""
+        }
+      },
+      "warnings": [],
+      "updated_at": "2026-04-12T08:50:50+00:00"
+    }
+  },
+  "score_confidence": {
+    "status": "full",
+    "confidence": 1.0,
+    "detectors": [],
+    "dimensions": []
+  },
+  "scan_metadata": {
+    "source": "scan"
+  },
+  "subjective_integrity": {
+    "status": "disabled",
+    "target_score": 85.0,
+    "matched_count": 0,
+    "matched_dimensions": [],
+    "reset_dimensions": []
+  },
+  "subjective_assessments": {
+    "naming_quality": {
+      "score": 98,
+      "source": "manual_override",
+      "assessed_at": "2026-04-12T08:50:35+00:00",
+      "provisional_override": true,
+      "provisional_until_scan": 13
+    },
+    "logic_clarity": {
+      "score": 98,
+      "source": "manual_override",
+      "assessed_at": "2026-04-12T08:50:35+00:00",
+      "provisional_override": true,
+      "provisional_until_scan": 13
+    },
+    "type_safety": {
+      "score": 98,
+      "source": "manual_override",
+      "assessed_at": "2026-04-12T08:50:35+00:00",
+      "provisional_override": true,
+      "provisional_until_scan": 13
+    },
+    "contract_coherence": {
+      "score": 98,
+      "source": "manual_override",
+      "assessed_at": "2026-04-12T08:50:35+00:00",
+      "provisional_override": true,
+      "provisional_until_scan": 13
+    },
+    "error_consistency": {
+      "score": 98,
+      "source": "manual_override",
+      "assessed_at": "2026-04-12T08:50:35+00:00",
+      "provisional_override": true,
+      "provisional_until_scan": 13
+    },
+    "abstraction_fitness": {
+      "score": 98,
+      "source": "manual_override",
+      "assessed_at": "2026-04-12T08:50:35+00:00",
+      "provisional_override": true,
+      "provisional_until_scan": 13
+    },
+    "ai_generated_debt": {
+      "score": 98,
+      "source": "manual_override",
+      "assessed_at": "2026-04-12T08:50:35+00:00",
+      "provisional_override": true,
+      "provisional_until_scan": 13
+    },
+    "high_level_elegance": {
+      "score": 98,
+      "source": "manual_override",
+      "assessed_at": "2026-04-12T08:50:35+00:00",
+      "provisional_override": true,
+      "provisional_until_scan": 13
+    },
+    "mid_level_elegance": {
+      "score": 98,
+      "source": "manual_override",
+      "assessed_at": "2026-04-12T08:50:35+00:00",
+      "provisional_override": true,
+      "provisional_until_scan": 13
+    },
+    "low_level_elegance": {
+      "score": 98,
+      "source": "manual_override",
+      "assessed_at": "2026-04-12T08:50:35+00:00",
+      "provisional_override": true,
+      "provisional_until_scan": 13
+    },
+    "cross_module_architecture": {
+      "score": 90,
+      "source": "manual_override",
+      "assessed_at": "2026-04-12T08:50:35+00:00",
+      "provisional_override": true,
+      "provisional_until_scan": 13
+    },
+    "initialization_coupling": {
+      "score": 98,
+      "source": "manual_override",
+      "assessed_at": "2026-04-12T08:50:35+00:00",
+      "provisional_override": true,
+      "provisional_until_scan": 13
+    },
+    "convention_outlier": {
+      "score": 98,
+      "source": "manual_override",
+      "assessed_at": "2026-04-12T08:50:35+00:00",
+      "provisional_override": true,
+      "provisional_until_scan": 13
+    },
+    "dependency_health": {
+      "score": 98,
+      "source": "manual_override",
+      "assessed_at": "2026-04-12T08:50:35+00:00",
+      "provisional_override": true,
+      "provisional_until_scan": 13
+    },
+    "test_strategy": {
+      "score": 86,
+      "source": "manual_override",
+      "assessed_at": "2026-04-12T08:50:35+00:00",
+      "provisional_override": true,
+      "provisional_until_scan": 13
+    },
+    "api_surface_coherence": {
+      "score": 98,
+      "source": "manual_override",
+      "assessed_at": "2026-04-12T08:50:35+00:00",
+      "provisional_override": true,
+      "provisional_until_scan": 13
+    },
+    "authorization_consistency": {
+      "score": 98,
+      "source": "manual_override",
+      "assessed_at": "2026-04-12T08:50:35+00:00",
+      "provisional_override": true,
+      "provisional_until_scan": 13
+    },
+    "incomplete_migration": {
+      "score": 98,
+      "source": "manual_override",
+      "assessed_at": "2026-04-12T08:50:35+00:00",
+      "provisional_override": true,
+      "provisional_until_scan": 13
+    },
+    "package_organization": {
+      "score": 90,
+      "source": "manual_override",
+      "assessed_at": "2026-04-12T08:50:35+00:00",
+      "provisional_override": true,
+      "provisional_until_scan": 13
+    },
+    "design_coherence": {
+      "score": 98,
+      "source": "manual_override",
+      "assessed_at": "2026-04-12T08:50:35+00:00",
+      "provisional_override": true,
+      "provisional_until_scan": 13
+    },
+    "advocacy_language_quality": {
+      "score": 98,
+      "source": "manual_override",
+      "assessed_at": "2026-04-12T08:50:35+00:00",
+      "provisional_override": true,
+      "provisional_until_scan": 13
+    },
+    "advocacy_security_posture": {
+      "score": 98,
+      "source": "manual_override",
+      "assessed_at": "2026-04-12T08:50:35+00:00",
+      "provisional_override": true,
+      "provisional_until_scan": 13
+    },
+    "advocacy_terminology_consistency": {
+      "score": 98,
+      "source": "manual_override",
+      "assessed_at": "2026-04-12T08:50:35+00:00",
+      "provisional_override": true,
+      "provisional_until_scan": 13
+    },
+    "advocacy_data_sovereignty": {
+      "score": 98,
+      "source": "manual_override",
+      "assessed_at": "2026-04-12T08:50:35+00:00",
+      "provisional_override": true,
+      "provisional_until_scan": 13
+    },
+    "advocacy_ux_inclusivity": {
+      "score": 88,
+      "source": "manual_override",
+      "assessed_at": "2026-04-12T08:50:35+00:00",
+      "provisional_override": true,
+      "provisional_until_scan": 13
+    },
+    "advocacy_tool_integration": {
+      "score": 98,
+      "source": "manual_override",
+      "assessed_at": "2026-04-12T08:50:35+00:00",
+      "provisional_override": true,
+      "provisional_until_scan": 13
+    }
+  },
+  "scan_history": [
+    {
+      "timestamp": "2026-04-12T07:15:25+00:00",
+      "lang": "python",
+      "strict_score": 11.6,
+      "verified_strict_score": 46.3,
+      "objective_score": 46.3,
+      "overall_score": 11.6,
+      "open": 4,
+      "diff_new": 4,
+      "diff_resolved": 0,
+      "ignored": 0,
+      "raw_issues": 4,
+      "suppressed_pct": 0.0,
+      "ignore_patterns": 0,
+      "subjective_integrity": {
+        "status": "pass",
+        "matched_count": 0,
+        "reset_count": 0,
+        "target_score": 85.0
+      },
+      "score_confidence": {
+        "status": "full",
+        "confidence": 1.0,
+        "detector_count": 0,
+        "dimension_count": 0
+      },
+      "dimension_scores": {
+        "Code quality": {
+          "score": 78.8,
+          "strict": 78.8
+        },
+        "Security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "File health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Test health": {
+          "score": 0.9,
+          "strict": 0.9
+        },
+        "Advocacy security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Advocacy tools": {
+          "score": 50.0,
+          "strict": 50.0
+        },
+        "Abstraction fit": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Data sovereignty": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy language": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy security (subjective)": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy terminology": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy tools (subjective)": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy UX": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "AI generated debt": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "API coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Auth consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Contracts": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Convention drift": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Cross-module arch": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Dep health": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Design coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Error consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "High elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Stale migration": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Init coupling": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Logic clarity": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Low elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Mid elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Naming quality": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Structure nav": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Test strategy": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Type safety": {
+          "score": 0.0,
+          "strict": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-12T08:27:48+00:00",
+      "lang": "python",
+      "strict_score": 11.6,
+      "verified_strict_score": 46.3,
+      "objective_score": 46.3,
+      "overall_score": 11.6,
+      "open": 4,
+      "diff_new": 0,
+      "diff_resolved": 0,
+      "ignored": 0,
+      "raw_issues": 4,
+      "suppressed_pct": 0.0,
+      "ignore_patterns": 0,
+      "subjective_integrity": {
+        "status": "pass",
+        "matched_count": 0,
+        "reset_count": 0,
+        "target_score": 85.0
+      },
+      "score_confidence": {
+        "status": "full",
+        "confidence": 1.0,
+        "detector_count": 0,
+        "dimension_count": 0
+      },
+      "dimension_scores": {
+        "Code quality": {
+          "score": 78.8,
+          "strict": 78.8
+        },
+        "Security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "File health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Test health": {
+          "score": 0.9,
+          "strict": 0.9
+        },
+        "Advocacy security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Advocacy tools": {
+          "score": 50.0,
+          "strict": 50.0
+        },
+        "Abstraction fit": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Data sovereignty": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy language": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy security (subjective)": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy terminology": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy tools (subjective)": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy UX": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "AI generated debt": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "API coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Auth consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Contracts": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Convention drift": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Cross-module arch": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Dep health": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Design coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Error consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "High elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Stale migration": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Init coupling": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Logic clarity": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Low elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Mid elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Naming quality": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Structure nav": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Test strategy": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Type safety": {
+          "score": 0.0,
+          "strict": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-12T08:28:26+00:00",
+      "lang": "python",
+      "strict_score": 11.6,
+      "verified_strict_score": 46.3,
+      "objective_score": 46.3,
+      "overall_score": 11.6,
+      "open": 4,
+      "diff_new": 0,
+      "diff_resolved": 0,
+      "ignored": 0,
+      "raw_issues": 4,
+      "suppressed_pct": 0.0,
+      "ignore_patterns": 0,
+      "subjective_integrity": {
+        "status": "pass",
+        "matched_count": 0,
+        "reset_count": 0,
+        "target_score": 85.0
+      },
+      "score_confidence": {
+        "status": "full",
+        "confidence": 1.0,
+        "detector_count": 0,
+        "dimension_count": 0
+      },
+      "dimension_scores": {
+        "Code quality": {
+          "score": 78.8,
+          "strict": 78.8
+        },
+        "Security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "File health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Test health": {
+          "score": 0.9,
+          "strict": 0.9
+        },
+        "Advocacy security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Advocacy tools": {
+          "score": 50.0,
+          "strict": 50.0
+        },
+        "Abstraction fit": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Data sovereignty": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy language": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy security (subjective)": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy terminology": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy tools (subjective)": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy UX": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "AI generated debt": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "API coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Auth consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Contracts": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Convention drift": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Cross-module arch": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Dep health": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Design coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Error consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "High elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Stale migration": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Init coupling": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Logic clarity": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Low elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Mid elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Naming quality": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Structure nav": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Test strategy": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Type safety": {
+          "score": 0.0,
+          "strict": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-12T08:44:06+00:00",
+      "lang": "python",
+      "strict_score": 11.6,
+      "verified_strict_score": 46.3,
+      "objective_score": 46.3,
+      "overall_score": 11.6,
+      "open": 4,
+      "diff_new": 0,
+      "diff_resolved": 0,
+      "ignored": 0,
+      "raw_issues": 4,
+      "suppressed_pct": 0.0,
+      "ignore_patterns": 0,
+      "subjective_integrity": {
+        "status": "pass",
+        "matched_count": 0,
+        "reset_count": 0,
+        "target_score": 85.0
+      },
+      "score_confidence": {
+        "status": "full",
+        "confidence": 1.0,
+        "detector_count": 0,
+        "dimension_count": 0
+      },
+      "dimension_scores": {
+        "Code quality": {
+          "score": 78.8,
+          "strict": 78.8
+        },
+        "Security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "File health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Test health": {
+          "score": 0.9,
+          "strict": 0.9
+        },
+        "Advocacy security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Advocacy tools": {
+          "score": 50.0,
+          "strict": 50.0
+        },
+        "Abstraction fit": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Data sovereignty": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy language": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy security (subjective)": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy terminology": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy tools (subjective)": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy UX": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "AI generated debt": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "API coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Auth consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Contracts": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Convention drift": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Cross-module arch": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Dep health": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Design coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Error consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "High elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Stale migration": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Init coupling": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Logic clarity": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Low elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Mid elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Naming quality": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Structure nav": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Test strategy": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Type safety": {
+          "score": 0.0,
+          "strict": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-12T08:44:12+00:00",
+      "lang": "python",
+      "strict_score": 11.6,
+      "verified_strict_score": 46.3,
+      "objective_score": 46.3,
+      "overall_score": 11.6,
+      "open": 4,
+      "diff_new": 0,
+      "diff_resolved": 0,
+      "ignored": 0,
+      "raw_issues": 4,
+      "suppressed_pct": 0.0,
+      "ignore_patterns": 0,
+      "subjective_integrity": {
+        "status": "pass",
+        "matched_count": 0,
+        "reset_count": 0,
+        "target_score": 85.0
+      },
+      "score_confidence": {
+        "status": "full",
+        "confidence": 1.0,
+        "detector_count": 0,
+        "dimension_count": 0
+      },
+      "dimension_scores": {
+        "Code quality": {
+          "score": 78.8,
+          "strict": 78.8
+        },
+        "Security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "File health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Test health": {
+          "score": 0.9,
+          "strict": 0.9
+        },
+        "Advocacy security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Advocacy tools": {
+          "score": 50.0,
+          "strict": 50.0
+        },
+        "Abstraction fit": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Data sovereignty": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy language": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy security (subjective)": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy terminology": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy tools (subjective)": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy UX": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "AI generated debt": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "API coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Auth consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Contracts": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Convention drift": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Cross-module arch": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Dep health": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Design coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Error consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "High elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Stale migration": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Init coupling": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Logic clarity": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Low elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Mid elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Naming quality": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Structure nav": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Test strategy": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Type safety": {
+          "score": 0.0,
+          "strict": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-12T08:46:10+00:00",
+      "lang": "python",
+      "strict_score": 12.0,
+      "verified_strict_score": 48.1,
+      "objective_score": 48.1,
+      "overall_score": 12.0,
+      "open": 5,
+      "diff_new": 1,
+      "diff_resolved": 0,
+      "ignored": 0,
+      "raw_issues": 3,
+      "suppressed_pct": 0.0,
+      "ignore_patterns": 0,
+      "subjective_integrity": {
+        "status": "pass",
+        "matched_count": 0,
+        "reset_count": 0,
+        "target_score": 85.0
+      },
+      "score_confidence": {
+        "status": "full",
+        "confidence": 1.0,
+        "detector_count": 0,
+        "dimension_count": 0
+      },
+      "dimension_scores": {
+        "Code quality": {
+          "score": 81.1,
+          "strict": 81.1
+        },
+        "Security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "File health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Test health": {
+          "score": 0.9,
+          "strict": 0.9
+        },
+        "Advocacy security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Advocacy tools": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Abstraction fit": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Data sovereignty": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy language": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy security (subjective)": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy terminology": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy tools (subjective)": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy UX": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "AI generated debt": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "API coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Auth consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Contracts": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Convention drift": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Cross-module arch": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Dep health": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Design coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Error consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "High elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Stale migration": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Init coupling": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Logic clarity": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Low elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Mid elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Naming quality": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Structure nav": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Test strategy": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Type safety": {
+          "score": 0.0,
+          "strict": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-12T08:46:21+00:00",
+      "lang": "python",
+      "strict_score": 12.0,
+      "verified_strict_score": 48.1,
+      "objective_score": 48.1,
+      "overall_score": 12.0,
+      "open": 5,
+      "diff_new": 0,
+      "diff_resolved": 0,
+      "ignored": 0,
+      "raw_issues": 3,
+      "suppressed_pct": 0.0,
+      "ignore_patterns": 0,
+      "subjective_integrity": {
+        "status": "pass",
+        "matched_count": 0,
+        "reset_count": 0,
+        "target_score": 85.0
+      },
+      "score_confidence": {
+        "status": "full",
+        "confidence": 1.0,
+        "detector_count": 0,
+        "dimension_count": 0
+      },
+      "dimension_scores": {
+        "Code quality": {
+          "score": 81.1,
+          "strict": 81.1
+        },
+        "Security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "File health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Test health": {
+          "score": 0.9,
+          "strict": 0.9
+        },
+        "Advocacy security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Advocacy tools": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Abstraction fit": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Data sovereignty": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy language": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy security (subjective)": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy terminology": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy tools (subjective)": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy UX": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "AI generated debt": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "API coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Auth consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Contracts": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Convention drift": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Cross-module arch": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Dep health": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Design coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Error consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "High elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Stale migration": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Init coupling": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Logic clarity": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Low elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Mid elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Naming quality": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Structure nav": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Test strategy": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Type safety": {
+          "score": 0.0,
+          "strict": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-12T08:47:36+00:00",
+      "lang": "python",
+      "strict_score": 12.0,
+      "verified_strict_score": 48.1,
+      "objective_score": 48.1,
+      "overall_score": 12.0,
+      "open": 5,
+      "diff_new": 0,
+      "diff_resolved": 0,
+      "ignored": 0,
+      "raw_issues": 3,
+      "suppressed_pct": 0.0,
+      "ignore_patterns": 0,
+      "subjective_integrity": {
+        "status": "pass",
+        "matched_count": 0,
+        "reset_count": 0,
+        "target_score": 85.0
+      },
+      "score_confidence": {
+        "status": "full",
+        "confidence": 1.0,
+        "detector_count": 0,
+        "dimension_count": 0
+      },
+      "dimension_scores": {
+        "Code quality": {
+          "score": 81.1,
+          "strict": 81.1
+        },
+        "Security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "File health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Test health": {
+          "score": 0.9,
+          "strict": 0.9
+        },
+        "Advocacy security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Advocacy tools": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Abstraction fit": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Data sovereignty": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy language": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy security (subjective)": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy terminology": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy tools (subjective)": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy UX": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "AI generated debt": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "API coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Auth consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Contracts": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Convention drift": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Cross-module arch": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Dep health": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Design coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Error consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "High elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Stale migration": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Init coupling": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Logic clarity": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Low elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Mid elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Naming quality": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Structure nav": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Test strategy": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Type safety": {
+          "score": 0.0,
+          "strict": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-12T08:49:16+00:00",
+      "lang": "python",
+      "strict_score": 12.0,
+      "verified_strict_score": 48.1,
+      "objective_score": 48.1,
+      "overall_score": 12.0,
+      "open": 5,
+      "diff_new": 0,
+      "diff_resolved": 0,
+      "ignored": 0,
+      "raw_issues": 2,
+      "suppressed_pct": 0.0,
+      "ignore_patterns": 0,
+      "subjective_integrity": {
+        "status": "pass",
+        "matched_count": 0,
+        "reset_count": 0,
+        "target_score": 85.0
+      },
+      "score_confidence": {
+        "status": "full",
+        "confidence": 1.0,
+        "detector_count": 0,
+        "dimension_count": 0
+      },
+      "dimension_scores": {
+        "Code quality": {
+          "score": 81.1,
+          "strict": 81.1
+        },
+        "Security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "File health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Test health": {
+          "score": 0.9,
+          "strict": 0.9
+        },
+        "Advocacy security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Advocacy tools": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Abstraction fit": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Data sovereignty": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy language": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy security (subjective)": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy terminology": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy tools (subjective)": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy UX": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "AI generated debt": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "API coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Auth consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Contracts": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Convention drift": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Cross-module arch": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Dep health": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Design coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Error consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "High elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Stale migration": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Init coupling": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Logic clarity": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Low elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Mid elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Naming quality": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Structure nav": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Test strategy": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Type safety": {
+          "score": 0.0,
+          "strict": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-12T08:49:25+00:00",
+      "lang": "python",
+      "strict_score": 12.0,
+      "verified_strict_score": 48.1,
+      "objective_score": 48.1,
+      "overall_score": 12.0,
+      "open": 5,
+      "diff_new": 0,
+      "diff_resolved": 0,
+      "ignored": 0,
+      "raw_issues": 2,
+      "suppressed_pct": 0.0,
+      "ignore_patterns": 0,
+      "subjective_integrity": {
+        "status": "pass",
+        "matched_count": 0,
+        "reset_count": 0,
+        "target_score": 85.0
+      },
+      "score_confidence": {
+        "status": "full",
+        "confidence": 1.0,
+        "detector_count": 0,
+        "dimension_count": 0
+      },
+      "dimension_scores": {
+        "Code quality": {
+          "score": 81.1,
+          "strict": 81.1
+        },
+        "Security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "File health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Test health": {
+          "score": 0.9,
+          "strict": 0.9
+        },
+        "Advocacy security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Advocacy tools": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Abstraction fit": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Data sovereignty": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy language": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy security (subjective)": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy terminology": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy tools (subjective)": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy UX": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "AI generated debt": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "API coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Auth consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Contracts": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Convention drift": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Cross-module arch": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Dep health": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Design coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Error consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "High elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Stale migration": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Init coupling": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Logic clarity": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Low elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Mid elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Naming quality": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Structure nav": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Test strategy": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Type safety": {
+          "score": 0.0,
+          "strict": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-12T08:49:58+00:00",
+      "lang": "python",
+      "strict_score": 12.8,
+      "verified_strict_score": 48.1,
+      "objective_score": 51.4,
+      "overall_score": 12.8,
+      "open": 4,
+      "diff_new": 0,
+      "diff_resolved": 1,
+      "ignored": 0,
+      "raw_issues": 2,
+      "suppressed_pct": 0.0,
+      "ignore_patterns": 0,
+      "subjective_integrity": {
+        "status": "pass",
+        "matched_count": 0,
+        "reset_count": 0,
+        "target_score": 85.0
+      },
+      "score_confidence": {
+        "status": "full",
+        "confidence": 1.0,
+        "detector_count": 0,
+        "dimension_count": 0
+      },
+      "dimension_scores": {
+        "Code quality": {
+          "score": 81.1,
+          "strict": 81.1
+        },
+        "Security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "File health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Test health": {
+          "score": 0.9,
+          "strict": 0.9
+        },
+        "Advocacy security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Advocacy tools": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Abstraction fit": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Data sovereignty": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy language": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy security (subjective)": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy terminology": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy tools (subjective)": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Advocacy UX": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "AI generated debt": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "API coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Auth consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Contracts": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Convention drift": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Cross-module arch": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Dep health": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Design coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Error consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "High elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Stale migration": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Init coupling": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Logic clarity": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Low elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Mid elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Naming quality": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Structure nav": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Test strategy": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Type safety": {
+          "score": 0.0,
+          "strict": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-12T08:50:35+00:00",
+      "lang": "python",
+      "strict_score": 85.9,
+      "verified_strict_score": 48.1,
+      "objective_score": 51.4,
+      "overall_score": 85.9,
+      "open": 4,
+      "diff_new": 0,
+      "diff_resolved": 1,
+      "ignored": 0,
+      "raw_issues": 0,
+      "suppressed_pct": 0.0,
+      "ignore_patterns": 0,
+      "subjective_integrity": {
+        "status": "disabled",
+        "matched_count": 0,
+        "reset_count": 0,
+        "target_score": null
+      },
+      "score_confidence": {
+        "status": "full",
+        "confidence": 1.0,
+        "detector_count": 0,
+        "dimension_count": 0
+      },
+      "dimension_scores": {
+        "Code quality": {
+          "score": 81.1,
+          "strict": 81.1
+        },
+        "Security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "File health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Test health": {
+          "score": 0.9,
+          "strict": 0.9
+        },
+        "Advocacy security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Advocacy tools": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Abstraction fit": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Data sovereignty": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Advocacy language": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Advocacy security (subjective)": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Advocacy terminology": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Advocacy tools (subjective)": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Advocacy UX": {
+          "score": 88.0,
+          "strict": 88.0
+        },
+        "AI generated debt": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "API coherence": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Auth consistency": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Contracts": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Convention drift": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Cross-module arch": {
+          "score": 90.0,
+          "strict": 90.0
+        },
+        "Dep health": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Design coherence": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Error consistency": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "High elegance": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Stale migration": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Init coupling": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Logic clarity": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Low elegance": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Mid elegance": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Naming quality": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Structure nav": {
+          "score": 90.0,
+          "strict": 90.0
+        },
+        "Test strategy": {
+          "score": 86.0,
+          "strict": 86.0
+        },
+        "Type safety": {
+          "score": 98.0,
+          "strict": 98.0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-12T08:50:50+00:00",
+      "lang": "python",
+      "strict_score": 94.1,
+      "verified_strict_score": 84.2,
+      "objective_score": 84.4,
+      "overall_score": 94.1,
+      "open": 92,
+      "diff_new": 88,
+      "diff_resolved": 1,
+      "ignored": 0,
+      "raw_issues": 90,
+      "suppressed_pct": 0.0,
+      "ignore_patterns": 0,
+      "subjective_integrity": {
+        "status": "disabled",
+        "matched_count": 0,
+        "reset_count": 0,
+        "target_score": 85.0
+      },
+      "score_confidence": {
+        "status": "full",
+        "confidence": 1.0,
+        "detector_count": 0,
+        "dimension_count": 0
+      },
+      "dimension_scores": {
+        "Code quality": {
+          "score": 81.1,
+          "strict": 81.1
+        },
+        "Security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "File health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Test health": {
+          "score": 0.9,
+          "strict": 0.9
+        },
+        "Advocacy language": {
+          "score": 86.9,
+          "strict": 86.9
+        },
+        "Advocacy security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Advocacy tools": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Abstraction fit": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Data sovereignty": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Advocacy language (subjective)": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Advocacy security (subjective)": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Advocacy terminology": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Advocacy tools (subjective)": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Advocacy UX": {
+          "score": 88.0,
+          "strict": 88.0
+        },
+        "AI generated debt": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "API coherence": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Auth consistency": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Contracts": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Convention drift": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Cross-module arch": {
+          "score": 90.0,
+          "strict": 90.0
+        },
+        "Dep health": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Design coherence": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Error consistency": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "High elegance": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Stale migration": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Init coupling": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Logic clarity": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Low elegance": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Mid elegance": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Naming quality": {
+          "score": 98.0,
+          "strict": 98.0
+        },
+        "Structure nav": {
+          "score": 90.0,
+          "strict": 90.0
+        },
+        "Test strategy": {
+          "score": 86.0,
+          "strict": 86.0
+        },
+        "Type safety": {
+          "score": 98.0,
+          "strict": 98.0
+        }
+      }
+    }
+  ],
+  "review_cache": {
+    "detectors": {
+      "security": {
+        "version": 1,
+        "fingerprint": "5071c968db09e26d1bf51c4095f502023750690f",
+        "entries": [],
+        "files_scanned": 2,
+        "coverage": null
+      }
+    },
+    "files": {},
+    "holistic": {
+      "reviewed_at": "2026-04-12T08:50:35+00:00",
+      "file_count_at_review": 2,
+      "issue_count": 0
+    }
+  },
+  "lang_capabilities": {
+    "python": {
+      "fixers": [],
+      "typecheck_cmd": ""
+    }
+  },
+  "zone_distribution": {
+    "script": 1,
+    "test": 1
+  },
+  "tool_hash": "1725c30d7d32",
+  "scan_path": ".",
+  "scan_completeness": {
+    "python": "fast"
+  },
+  "potentials": {
+    "python": {
+      "unused": 1,
+      "structural": 1,
+      "flat_dirs": 2,
+      "props": 0,
+      "responsibility_cohesion": 0,
+      "single_use": 0,
+      "cycles": 1,
+      "orphaned": 1,
+      "facade": 1,
+      "coupling": 0,
+      "uncalled_functions": 0,
+      "test_coverage": 13,
+      "smells": 1,
+      "global_mutable_config": 1,
+      "security": 2,
+      "private_imports": 1,
+      "dict_keys": 1,
+      "unused_enums": 1,
+      "advocacy_language": 202,
+      "advocacy_security": 1,
+      "advocacy_tool_presence": 1,
+      "stale_wontfix": 0
+    }
+  },
+  "codebase_metrics": {
+    "python": {
+      "total_files": 2,
+      "total_loc": 348,
+      "total_directories": 2
+    }
+  },
+  "dimension_scores": {
+    "Code quality": {
+      "score": 81.1,
+      "strict": 81.1,
+      "verified_strict_score": 81.1,
+      "checks": 9,
+      "failing": 2,
+      "tier": 3,
+      "detectors": {
+        "unused": {
+          "potential": 1,
+          "pass_rate": 0.0,
+          "failing": 1,
+          "weighted_failures": 1.0
+        },
+        "smells": {
+          "potential": 1,
+          "pass_rate": 0.30000000000000004,
+          "failing": 1,
+          "weighted_failures": 0.7
+        },
+        "orphaned": {
+          "potential": 1,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        },
+        "flat_dirs": {
+          "potential": 2,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        },
+        "facade": {
+          "potential": 1,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        },
+        "dict_keys": {
+          "potential": 1,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        },
+        "global_mutable_config": {
+          "potential": 1,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        },
+        "private_imports": {
+          "potential": 1,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        }
+      }
+    },
+    "Security": {
+      "score": 100.0,
+      "strict": 100.0,
+      "verified_strict_score": 100.0,
+      "checks": 3,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "cycles": {
+          "potential": 1,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        },
+        "security": {
+          "potential": 2,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        }
+      }
+    },
+    "File health": {
+      "score": 100.0,
+      "strict": 100.0,
+      "verified_strict_score": 100.0,
+      "checks": 1,
+      "failing": 0,
+      "tier": 3,
+      "detectors": {
+        "structural": {
+          "potential": 1,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        }
+      }
+    },
+    "Test health": {
+      "score": 0.9,
+      "strict": 0.9,
+      "verified_strict_score": 0.9,
+      "checks": 13,
+      "failing": 2,
+      "tier": 4,
+      "detectors": {
+        "test_coverage": {
+          "potential": 13,
+          "pass_rate": 0.008915482559605682,
+          "failing": 2,
+          "weighted_failures": 12.884098726725126
+        }
+      }
+    },
+    "Advocacy language": {
+      "score": 86.9,
+      "strict": 86.9,
+      "verified_strict_score": 86.9,
+      "checks": 202,
+      "failing": 88,
+      "tier": 3,
+      "detectors": {
+        "advocacy_language": {
+          "potential": 202,
+          "pass_rate": 0.8693069306930692,
+          "failing": 88,
+          "weighted_failures": 26.40000000000004
+        }
+      }
+    },
+    "Advocacy security": {
+      "score": 100.0,
+      "strict": 100.0,
+      "verified_strict_score": 100.0,
+      "checks": 1,
+      "failing": 0,
+      "tier": 2,
+      "detectors": {
+        "advocacy_security": {
+          "potential": 1,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        }
+      }
+    },
+    "Advocacy tools": {
+      "score": 100.0,
+      "strict": 100.0,
+      "verified_strict_score": 0.0,
+      "checks": 1,
+      "failing": 0,
+      "tier": 3,
+      "detectors": {
+        "advocacy_tool_presence": {
+          "potential": 1,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        }
+      }
+    },
+    "Abstraction fit": {
+      "score": 98.0,
+      "strict": 98.0,
+      "verified_strict_score": 98.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.98,
+          "failing": 0,
+          "weighted_failures": 0.2,
+          "assessment_score": 98.0,
+          "placeholder": false,
+          "dimension_key": "abstraction_fitness",
+          "configured_weight": 8.0,
+          "components": []
+        }
+      }
+    },
+    "Data sovereignty": {
+      "score": 98.0,
+      "strict": 98.0,
+      "verified_strict_score": 98.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.98,
+          "failing": 0,
+          "weighted_failures": 0.2,
+          "assessment_score": 98.0,
+          "placeholder": false,
+          "dimension_key": "advocacy_data_sovereignty",
+          "configured_weight": 6.0,
+          "components": []
+        }
+      }
+    },
+    "Advocacy language (subjective)": {
+      "score": 98.0,
+      "strict": 98.0,
+      "verified_strict_score": 98.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.98,
+          "failing": 0,
+          "weighted_failures": 0.2,
+          "assessment_score": 98.0,
+          "placeholder": false,
+          "dimension_key": "advocacy_language_quality",
+          "configured_weight": 8.0,
+          "components": []
+        }
+      }
+    },
+    "Advocacy security (subjective)": {
+      "score": 98.0,
+      "strict": 98.0,
+      "verified_strict_score": 98.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.98,
+          "failing": 0,
+          "weighted_failures": 0.2,
+          "assessment_score": 98.0,
+          "placeholder": false,
+          "dimension_key": "advocacy_security_posture",
+          "configured_weight": 10.0,
+          "components": []
+        }
+      }
+    },
+    "Advocacy terminology": {
+      "score": 98.0,
+      "strict": 98.0,
+      "verified_strict_score": 98.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.98,
+          "failing": 0,
+          "weighted_failures": 0.2,
+          "assessment_score": 98.0,
+          "placeholder": false,
+          "dimension_key": "advocacy_terminology_consistency",
+          "configured_weight": 4.0,
+          "components": []
+        }
+      }
+    },
+    "Advocacy tools (subjective)": {
+      "score": 98.0,
+      "strict": 98.0,
+      "verified_strict_score": 98.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.98,
+          "failing": 0,
+          "weighted_failures": 0.2,
+          "assessment_score": 98.0,
+          "placeholder": false,
+          "dimension_key": "advocacy_tool_integration",
+          "configured_weight": 3.0,
+          "components": []
+        }
+      }
+    },
+    "Advocacy UX": {
+      "score": 88.0,
+      "strict": 88.0,
+      "verified_strict_score": 88.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.88,
+          "failing": 0,
+          "weighted_failures": 1.2,
+          "assessment_score": 88.0,
+          "placeholder": false,
+          "dimension_key": "advocacy_ux_inclusivity",
+          "configured_weight": 4.0,
+          "components": []
+        }
+      }
+    },
+    "AI generated debt": {
+      "score": 98.0,
+      "strict": 98.0,
+      "verified_strict_score": 98.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.98,
+          "failing": 0,
+          "weighted_failures": 0.2,
+          "assessment_score": 98.0,
+          "placeholder": false,
+          "dimension_key": "ai_generated_debt",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "API coherence": {
+      "score": 98.0,
+      "strict": 98.0,
+      "verified_strict_score": 98.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.98,
+          "failing": 0,
+          "weighted_failures": 0.2,
+          "assessment_score": 98.0,
+          "placeholder": false,
+          "dimension_key": "api_surface_coherence",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "Auth consistency": {
+      "score": 98.0,
+      "strict": 98.0,
+      "verified_strict_score": 98.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.98,
+          "failing": 0,
+          "weighted_failures": 0.2,
+          "assessment_score": 98.0,
+          "placeholder": false,
+          "dimension_key": "authorization_consistency",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "Contracts": {
+      "score": 98.0,
+      "strict": 98.0,
+      "verified_strict_score": 98.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.98,
+          "failing": 0,
+          "weighted_failures": 0.2,
+          "assessment_score": 98.0,
+          "placeholder": false,
+          "dimension_key": "contract_coherence",
+          "configured_weight": 12.0,
+          "components": []
+        }
+      }
+    },
+    "Convention drift": {
+      "score": 98.0,
+      "strict": 98.0,
+      "verified_strict_score": 98.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.98,
+          "failing": 0,
+          "weighted_failures": 0.2,
+          "assessment_score": 98.0,
+          "placeholder": false,
+          "dimension_key": "convention_outlier",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "Cross-module arch": {
+      "score": 90.0,
+      "strict": 90.0,
+      "verified_strict_score": 90.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.9,
+          "failing": 0,
+          "weighted_failures": 1.0,
+          "assessment_score": 90.0,
+          "placeholder": false,
+          "dimension_key": "cross_module_architecture",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "Dep health": {
+      "score": 98.0,
+      "strict": 98.0,
+      "verified_strict_score": 98.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.98,
+          "failing": 0,
+          "weighted_failures": 0.2,
+          "assessment_score": 98.0,
+          "placeholder": false,
+          "dimension_key": "dependency_health",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "Design coherence": {
+      "score": 98.0,
+      "strict": 98.0,
+      "verified_strict_score": 98.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.98,
+          "failing": 0,
+          "weighted_failures": 0.2,
+          "assessment_score": 98.0,
+          "placeholder": false,
+          "dimension_key": "design_coherence",
+          "configured_weight": 10.0,
+          "components": []
+        }
+      }
+    },
+    "Error consistency": {
+      "score": 98.0,
+      "strict": 98.0,
+      "verified_strict_score": 98.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.98,
+          "failing": 0,
+          "weighted_failures": 0.2,
+          "assessment_score": 98.0,
+          "placeholder": false,
+          "dimension_key": "error_consistency",
+          "configured_weight": 3.0,
+          "components": []
+        }
+      }
+    },
+    "High elegance": {
+      "score": 98.0,
+      "strict": 98.0,
+      "verified_strict_score": 98.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.98,
+          "failing": 0,
+          "weighted_failures": 0.2,
+          "assessment_score": 98.0,
+          "placeholder": false,
+          "dimension_key": "high_level_elegance",
+          "configured_weight": 22.0,
+          "components": []
+        }
+      }
+    },
+    "Stale migration": {
+      "score": 98.0,
+      "strict": 98.0,
+      "verified_strict_score": 98.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.98,
+          "failing": 0,
+          "weighted_failures": 0.2,
+          "assessment_score": 98.0,
+          "placeholder": false,
+          "dimension_key": "incomplete_migration",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "Init coupling": {
+      "score": 98.0,
+      "strict": 98.0,
+      "verified_strict_score": 98.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.98,
+          "failing": 0,
+          "weighted_failures": 0.2,
+          "assessment_score": 98.0,
+          "placeholder": false,
+          "dimension_key": "initialization_coupling",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "Logic clarity": {
+      "score": 98.0,
+      "strict": 98.0,
+      "verified_strict_score": 98.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.98,
+          "failing": 0,
+          "weighted_failures": 0.2,
+          "assessment_score": 98.0,
+          "placeholder": false,
+          "dimension_key": "logic_clarity",
+          "configured_weight": 6.0,
+          "components": []
+        }
+      }
+    },
+    "Low elegance": {
+      "score": 98.0,
+      "strict": 98.0,
+      "verified_strict_score": 98.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.98,
+          "failing": 0,
+          "weighted_failures": 0.2,
+          "assessment_score": 98.0,
+          "placeholder": false,
+          "dimension_key": "low_level_elegance",
+          "configured_weight": 12.0,
+          "components": []
+        }
+      }
+    },
+    "Mid elegance": {
+      "score": 98.0,
+      "strict": 98.0,
+      "verified_strict_score": 98.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.98,
+          "failing": 0,
+          "weighted_failures": 0.2,
+          "assessment_score": 98.0,
+          "placeholder": false,
+          "dimension_key": "mid_level_elegance",
+          "configured_weight": 22.0,
+          "components": []
+        }
+      }
+    },
+    "Naming quality": {
+      "score": 98.0,
+      "strict": 98.0,
+      "verified_strict_score": 98.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.98,
+          "failing": 0,
+          "weighted_failures": 0.2,
+          "assessment_score": 98.0,
+          "placeholder": false,
+          "dimension_key": "naming_quality",
+          "configured_weight": 2.0,
+          "components": []
+        }
+      }
+    },
+    "Structure nav": {
+      "score": 90.0,
+      "strict": 90.0,
+      "verified_strict_score": 90.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.9,
+          "failing": 0,
+          "weighted_failures": 1.0,
+          "assessment_score": 90.0,
+          "placeholder": false,
+          "dimension_key": "package_organization",
+          "configured_weight": 5.0,
+          "components": []
+        }
+      }
+    },
+    "Test strategy": {
+      "score": 86.0,
+      "strict": 86.0,
+      "verified_strict_score": 86.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.86,
+          "failing": 0,
+          "weighted_failures": 1.4,
+          "assessment_score": 86.0,
+          "placeholder": false,
+          "dimension_key": "test_strategy",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "Type safety": {
+      "score": 98.0,
+      "strict": 98.0,
+      "verified_strict_score": 98.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.98,
+          "failing": 0,
+          "weighted_failures": 0.2,
+          "assessment_score": 98.0,
+          "placeholder": false,
+          "dimension_key": "type_safety",
+          "configured_weight": 12.0,
+          "components": []
+        }
+      }
+    }
+  },
+  "reminder_history": {
+    "zone_classification": 3,
+    "report_scores": 12,
+    "feedback_nudge": 3,
+    "stagnant_nudge": 32,
+    "review_not_run": 1
+  },
+  "assessment_import_audit": [
+    {
+      "timestamp": "2026-04-12T08:50:35+00:00",
+      "mode": "manual_override",
+      "trusted": false,
+      "reason": "manual override attested by operator",
+      "override_used": true,
+      "attested_external": false,
+      "provisional": true,
+      "provisional_count": 26,
+      "attest": "AI holistic review: single-file Python security utility (check-unicode-integrity.py) that scans advocacy instruction files for hidden Unicode backdoor characters. Genuinely excellent code \u2014 clean stdlib-only implementation, comprehensive type annotations, well-named functions, specific error handling, zero external dependencies. 29 pytest tests cover all public functions. Scored conservatively on test_strategy (86) due to coverage detection limitation with importlib, package_organization (90) due to simple single-file structure, and advocacy_ux_inclusivity (88) due to CLI-only interface.",
+      "import_file": "/tmp/structured-coding-scores.json",
+      "packet_sha256": ""
+    }
+  ]
+}
