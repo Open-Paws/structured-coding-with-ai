@@ -1,0 +1,5 @@
+# Advocacy-domain language dictionaries intentionally enumerate speciesist
+# idioms as anti-examples — they ARE the scanner's own rule dictionary.
+# Excluding them from woke scans to prevent false positives.
+**/advocacy-domain.md
+**/advocacy-domain.mdc

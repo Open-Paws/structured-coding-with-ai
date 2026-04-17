@@ -175,7 +175,7 @@ Use these terms consistently. NEVER introduce synonyms.
 - **Factory Farm** — Industrial animal agriculture facility. Not "farm" or "production facility."
 - **Slaughterhouse** — Facility where animals are killed commercially. Use precisely.
 - **Companion Animal** — Animals kept for companionship. Distinct legal/ethical framework from farmed animals.
-- **Farmed Animal** — Animals raised for food/fiber/commercial products. Not "livestock" (industry framing).
+- **Farmed Animal** — Animals raised for food/fiber/commercial products. Not the industry commodity term.
 - **Evidence** — Documentation of exploitation with potential legal use.
 
 ### Bounded Contexts
@@ -194,7 +194,7 @@ These are DIFFERENT domains with different models, rules, and security requireme
 
 ### Compassionate Language — No Speciesist Idioms
 
-Code, documentation, comments, commit messages, and variable names must use compassionate, non-speciesist language. AI agents frequently generate common English idioms that normalize animal violence — reject these and use alternatives. Examples: "kill two birds with one stone" → "accomplish two things at once"; "beat a dead horse" → "belabor the point"; "guinea pig" → "test subject"; "cattle vs. pets" → "ephemeral vs. persistent"; "master/slave" → "primary/replica"; "whitelist/blacklist" → "allowlist/denylist". For automated enforcement covering 60+ patterns, see: https://github.com/Open-Paws/no-animal-violence (core rules) and integrations at https://github.com/Open-Paws.
+Code, documentation, comments, commit messages, and variable names must use compassionate, non-speciesist language. AI agents frequently generate idioms that normalize animal violence — reject and replace. For automated enforcement covering 60+ patterns, see: https://github.com/Open-Paws/no-animal-violence (core rules) and integrations at https://github.com/Open-Paws.
 
 ---
 
@@ -399,7 +399,7 @@ Before deploying to production. When new dependencies are added. When code touch
 
 6. **MCP server audit.** Verify sensitive-data servers are self-hosted. Audit data access, network egress, retention for each server.
 
-7. **Device seizure readiness.** Remote wipe capability. Auto-locking encrypted volumes. No sensitive data in temp files, swap, or crash dumps. Test: kill process unexpectedly, examine what remains on disk.
+7. **Device seizure readiness.** Remote wipe capability. Auto-locking encrypted volumes. No sensitive data in temp files, swap, or crash dumps. Test: terminate process unexpectedly, examine what remains on disk.
 
 8. **Ag-gag exposure assessment.** Audit every data flow assuming adversarial legal discovery. Verify metadata stripping. Verify audit logs protect identities. Minimize what a court subpoena would disclose.
 

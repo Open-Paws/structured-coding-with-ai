@@ -37,7 +37,7 @@ The "Rules File Backdoor" uses hidden Unicode characters to inject invisible dir
 For every MCP server: verify sensitive advocacy data servers are self-hosted. Audit data access patterns, network egress, and retention. MCP extends capabilities but also extends the attack surface — check whether any server can exfiltrate data regardless of application-level encryption.
 
 ### Step 7: Device Seizure Readiness
-Verify remote wipe for all sensitive data. Verify encrypted volumes lock on suspicious conditions (power loss, inactivity). Check application does not leak on unexpected termination — no temp files with decrypted content, no swap files with sensitive state, no crash dumps with investigation data. Test: kill process and examine what remains on disk.
+Verify remote wipe for all sensitive data. Verify encrypted volumes lock on suspicious conditions (power loss, inactivity). Check application does not leak on unexpected termination — no temp files with decrypted content, no swap files with sensitive state, no crash dumps with investigation data. Test: terminate the process and examine what remains on disk.
 
 ### Step 8: Ag-Gag Exposure Assessment
 Investigation footage is discoverable evidence:

@@ -155,7 +155,7 @@ AI agents drift from domain terminology toward generic synonyms ("user" instead 
 - **Factory Farm** — industrial animal agriculture facility (not "farm" or "production facility")
 - **Slaughterhouse** — facility where animals are killed commercially (use precise term)
 - **Companion Animal** — animals kept for companionship; distinct legal framework from farmed animals
-- **Farmed Animal** — animals raised for food/fiber/products (not "livestock," which is industry framing)
+- **Farmed Animal** — animals raised for food/fiber/products (the industry commodity term is avoided here)
 - **Evidence** — documentation of exploitation conditions with potential legal use
 
 ### Bounded Contexts — Do Not Merge
@@ -172,7 +172,7 @@ AI agents drift from domain terminology toward generic synonyms ("user" instead 
 
 ### Compassionate Language — No Speciesist Idioms
 
-Code, documentation, comments, commit messages, and variable names must use compassionate, non-speciesist language. AI agents frequently generate idioms that normalize animal violence — reject and replace. Examples: "kill two birds with one stone" → "accomplish two things at once"; "beat a dead horse" → "belabor the point"; "guinea pig" → "test subject"; "cattle vs. pets" → "ephemeral vs. persistent"; "master/slave" → "primary/replica"; "whitelist/blacklist" → "allowlist/denylist". For automated enforcement covering 60+ patterns, see: https://github.com/Open-Paws/no-animal-violence (core rules) and integrations at https://github.com/Open-Paws.
+Code, documentation, comments, commit messages, and variable names must use compassionate, non-speciesist language. AI agents frequently generate idioms that normalize animal violence — reject and replace. For automated enforcement covering 60+ patterns, see: https://github.com/Open-Paws/no-animal-violence (core rules) and integrations at https://github.com/Open-Paws.
 
 ---
 

@@ -222,7 +222,7 @@ Use these terms consistently in code, documentation, and AI prompts. NEVER intro
 - **Factory Farm** — Industrial animal agriculture facility. Use this term, not euphemisms like "farm" or "production facility."
 - **Slaughterhouse** — Facility where animals are killed for commercial purposes. Use this term precisely.
 - **Companion Animal** — Animals kept primarily for companionship. Distinct legal and ethical framework from farmed animals.
-- **Farmed Animal** — Animals raised for food, fiber, or other commercial products. Distinguished from "livestock" (industry framing).
+- **Farmed Animal** — Animals raised for food, fiber, or other commercial products. Not the industry commodity term.
 - **Evidence** — Documentation (footage, records, testimony) of animal exploitation conditions with potential legal use.
 
 ## Bounded Contexts
@@ -242,7 +242,7 @@ When data must cross bounded context boundaries, use explicit translation layers
 
 ## Compassionate Language — No Speciesist Idioms
 
-Code, documentation, comments, commit messages, and variable names must use compassionate, non-speciesist language. AI agents frequently generate common English idioms that normalize animal violence — reject these and use alternatives. Examples: "kill two birds with one stone" → "accomplish two things at once"; "beat a dead horse" → "belabor the point"; "more than one way to skin a cat" → "more than one way to solve this"; "guinea pig" → "test subject"; "cattle vs. pets" → "ephemeral vs. persistent"; "master/slave" → "primary/replica"; "whitelist/blacklist" → "allowlist/denylist". For automated enforcement covering 60+ speciesist patterns, see the Open Paws no-animal-violence ecosystem: https://github.com/Open-Paws/no-animal-violence (core rules), with integrations for Semgrep, ESLint, Vale, pre-commit hooks, GitHub Actions, VS Code, and Reviewdog at https://github.com/Open-Paws.
+Code, documentation, comments, commit messages, and variable names must use compassionate, non-speciesist language. AI agents frequently generate idioms that normalize animal violence — reject and replace. For automated enforcement covering 60+ patterns, see the Open Paws no-animal-violence ecosystem: https://github.com/Open-Paws/no-animal-violence (core rules), with integrations for Semgrep, ESLint, Vale, pre-commit hooks, GitHub Actions, VS Code, and Reviewdog at https://github.com/Open-Paws.
 
 ---
 
@@ -501,7 +501,7 @@ Before deploying changes. When dependencies are added. When code touches investi
 
 **Step 5: Instruction File Integrity — Rules File Backdoor.** Inspect all instruction files for hidden Unicode characters or prompt injection payloads. The **Rules File Backdoor** attack uses invisible characters to direct AI agents toward malicious output. Diff changes character-by-character. Verify no file weakens encryption, disables safety checks, or sends data to external endpoints.
 
-**Step 6: Device Seizure Readiness.** Verify remote wipe capability. Verify auto-lock on suspicious conditions. Test: kill the process unexpectedly and examine what remains on disk.
+**Step 6: Device Seizure Readiness.** Verify remote wipe capability. Verify auto-lock on suspicious conditions. Test: terminate the process unexpectedly and examine what remains on disk.
 
 **Step 7: Ag-Gag Exposure Assessment.** Audit data flows assuming adversarial legal discovery. Verify metadata stripping. Verify audit logs protect the identities they record. Check: if a court subpoena targeted this system, what would be disclosed?
 

@@ -141,7 +141,7 @@ Use these terms consistently. Never introduce synonyms:
 - **Investigation** — covert documentation (not "research" or "audit")
 - **Coalition** — multi-org alliance
 - **Sanctuary** — permanent animal care facility (not "shelter" or "foster")
-- **Farmed animal** — not "livestock"
+- **Farmed animal** — not the industry commodity term
 - **Factory farm** — not "farm" or "facility"
 - **Ag-gag** — laws criminalizing undercover agricultural investigation
 - **Companion animal** — not "pet"

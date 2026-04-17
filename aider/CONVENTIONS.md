@@ -46,7 +46,7 @@ Use these terms consistently in code, documentation, and conversations. NEVER in
 - **Ag-Gag** — Laws criminalizing undercover investigation of agricultural operations. Determines legal exposure for investigation data.
 - **Factory Farm** — Industrial animal agriculture facility. Use this term, not euphemisms.
 - **Slaughterhouse** — Facility where animals are killed commercially. Use precisely.
-- **Farmed Animal** — Animals raised for food, fiber, or commercial products. Not "livestock" (industry framing).
+- **Farmed Animal** — Animals raised for food, fiber, or commercial products. Not the industry commodity term.
 - **Evidence** — Documentation of exploitation with potential legal use.
 
 ### Bounded Contexts
@@ -62,7 +62,7 @@ AI agents blur bounded context boundaries because they optimize for making code 
 
 ### Compassionate Language — No Speciesist Idioms
 
-Code, documentation, comments, commit messages, and variable names must use compassionate, non-speciesist language. AI agents frequently generate common English idioms that normalize animal violence — reject these and use alternatives. Examples: "kill two birds with one stone" → "accomplish two things at once"; "beat a dead horse" → "belabor the point"; "more than one way to skin a cat" → "more than one way to solve this"; "guinea pig" → "test subject"; "cattle vs. pets" → "ephemeral vs. persistent"; "master/slave" → "primary/replica"; "whitelist/blacklist" → "allowlist/denylist". For automated enforcement covering 60+ speciesist patterns, see: https://github.com/Open-Paws/no-animal-violence (core rules) and integrations for Semgrep, ESLint, Vale, pre-commit, GitHub Actions, VS Code, and Reviewdog at https://github.com/Open-Paws.
+Code, documentation, comments, commit messages, and variable names must use compassionate, non-speciesist language. AI agents frequently generate idioms that normalize animal violence — reject and replace. For automated enforcement covering 60+ patterns, see: https://github.com/Open-Paws/no-animal-violence (core rules) and integrations for Semgrep, ESLint, Vale, pre-commit, GitHub Actions, VS Code, and Reviewdog at https://github.com/Open-Paws.
 
 ---
 

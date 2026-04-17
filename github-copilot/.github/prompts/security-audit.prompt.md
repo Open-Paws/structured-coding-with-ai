@@ -33,7 +33,7 @@ For every MCP server: verify servers handling sensitive advocacy data are self-h
 
 ## Step 7: Device Seizure Readiness
 
-Verify remote wipe capability for all sensitive data. Verify encrypted volumes lock automatically on suspicious conditions (unexpected power loss, extended inactivity). Check that the application does not leak data on unexpected termination — no temp files with decrypted content, no swap files with sensitive state, no crash dumps with investigation data. Test: kill the process unexpectedly and examine what remains on disk.
+Verify remote wipe capability for all sensitive data. Verify encrypted volumes lock automatically on suspicious conditions (unexpected power loss, extended inactivity). Check that the application does not leak data on unexpected termination — no temp files with decrypted content, no swap files with sensitive state, no crash dumps with investigation data. Test: terminate the process unexpectedly and examine what remains on disk.
 
 ## Step 8: Ag-Gag Exposure Assessment
 
