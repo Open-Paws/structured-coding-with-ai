@@ -88,7 +88,7 @@ Every tool covers the same material, adapted to its native format. Tools with mu
 
 **7 process skills** (workflow guides invoked on demand):
 
-- **git-workflow** -- Atomic commits, ephemeral branches, PR curation, AI-Assisted tags, code survival rate tracking
+- **git-workflow** -- Issue-first GitHub workflow: worktree-per-task, plan→review→implement loops, desloppify gate, PR monitoring until merged
 - **testing-strategy** -- Spec-first generation, five anti-patterns to avoid (snapshot trap, mock everything, happy path only, test-after-commit, coverage theater), mutation-guided improvement
 - **requirements-interview** -- Structured stakeholder questions covering threat model, coalition needs, user safety, budget constraints
 - **plan-first-development** -- Spec, design, decompose, implement one subtask at a time, generation-then-comprehension pattern

@@ -184,17 +184,29 @@ Advocacy software handles content documenting extreme suffering: factory farm co
 
 ---
 
-## Git Workflow
+## GitHub Workflow
 
-Use Aider's automatic commit feature — every change is committed with a sensible message. Layer human judgment on top.
+Use Aider's automatic commit feature — every change is committed with a sensible message. Layer this structured workflow on top. Never commit or push directly to `main`. Never merge to `main` directly. Never share a branch between parallel agents.
 
-**Ephemeral branches.** Create short-lived branches per task. Trunk-based development remains the goal — branches are safety nets, not long-lived workspaces. If no mergeable work within one session, delete the branch and reconsider.
+**Step 0 — GitHub issue first.** Before writing any code, verify there is a documented issue: `gh issue list --search "keywords"`. If no issue exists, create one: `gh issue create --title "Fix: description" --body "..."`. Include problem description, acceptance criteria, affected files, and security/privacy considerations. Do not begin implementation until the issue is documented.
 
-**One subtask, one commit.** Break tasks into smallest logical subtasks. If the task decomposes into "extract interface, implement adapter, update callers," those are three commits. Test before each commit — every commit must leave the codebase passing.
+**Step 1 — One worktree per task.** Every task — especially in parallel agent swarms — gets its own git worktree: `git worktree add ../worktrees/<branch-name> -b <branch-name>`. Branch naming: `fix/<issue-number>-short-description` or `feat/<issue-number>-short-description`. Under 50 characters. When spawning parallel sub-agents, each agent MUST receive its own unique branch name and worktree path — agents sharing a branch will produce conflicts and corrupted history.
 
-**PR curation.** PR curation is the critical human skill. AI inflated PR size by 154%. Split into reviewable chunks: target under 200 lines changed, ideally under 100. Use stacked PRs for large changes. Each PR tells a coherent story.
+**Step 2 — Read the codebase.** Before planning, read every file in the affected module(s), existing utilities and patterns, test files, and recent git log. Do not begin planning until you can describe the current behavior in your own words.
 
-**Tag and review.** Tag every PR containing AI-generated code as AI-Assisted. Require two human approvals for primarily AI-generated PRs. Call out security boundaries and investigation/coalition data handling.
+**Step 3 — Write a plan.** Write a detailed implementation plan: specific change in one sentence, which files change and why, subtask decomposition (each subtask = one commit), test strategy, security/privacy considerations, desloppify score impact.
+
+**Step 4 — Review the plan (loop until approved).** Review against the issue's acceptance criteria: fully addresses it? No duplicate code? Follows conventions? Security/privacy addressed? Each subtask atomic? Loop: revise → review → until all concerns resolved. No implementation on unresolved concerns.
+
+**Step 5 — Implement one subtask at a time.** For each subtask: implement, run tests, verify no data leakage, commit WHY not WHAT: `git commit -m "fix(#<issue>): <imperative-mood description>"`. Every commit must leave the codebase passing.
+
+**Step 6 — Review implementation (loop until approved).** Review full diff against plan: matches plan? Acceptance criteria met? No scope creep? Tests fail when behavior breaks? All safety checks preserved? Loop: fix → review → until clean.
+
+**Step 7 — desloppify (score must not drop).** Before opening a PR: `desloppify scan --path . && desloppify next`. Score after changes must be ≥ score before — a drop means the PR is not ready. If the repo has no published score, establish a baseline first. Minimum scores: Gary ≥80 · Platform repos ≥75 · All other repos ≥70
+
+**Step 8 — Submit PR.** `gh pr create --title "fix: description (closes #<issue>)"` with summary, closes reference, test plan, and desloppify before/after scores. Under 200 lines changed (ideally under 100). Stacked PRs for large changes. AI-Assisted label for primarily agent-generated code. Two human approvals required.
+
+**Step 9 — Monitor until merged.** After submitting, check periodically: `gh pr view <number>`, `gh pr checks <number>`, `gh pr comments <number>`. Fix CI failures immediately on the same branch. Respond to every review comment; fix blocking issues and push. Re-request review when fixes are pushed. **The task is not done until the PR is merged.**
 
 **Quality signals.** Code Survival Rate — how much AI code remains unchanged 48 hours after merge. Healthy suggestion acceptance rate: 25-35%; higher may indicate over-reliance.
 

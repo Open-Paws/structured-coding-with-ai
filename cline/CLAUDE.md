@@ -22,7 +22,7 @@ The `.clinerules/` directory contains flat files. Cline loads all of them and ap
 | `emotional-safety.md` | Progressive disclosure, content warnings, burnout prevention | Content-displaying features |
 | `external-contribution-safety.md` | Two-state identity: advocacy mode vs neutral mode for external repos | Any external repo work |
 | `geo-seo.md` | SEO and GEO optimization rules | Public-facing pages |
-| `git-workflow.md` | Atomic commits, ephemeral branches, PR curation | Git operations |
+| `git-workflow.md` | Issue-first GitHub workflow: worktree-per-task, plan→review→implement loops, desloppify gate, PR monitoring | Git operations |
 | `plan-first.md` | Read → plan → code → verify workflow | Before any implementation |
 | `privacy.md` | Activist identity protection, real deletion, zero-knowledge architecture | Any data handling |
 | `requirements-interview.md` | Six-phase stakeholder interview | Requirements gathering |

@@ -28,7 +28,7 @@ Cross-cutting rules applied across modes:
 
 Inline skill definitions (not subdirectories -- each is a single markdown file):
 
-- `git-workflow.md` -- Atomic commits, ephemeral branches, PR curation, AI-Assisted tagging.
+- `git-workflow.md` -- Issue-first GitHub workflow: worktree-per-task, plan→review→implement loops, desloppify gate, PR monitoring until merged.
 - `testing-strategy.md` -- Spec-first test generation, mutation testing, assertion quality review.
 - `requirements-interview.md` -- Structured stakeholder interview producing specification documents.
 - `plan-first.md` -- Read-plan-code-verify workflow with spec writing and subtask decomposition.

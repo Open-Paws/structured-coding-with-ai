@@ -297,28 +297,37 @@ Use abstract test data in automated tests, not actual footage. Provide mock data
 
 ---
 
-# Skill: Git Workflow
+# Skill: GitHub Workflow
+
+## Hard Rules
+Never commit or push directly to `main`. Never merge to `main` directly. Never share a branch between parallel agents.
 
 ## When to Use
-Before committing, branching, or creating a pull request. After an AI agent has generated changes that need to be broken into logical units.
+Before starting any coding task on a GitHub repository. Before committing, branching, or creating a pull request. When multiple agents are running in parallel. After an AI agent has generated a batch of changes.
 
 ## Process
 
-**1. Create an Ephemeral Branch.** Trunk-based development remains the goal. The branch is a safety net, not a long-lived workspace. If the agent has not produced mergeable work within one session, delete the branch and reconsider the approach.
+**0. GitHub Issue First.** Before writing any code: `gh issue list --search "keywords"`. If no issue exists, create one with `gh issue create`. Include problem description, acceptance criteria, affected files/components, and security/privacy considerations. Do not begin implementation until the issue is documented.
 
-**2. Implement One Subtask.** Break the task into the smallest logical subtasks. Each subtask is one commit. "Extract interface, implement adapter, update callers" = three commits. Never let the agent complete an entire multi-step task before committing.
+**1. One Worktree Per Task.** Every task — especially in parallel agent swarms — gets its own git worktree: `git worktree add ../worktrees/<branch-name> -b <branch-name>`. Branch naming: `fix/<issue-number>-short-description`. When spawning parallel sub-agents, each MUST receive its own unique branch name and worktree path — sharing a branch produces conflicts and corrupted history.
 
-**3. Test Before Committing.** Run the relevant test subset before each commit. Every commit must leave the codebase passing. For advocacy code, verify no sensitive data has leaked into test output, logs, or error messages.
+**2. Read the Codebase.** Before planning, read every file in the affected module(s), existing utilities and patterns, test files, and recent git log. Do not plan until you can describe the current behavior in your own words.
 
-**4. Write the Commit Message.** Explain WHY, not WHAT. First line: 50 characters, imperative mood. Reference issues. Add AI attribution trailers.
+**3. Write a Plan.** Write a detailed implementation plan: specific change in one sentence, which files change and why, subtask decomposition (each subtask = one commit), test strategy, security/privacy considerations, desloppify score impact.
 
-**5. Repeat.** Continue: implement one subtask, test, commit. Each commit independently understandable.
+**4. Review the Plan (loop until approved).** Review against the issue's acceptance criteria: fully addresses it? No duplicate code? Follows conventions? Security/privacy addressed? Each subtask atomic? Loop: revise → review → until all concerns resolved.
 
-**6. Curate the Pull Request.** PR curation is the critical human skill. AI adoption inflated PR size by 154%. Do not submit agent output as one PR. Target under 200 lines changed per PR, ideally under 100. Use stacked PRs for large changes (PR1, PR2, PR3 — each independently reviewable).
+**5. Implement One Subtask at a Time.** For each subtask: implement, run tests, verify no data leakage, commit WHY not WHAT: `git commit -m "fix(#<issue>): <imperative-mood description>"`. Every commit must leave the codebase passing.
 
-**7. Tag and Request Review.** Tag every PR containing AI-generated code as AI-Assisted. Require two human approvals for primarily AI-generated PRs. Call out security boundaries, error handling, and investigation/coalition data touchpoints.
+**6. Review Implementation (loop until approved).** Review full diff against plan: matches plan? Acceptance criteria met? No scope creep? Tests fail when behavior breaks? All safety checks preserved? Loop: fix → review → until clean.
 
-**8. Track Quality Signals.** Code Survival Rate: how much AI code remains unchanged 48 hours after merge. Suggestion acceptance rate: healthy range 25-35%; higher may indicate over-reliance.
+**7. Run desloppify (score must not drop).** `desloppify scan --path . && desloppify next`. Score after changes must be ≥ score before — a drop means the PR is not ready. If the repo has no published score, establish a baseline first. Minimum scores: Gary ≥80 · Platform repos ≥75 · All other repos ≥70
+
+**8. Submit the PR.** `gh pr create --title "fix: description (closes #<issue>)"` with summary, closes reference, test plan, and desloppify before/after scores. Under 200 lines changed (ideally under 100). Stacked PRs for large changes. AI-Assisted label for primarily agent-generated code. Two human approvals required.
+
+**9. Monitor Until Merged.** After submitting, check periodically: `gh pr view <number>`, `gh pr checks <number>`, `gh pr comments <number>`. Fix CI failures immediately on the same branch. Respond to every review comment; fix blocking issues and push. Re-request review when fixes are pushed. **The task is not done until the PR is merged.**
+
+**Quality Signals.** Code Survival Rate: how much AI code remains unchanged 48 hours after merge. Suggestion acceptance rate: healthy range 25-35%; higher may indicate over-reliance.
 
 **Merge Strategy.** Squash-merge ephemeral branches. Delete branches immediately after merge.
 
