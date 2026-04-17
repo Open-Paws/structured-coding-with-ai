@@ -267,7 +267,7 @@ Before starting any coding task on a GitHub repository. Before committing, branc
 
 **Step 8 — Submit PR.** `gh pr create --title "fix: description (closes #<issue>)"` with summary, closes reference, test plan, and desloppify before/after scores. Under 200 lines changed (ideally under 100). Stacked PRs for large changes. AI-Assisted label for primarily agent-generated code. Two human approvals required.
 
-**Step 9 — Monitor until merged.** After submitting, check periodically: `gh pr view <number>`, `gh pr checks <number>`, `gh pr comments <number>`. Fix CI failures immediately on the same branch. Respond to every review comment; fix blocking issues and push. Re-request review when fixes are pushed. **The task is not done until the PR is merged.**
+**Step 9 — Monitor until merged.** After submitting, check periodically: `gh pr view <number>`, `gh pr checks <number>`, `gh pr view <number> --comments`. Fix CI failures immediately on the same branch. Respond to every review comment; fix blocking issues and push. Re-request review when fixes are pushed. **The task is not done until the PR is merged.**
 
 **Quality signals.** Code Survival Rate: how much AI code remains 48 hours after merge. Suggestion acceptance rate: healthy 25-35%; higher may indicate over-reliance.
 

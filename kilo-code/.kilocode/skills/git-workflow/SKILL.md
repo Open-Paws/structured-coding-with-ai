@@ -165,7 +165,7 @@ After submitting, the task is not done. Periodically check the PR:
 ```bash
 gh pr view <number>       # overall status
 gh pr checks <number>     # CI/CD status
-gh pr comments <number>   # review comments
+gh pr view <number> --comments   # review comments
 ```
 
 **CI/CD failures:** Investigate immediately. Identify the root cause, fix on the same branch, push, and verify checks go green. Do not leave a PR with failing checks unattended.

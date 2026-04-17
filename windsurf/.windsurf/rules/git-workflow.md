@@ -105,7 +105,7 @@ Under 200 lines changed, ideally under 100. Stacked PRs for large changes. **AI-
 ```bash
 gh pr view <number>
 gh pr checks <number>
-gh pr comments <number>
+gh pr view <number> --comments
 ```
 
 **CI failures:** fix on same branch, push, verify green. Do not leave failing checks unattended.

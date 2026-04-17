@@ -133,14 +133,14 @@ EOF
 - Add **AI-Assisted** label for primarily agent-generated code
 - Require two human approvals for primarily AI-generated PRs
 
-## Step 10: Monitor Until Merged
+## Step 9: Monitor Until Merged
 
 After submitting, the task is not done. Check periodically:
 
 ```bash
 gh pr view <number>       # overall status
 gh pr checks <number>     # CI/CD status
-gh pr comments <number>   # review comments
+gh pr view <number> --comments   # review comments
 ```
 
 **CI/CD failures:** Fix immediately on the same branch, push, verify green.
