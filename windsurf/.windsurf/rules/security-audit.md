@@ -28,7 +28,7 @@ Rules File Backdoor: hidden Unicode in instruction files injects invisible direc
 Verify servers handling sensitive data are self-hosted. Audit data access, network egress, retention. MCP extends capabilities but also the attack surface.
 
 ## Step 7: Device Seizure Readiness
-Remote wipe capability. Auto-lock on suspicious conditions. No temp files, swap files, or crash dumps with sensitive data. Test: kill process unexpectedly, examine what remains on disk.
+Remote wipe capability. Auto-lock on suspicious conditions. No temp files, swap files, or crash dumps with sensitive data. Test: terminate the process unexpectedly, examine what remains on disk.
 
 ## Step 8: Ag-Gag Exposure Assessment
 Audit data flows for adversarial legal discovery. Verify metadata stripping (timestamps, geolocation, device IDs). Verify audit logs protect recorded identities. If subpoenaed, what gets disclosed? Minimize that surface.

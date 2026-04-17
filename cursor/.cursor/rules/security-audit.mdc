@@ -18,7 +18,7 @@ Every audit must consider all three adversary categories:
 
 **Industry Infiltration** — Corporate investigators posing as volunteers, social engineering attacks against coalition members, industry-funded surveillance of activist networks. They use social and technical means to penetrate organizations.
 
-**AI Model Bias** — Training data encoding industry framing ("livestock" instead of "farmed animal"), models refusing to assist with investigation documentation, or models leaking investigation details through telemetry. The tools themselves can be compromised vectors.
+**AI Model Bias** — Training data encoding industry commodity framing instead of "farmed animal", models refusing to assist with investigation documentation, or models leaking investigation details through telemetry. The tools themselves can be compromised vectors.
 
 ## Audit Checklist
 

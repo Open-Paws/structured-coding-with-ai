@@ -22,7 +22,7 @@ Each file starts with YAML frontmatter specifying its activation mode, followed 
 | `cost-optimization.mdc` | agentRequested | Model routing, token budgets, vendor lock-in, self-hosted inference |
 | `accessibility.mdc` | agentRequested | Internationalization, low-bandwidth, offline-first, mesh networking |
 | `emotional-safety.mdc` | agentRequested | Progressive disclosure, content warnings, investigation footage handling |
-| `git-workflow.mdc` | agentRequested | Atomic commits, ephemeral branches, PR curation, AI-Assisted tagging |
+| `git-workflow.mdc` | agentRequested | Issue-first GitHub workflow: worktree-per-task, plan→review→implement loops, desloppify gate, PR monitoring until merged |
 | `plan-first.mdc` | agentRequested | Read-plan-code-verify workflow, spec writing, subtask decomposition |
 | `testing-strategy.mdc` | autoAttached | Globs: `**/*.test.*`, `**/*.spec.*`. Spec-first test generation, five anti-patterns |
 | `requirements-interview.mdc` | manual | Structured stakeholder interview for advocacy projects |

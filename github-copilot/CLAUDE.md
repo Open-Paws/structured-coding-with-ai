@@ -40,7 +40,7 @@ Reusable prompt files invoked from Copilot chat:
 |------|---------------|--------------|
 | `code-review.prompt.md` | Five-layer code review pipeline | PR review |
 | `geo-seo-audit.prompt.md` | SEO and GEO audit workflow | Public pages audit |
-| `git-workflow.prompt.md` | Atomic commits, ephemeral branches, PR curation | Git operations |
+| `git-workflow.prompt.md` | Issue-first GitHub workflow: worktree-per-task, plan→review→implement loops, desloppify gate, PR monitoring | Git operations |
 | `plan-first.prompt.md` | Read → plan → code → verify workflow | Before implementation |
 | `requirements-interview.prompt.md` | Six-phase stakeholder interview | Requirements gathering |
 | `security-audit.prompt.md` | 10-step advocacy security audit | Security reviews |

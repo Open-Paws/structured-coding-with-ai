@@ -20,7 +20,7 @@ Contains 14 files: one global rule file and 13 scoped files for concerns and ski
 
 ### Skill Files (6)
 
-- `git-workflow.md` -- Atomic commits, ephemeral branches, PR curation, AI-Assisted tagging.
+- `git-workflow.md` -- Issue-first GitHub workflow: worktree-per-task, plan→review→implement loops, desloppify gate, PR monitoring until merged.
 - `testing-strategy.md` -- Spec-first test generation, mutation testing, assertion quality review.
 - `requirements-interview.md` -- Structured stakeholder interview producing specification documents.
 - `plan-first.md` -- Read-plan-code-verify workflow with spec writing and subtask decomposition.

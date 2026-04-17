@@ -8,7 +8,7 @@ Three distinct adversaries, each requiring different countermeasures:
 
 **Industry Infiltration** — Corporate investigators posing as volunteers, social engineering attacks against coalition members, probing of investigation submission tools. Countermeasures: input validation on every public surface, compartmentalized access, monitoring for anomalous behavior patterns, coalition data isolation.
 
-**AI Model Bias** — Training data encoding industry framing ("livestock" instead of "farmed animals"), models refusing to assist with certain advocacy operations, telemetry leaking investigation details to model providers. Countermeasures: self-hosted inference for critical paths, explicit domain language enforcement, zero-retention API configurations, instruction file integrity checks.
+**AI Model Bias** — Training data encoding industry commodity framing instead of "farmed animals", models refusing to assist with certain advocacy operations, telemetry leaking investigation details to model providers. Countermeasures: self-hosted inference for critical paths, explicit domain language enforcement, zero-retention API configurations, instruction file integrity checks.
 
 ## Technology Approach
 

@@ -175,7 +175,7 @@ Use these terms consistently. NEVER introduce synonyms.
 - **Factory Farm** — Industrial animal agriculture facility. Not "farm" or "production facility."
 - **Slaughterhouse** — Facility where animals are killed commercially. Use precisely.
 - **Companion Animal** — Animals kept for companionship. Distinct legal/ethical framework from farmed animals.
-- **Farmed Animal** — Animals raised for food/fiber/commercial products. Not "livestock" (industry framing).
+- **Farmed Animal** — Animals raised for food/fiber/commercial products. Not the industry commodity term.
 - **Evidence** — Documentation of exploitation with potential legal use.
 
 ### Bounded Contexts
@@ -194,7 +194,7 @@ These are DIFFERENT domains with different models, rules, and security requireme
 
 ### Compassionate Language — No Speciesist Idioms
 
-Code, documentation, comments, commit messages, and variable names must use compassionate, non-speciesist language. AI agents frequently generate common English idioms that normalize animal violence — reject these and use alternatives. Examples: "kill two birds with one stone" → "accomplish two things at once"; "beat a dead horse" → "belabor the point"; "guinea pig" → "test subject"; "cattle vs. pets" → "ephemeral vs. persistent"; "master/slave" → "primary/replica"; "whitelist/blacklist" → "allowlist/denylist". For automated enforcement covering 60+ patterns, see: https://github.com/Open-Paws/no-animal-violence (core rules) and integrations at https://github.com/Open-Paws.
+Code, documentation, comments, commit messages, and variable names must use compassionate, non-speciesist language. AI agents frequently generate idioms that normalize animal violence — reject and replace. For automated enforcement covering 60+ patterns, see: https://github.com/Open-Paws/no-animal-violence (core rules) and integrations at https://github.com/Open-Paws.
 
 ---
 
@@ -240,24 +240,34 @@ Advocacy software handles content documenting extreme suffering. Every display d
 
 ---
 
-## Git Workflow
+## GitHub Workflow
+
+Never commit or push directly to `main`. Never merge to `main` directly. Never share a branch between parallel agents.
 
 ### When to Use
-Before committing, branching, or creating a PR. After an AI agent has generated a batch of changes.
+Before starting any coding task on a GitHub repository. Before committing, branching, or creating a PR. When multiple agents run in parallel. After an AI agent has generated a batch of changes.
 
 ### Process
 
-**Create an ephemeral branch.** Trunk-based development is the goal. The branch is a safety net. If the agent has not produced mergeable work in one session, delete the branch and reconsider. Name for the task, not a feature epic.
+**Step 0 — GitHub issue first.** Before writing any code, verify there is a documented issue: `gh issue list --search "keywords"`. If no issue exists, create one: `gh issue create --title "Fix: description" --body "..."`. Include problem description, acceptance criteria, affected files, and security/privacy considerations. Do not begin implementation until the issue is documented.
 
-**One subtask per commit.** Break overall task into smallest logical units. "Extract interface, implement adapter, update callers" = three commits. Never let the agent complete an entire multi-step task before committing.
+**Step 1 — One worktree per task.** Every task — especially in parallel agent swarms — gets its own git worktree: `git worktree add ../worktrees/<branch-name> -b <branch-name>`. Branch naming: `fix/<issue-number>-short-description` or `feat/<issue-number>-short-description`. Under 50 characters. When spawning parallel sub-agents, each agent MUST receive its own unique branch name and worktree path — agents sharing a branch produce conflicts and corrupted history.
 
-**Test before committing.** Every commit leaves the codebase passing. For advocacy code: also verify no sensitive data in test output, logs, or error messages.
+**Step 2 — Read the codebase.** Before planning, read every file in the affected module(s), existing utilities and patterns, test files, and recent git log. Do not begin planning until you can describe the current behavior in your own words.
 
-**Commit messages explain WHY.** First line: 50 chars, imperative mood. Reference issue/ticket. Add AI attribution trailers.
+**Step 3 — Write a plan.** Write a detailed implementation plan: specific change in one sentence, which files change and why, subtask decomposition (each subtask = one commit), test strategy, security/privacy considerations, desloppify score impact.
 
-**Curate the PR.** PR curation is the critical human skill. AI adoption inflated PR size by 154%. Split into reviewable chunks: under 200 lines (ideally under 100). Stacked PRs for large changes (PR1, PR2, PR3 each independently reviewable).
+**Step 4 — Review the plan (loop until approved).** Review against the issue's acceptance criteria: fully addresses it? No duplicate code? Follows conventions? Security/privacy addressed? Each subtask atomic? Loop: revise → review → until all concerns resolved. No implementation on unresolved concerns.
 
-**Tag and review.** Tag every PR with AI-generated code as AI-Assisted. Two human approvals for primarily AI-generated PRs. Call out security boundaries, error handling, investigation/coalition data.
+**Step 5 — Implement one subtask at a time.** For each subtask: implement, run tests, verify no data leakage, commit WHY not WHAT: `git commit -m "fix(#<issue>): <imperative-mood description>"`. Every commit must leave the codebase passing.
+
+**Step 6 — Review implementation (loop until approved).** Review full diff against plan: matches plan? Acceptance criteria met? No scope creep? Tests fail when behavior breaks? All safety checks preserved? Loop: fix → review → until clean.
+
+**Step 7 — desloppify (score must not drop).** Before opening a PR: `desloppify scan --path . && desloppify next`. Score after changes must be ≥ score before — a drop means the PR is not ready. If the repo has no published score, establish a baseline first. Minimum scores: Gary ≥80 · Platform repos ≥75 · All other repos ≥70
+
+**Step 8 — Submit PR.** `gh pr create --title "fix: description (closes #<issue>)"` with summary, closes reference, test plan, and desloppify before/after scores. Under 200 lines changed (ideally under 100). Stacked PRs for large changes. AI-Assisted label for primarily agent-generated code. Two human approvals required.
+
+**Step 9 — Monitor until merged.** After submitting, check periodically: `gh pr view <number>`, `gh pr checks <number>`, `gh pr view <number> --comments`. Fix CI failures immediately on the same branch. Respond to every review comment; fix blocking issues and push. Re-request review when fixes are pushed. **The task is not done until the PR is merged.**
 
 **Quality signals.** Code Survival Rate: how much AI code remains 48 hours after merge. Suggestion acceptance rate: healthy 25-35%; higher may indicate over-reliance.
 
@@ -389,7 +399,7 @@ Before deploying to production. When new dependencies are added. When code touch
 
 6. **MCP server audit.** Verify sensitive-data servers are self-hosted. Audit data access, network egress, retention for each server.
 
-7. **Device seizure readiness.** Remote wipe capability. Auto-locking encrypted volumes. No sensitive data in temp files, swap, or crash dumps. Test: kill process unexpectedly, examine what remains on disk.
+7. **Device seizure readiness.** Remote wipe capability. Auto-locking encrypted volumes. No sensitive data in temp files, swap, or crash dumps. Test: terminate process unexpectedly, examine what remains on disk.
 
 8. **Ag-gag exposure assessment.** Audit every data flow assuming adversarial legal discovery. Verify metadata stripping. Verify audit logs protect identities. Minimize what a court subpoena would disclose.
 

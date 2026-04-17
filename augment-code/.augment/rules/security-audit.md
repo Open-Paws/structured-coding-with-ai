@@ -30,7 +30,7 @@ AI-generated code contains OWASP Top 10 vulnerabilities in 45% of cases — 2.74
 The "Rules File Backdoor" attack uses hidden Unicode characters in instruction files to inject invisible directives that make AI agents produce malicious output. Inspect all instruction files for non-printable characters beyond standard whitespace. Diff changes character-by-character, not just visually. Verify no instruction file weakens encryption, disables safety checks, or sends data to external endpoints. Treat instruction files as security-critical artifacts — in advocacy projects, a compromised instruction file could direct the AI to leak investigation data.
 
 ### Step 6: Device Seizure Readiness
-Verify remote wipe capability exists for all sensitive data. Verify encrypted volumes lock automatically on suspicious conditions (unexpected power loss, extended inactivity). Check that the application does not leak data on unexpected termination — no temp files with decrypted content, no swap files with sensitive state, no crash dumps with investigation data. Test: kill the process unexpectedly and examine what remains on disk.
+Verify remote wipe capability exists for all sensitive data. Verify encrypted volumes lock automatically on suspicious conditions (unexpected power loss, extended inactivity). Check that the application does not leak data on unexpected termination — no temp files with decrypted content, no swap files with sensitive state, no crash dumps with investigation data. Test: terminate the process unexpectedly and examine what remains on disk.
 
 ### Step 7: Ag-Gag Exposure Assessment
 Investigation footage is discoverable evidence under legal proceedings:

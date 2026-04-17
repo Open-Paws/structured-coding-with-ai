@@ -29,7 +29,7 @@ The `.cursorrules` file is the always-active baseline. `.cursor/rules/` files us
 | `emotional-safety.mdc` | Progressive disclosure, content warnings, burnout prevention | Content-displaying features |
 | `external-contribution-safety.mdc` | Two-state identity: advocacy mode vs neutral mode for external repos | Any external repo work |
 | `geo-seo.mdc` | SEO and GEO optimization rules | Public-facing pages |
-| `git-workflow.mdc` | Atomic commits, ephemeral branches, PR curation | Git operations |
+| `git-workflow.mdc` | Issue-first GitHub workflow: worktree-per-task, plan→review→implement loops, desloppify gate, PR monitoring | Git operations |
 | `plan-first.mdc` | Read → plan → code → verify workflow | Before any implementation |
 | `privacy.mdc` | Activist identity protection, real deletion, zero-knowledge architecture | Any data handling |
 | `requirements-interview.mdc` | Six-phase stakeholder interview | Requirements gathering |

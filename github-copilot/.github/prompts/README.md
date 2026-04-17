@@ -6,7 +6,7 @@
 
 | File | Purpose |
 |------|---------|
-| `git-workflow.prompt.md` | Guides the developer through atomic commits, ephemeral branches, PR curation, and AI-Assisted tagging |
+| `git-workflow.prompt.md` | Guides the developer through the full GitHub workflow: issue-first, worktree-per-task, plan→review→implement loops, desloppify gate, PR monitoring until merged |
 | `testing-strategy.prompt.md` | Spec-first test generation, assertion quality review, mutation testing, five generation patterns and five anti-patterns |
 | `requirements-interview.prompt.md` | Structured stakeholder interview: purpose, threat modeling, coalition boundaries, user safety, technical constraints, synthesis |
 | `plan-first.prompt.md` | Plan-before-code workflow: read existing code, write spec, decompose into subtasks, implement one at a time, comprehension check |
