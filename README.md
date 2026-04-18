@@ -1,4 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![desloppify score](https://img.shields.io/badge/desloppify-94.2%2F100-brightgreen)](scorecard.png)
 [![Last Commit](https://img.shields.io/github/last-commit/Open-Paws/structured-coding-with-ai)](https://github.com/Open-Paws/structured-coding-with-ai/commits/main)
 [![Integrity Check](https://github.com/Open-Paws/structured-coding-with-ai/actions/workflows/integrity-check.yml/badge.svg)](https://github.com/Open-Paws/structured-coding-with-ai/actions/workflows/integrity-check.yml)
 [![No Animal Violence](https://github.com/Open-Paws/structured-coding-with-ai/actions/workflows/no-animal-violence.yml/badge.svg)](https://github.com/Open-Paws/structured-coding-with-ai/actions/workflows/no-animal-violence.yml)
@@ -214,6 +215,10 @@ structured-coding-with-ai  (canonical AI methodology)
 - [Open Paws developer docs](https://openpaws.ai) — platform documentation
 
 ---
+
+## Code Quality
+
+<img src="scorecard.png" width="100%">
 
 ## Contributing
 
