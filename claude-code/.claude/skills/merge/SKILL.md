@@ -1,6 +1,6 @@
 ---
 name: merge
-description: Ranked merge queue with honest confidence scoring. Replaces "open 12 PR tabs" with one table. Reads the latest /run report (if <30min old) or derives ready-for-merge state via gh, computes a calibrated HIGH/MED/LOW confidence per PR, emits a markdown table with copy-paste merge commands. Read-only — never merges, never invokes subagents. Operator-only.
+description: Ranked merge queue with honest confidence scoring. Replaces "open 12 PR tabs" with one table. Pulls open PRs from gh, filters to `stage:ready-for-merge` (plus all-gates-green PRs without a blocking stage label), runs its own per-PR evaluation, computes calibrated HIGH/MED/LOW confidence, emits a markdown table with clickable PR links and copy-paste merge commands. Read-only — never merges, never invokes subagents. Operator-only.
 disable-model-invocation: true
 argument-hint: "[--risky] [--repo <name>]"
 allowed-tools: Bash(gh:*), Bash(head:*), Bash(ls:*), Bash(date:*), Bash(stat:*), Read, Grep, Glob
@@ -9,9 +9,9 @@ model: opus
 
 # /merge — ranked merge queue, no auto-merge
 
-Read-only operator HUD. Lists every PR currently at `stage:ready-for-merge` (or all-gates-green with no stage label blocking), ranks by calibrated confidence, emits copy-paste merge commands the operator runs themselves.
+Read-only operator HUD. Pulls open PRs directly from gh, filters to `stage:ready-for-merge` (and all-gates-green PRs without a blocking stage label), runs its own per-PR evaluation against the calibration rules below, emits clickable PR links and copy-paste merge commands the operator runs themselves.
 
-`/merge` does NOT merge. It does NOT drive the pipeline (that's `/run`). It does NOT invoke subagents. It reads existing pipeline state and surfaces it.
+`/merge` does NOT merge. It does NOT drive the pipeline (that's `/run`). It does NOT invoke subagents. It does NOT depend on the latest `/run` report — gh is the source of truth, and this command does its own eval.
 
 Read these every fire (auto-load via `InstructionsLoaded`; cite by name in any followup question):
 
@@ -27,28 +27,57 @@ Read these every fire (auto-load via `InstructionsLoaded`; cite by name in any f
 
 ## Algorithm
 
-### 1. Find the input
+### 1. Pull candidate PRs from gh (primary path — always run this)
+
+The canonical input is `gh pr list`, not the run log. Always derive live.
+
+**Step A — labelled `stage:ready-for-merge` PRs:**
+
+```bash
+gh pr list --repo Open-Paws/<repo> --state open \
+  --label 'stage:ready-for-merge' \
+  --json number,title,labels,url,statusCheckRollup,reviewDecision,mergeStateStatus,mergeable,headRefName,additions,deletions,changedFiles \
+  --limit 100
+```
+
+**Step B — all-gates-green sweep** (catches PRs that are functionally ready but missing the label, e.g. label-application drift):
+
+```bash
+gh pr list --repo Open-Paws/<repo> --state open \
+  --json number,title,labels,url,statusCheckRollup,reviewDecision,mergeStateStatus,mergeable \
+  --limit 200
+```
+
+Client-side filter: keep PRs where `statusCheckRollup` is all-SUCCESS AND labels contain none of `stage:plan-in-progress`/`stage:tests-in-progress`/`stage:impl-in-progress`/`stage:fix-needed`/`stage:adversarial-pending`. Tag these as "no label, all green" in the source column so the operator knows they came in via the sweep, not the official label.
+
+**Repo scope:**
+
+- `--repo <name>` set → just that repo
+- Not set → walk every Open-Paws repo where `OpenGaryBot` has push access. Get the list with `gh repo list Open-Paws --limit 100 --json name,viewerPermission` and keep entries where `viewerPermission` is `WRITE` or `ADMIN`.
+
+**Deduplicate** between Step A and Step B by `(repo, number)`.
+
+### 1b. Optional: cross-reference the latest run log (secondary signal only)
 
 ```bash
 LATEST=$(ls -t ~/.claude/orchestrator-log/run-*.md 2>/dev/null | head -1)
 ```
 
-If `LATEST` exists AND its mtime is within the last 30 minutes:
-- Read it. Pull every PR mentioned in `### Advanced` (where `stage to == stage:ready-for-merge`) and `### No action needed` (where row contains `stage:ready-for-merge`).
-- Also pull every PR from `### Stopped at human gate` whose `needs:` reason is "human approval (non-last-pusher branch protection)" — those are gate-clear from the bot's side.
+If `LATEST` exists AND its mtime is within the last 30 minutes, read it ONLY to harvest two specific signals that are otherwise expensive to recompute live:
 
-Otherwise (no recent log, or `--repo` set forcing fresh derivation):
-- Derive directly via `gh pr list --repo Open-Paws/<repo> --state open --label 'stage:ready-for-merge' --json number,title,labels,url,statusCheckRollup,reviewDecision,headRefName,additions,deletions,changedFiles --limit 100`
-- Plus a sweep of all-gates-green PRs without a blocking stage label: `gh pr list --repo Open-Paws/<repo> --state open --json number,title,labels,url,statusCheckRollup,reviewDecision --limit 200` then filter client-side for `statusCheckRollup` all-SUCCESS and labels containing none of `stage:plan-in-progress`/`stage:tests-in-progress`/`stage:impl-in-progress`/`stage:fix-needed`/`stage:adversarial-pending`.
+- Adversarial subagent verdicts mentioned per-PR (cheap signal for the LOW caps below)
+- Decision-conflict flags raised by the planner / plan-reviewer
 
-If `--repo` not set, walk all Open-Paws repos for which OpenGaryBot has push access.
+Do NOT use the run log to determine which PRs are candidates. Do NOT inherit the run log's HIGH/MED/LOW classification — recompute from scratch against the rules below. The run log is a hint store; gh is the source of truth.
+
+If `LATEST` is stale or missing, skip this step entirely. The eval still works; you just lose the prior-context shortcut.
 
 ### 2. Per-PR signals to gather
 
 For each candidate PR, fetch:
 
 ```bash
-gh pr view <repo>/<num> --json number,title,labels,url,statusCheckRollup,reviewDecision,headRefName,additions,deletions,changedFiles,files,comments,body
+gh pr view <repo>/<num> --json number,title,labels,url,statusCheckRollup,reviewDecision,mergeStateStatus,mergeable,headRefName,additions,deletions,changedFiles,files,comments,body
 ```
 
 Plus, if the PR touches a deployed surface, look for "live HTTP check" evidence in PR comments — search for `gh pr view --comments` output containing patterns like `curl -i`, `health check`, `200 OK`, `live check passed`. If none, the deployed-surface MED-cap fires.
@@ -66,9 +95,14 @@ Plus, if the PR touches a deployed surface, look for "live HTTP check" evidence 
 - Any test in the PR was classified as `skip:flaky` by test-reviewer (look for that label OR comment from `test-reviewer` mentioning the classification)
 - Time since `stage:verified` was applied (or last `verifier` completion comment) exceeds 24h (stale verification)
 - PR touches a UI surface (`*.tsx`, `*.jsx`, `*.vue`, `*.svelte`, `app/`, `pages/`, `components/`) AND no `persona-qa` completion comment is present on the PR
+- `reviewDecision == CHANGES_REQUESTED` (a reviewer — CodeRabbit or human — flagged a change still unaddressed; merging now ignores that feedback)
+- `mergeStateStatus == BEHIND` (head ref out of date; merge command will bounce until the branch is rebased onto base — content may be clean but the operation can't complete)
+
+**Important: "BLOCKED waiting for operator approval" is NOT a cap.** When `mergeStateStatus == BLOCKED` and the only reason is "review approval pending" (i.e. `reviewDecision == REVIEW_REQUIRED` with no CHANGES_REQUESTED, branch is up-to-date, all checks green, no other cap fires), the PR is HIGH-eligible. The operator runs `/merge` *to decide which PR to approve* — circular-flagging "you haven't approved this yet" as a content concern makes the score useless. The score answers "is this ready for your decision," not "have you decided yet." If the merge command bounces because branch protection wants the operator's approval first, that's the expected workflow, not a calibration failure — the operator runs `gh pr review --approve <url>` immediately before the emitted `gh pr merge` command.
 
 **A PR is LOW if any of the following are true:**
 
+- `mergeable == CONFLICTING` or `mergeStateStatus == DIRTY` (actual merge conflict — needs manual rebase + conflict resolution before any merge command will work, regardless of content quality)
 - Multiple of the MED-cap conditions above stack (count ≥ 2)
 - The `adversarial` subagent flagged anything as `needs-human-review` (look for that phrase in adversarial completion comment)
 - PR conflicts with a closed decision in `$OP_CONTEXT_REPO/decisions.md` (cross-reference any decision-conflict entry from the run log; on direct derivation, scan PR body + diff for keywords against `$OP_CONTEXT_REPO/decisions.md` headings)
@@ -78,7 +112,11 @@ Plus, if the PR touches a deployed surface, look for "live HTTP check" evidence 
 
 ### 4. Calibration intent (this is why the score is useful)
 
-If the first day of running this surfaces 80% HIGH, the calibration is too lax — the operator stops reading the column because everything looks identical. The MED-cap conditions exist specifically to push the median to MED, not HIGH. Most PRs in flight will hit at least one MED-cap (deployed-surface-no-live-check, or UI-no-persona-qa, or stale-verifier). When the operator sees HIGH, it should mean "this one really is clean — the column actually distinguishes".
+The score answers ONE question: *is the content of this PR ready for the operator's decision?* It does not answer "has the operator decided yet." Pending review approval is the operator's job to provide; flagging "you haven't approved this" as a content concern makes the score circular and useless.
+
+A clean bot-authored PR — CI green, no CodeRabbit issues, adversarial cleared, no merge conflict, no stale verifier, no UI-without-persona-qa, no deploy-without-live-check — is HIGH. The merge command bouncing on "review approval pending" is not a calibration failure, it's the expected workflow: operator reviews HIGH PRs, approves, merges.
+
+The MED-cap conditions exist to surface real content concerns: reviewer flagged unaddressed changes, deployed surface lacks a live HTTP check, UI lacks persona-qa, override label bypassed adversarial. When the operator sees MED, it means "look at this — there's something the pipeline noticed but couldn't resolve." When they see HIGH, it means "the pipeline thinks this is clean; your call."
 
 If you find yourself reasoning "this PR is fine, let's call it HIGH despite a MED-cap firing" — STOP. The score is mechanical. Don't soften it. Surface the cap reason in the "Top reason not HIGH" column and let the operator decide.
 
@@ -87,15 +125,17 @@ If you find yourself reasoning "this PR is fine, let's call it HIGH despite a ME
 ```markdown
 ## /merge queue — <ISO timestamp> — N PRs ready
 
-| Conf | Repo | PR | Title | Top reason not HIGH | Merge command |
-|------|------|----|----|---------------------|---------------|
-| HIGH | <repo> | #<num> | <title 60ch> | — | gh pr merge --squash --delete-branch <url> |
-| MED  | <repo> | #<num> | <title 60ch> | <one-line reason> | gh pr merge --squash --delete-branch <url> |
-| LOW  | <repo> | #<num> | <title 60ch> | <one-line reason> | gh pr merge --squash --delete-branch <url> |
+| Conf | Repo | PR | Title | Top reason not HIGH | Approve+merge command |
+|------|------|----|----|---------------------|-----------------------|
+| HIGH | <repo> | [#<num>](<url>) | <title 60ch> | — | gh pr review --approve <url> && gh pr merge --squash --delete-branch <url> |
+| MED  | <repo> | [#<num>](<url>) | <title 60ch> | <one-line reason> | gh pr review --approve <url> && gh pr merge --squash --delete-branch <url> |
+| LOW  | <repo> | [#<num>](<url>) | <title 60ch> | <one-line reason> | gh pr review --approve <url> && gh pr merge --squash --delete-branch <url> |
 
 Distribution: HIGH: N | MED: N | LOW: N
-Source: <log path> (mtime: <H>m ago)  OR  Source: live gh derivation (no recent run log)
+Source: live gh derivation (<N> repos walked, <M> PRs evaluated). Run-log cross-reference: <used / skipped — stale / skipped — none>.
 ```
+
+**PR column always renders as `[#<num>](<url>)`, never bare `#<num>`** — clickable links per the standing operator-output rule. Same goes for any followup answer that names a PR.
 
 Default sort: descending — HIGH first, MED second, LOW last. With `--risky`: ascending — LOW first.
 
@@ -106,6 +146,8 @@ The "Top reason not HIGH" column for HIGH PRs is **always em-dash (`—`), never
 If only one cap fires for a MED, write the one cap. If multiple cap conditions fire on a LOW, write the most decision-relevant one (typically: adversarial flag > decision conflict > scope creep > stacked MED-caps). Reserve the long explanation for follow-up questions; the column is a glance.
 
 Merge command always uses `--squash --delete-branch` per `pipeline-reference.md` STAGE 14.
+
+The chained `gh pr review --approve <url> && gh pr merge ...` lets the operator paste once. If they've already approved the PR via the UI, the first half is a benign re-approval; if they haven't, it satisfies branch protection's "review required" gate immediately before the merge attempt. Caveat: on a MED with `reviewDecision == CHANGES_REQUESTED`, the operator pasting this is explicitly overriding the reviewer's flagged concerns — the cap reason is in column 5 to make that visible. If they want to handle the change first, they don't paste; that's the whole point of MED.
 
 ## Hard rules
 
