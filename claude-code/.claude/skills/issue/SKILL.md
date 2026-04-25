@@ -206,7 +206,7 @@ e. **Fail.** Mode A falls through to Mode C. (Inference NEVER falls back on cont
 
    - `Open-Paws/context` → tier is `staff-ok` by default for context-repo issues; treat as **mild strip**. Never paste verbatim if input was clearly meeting-transcript or email-private.
    - All other public Open-Paws code repos → `public` → **strict strip**.
-   - Private Open-Paws repos (if any) → `private` → no strip required, but never copy verbatim from a confidential origin.
+   - Private Open-Paws repos (if any) → `private` → sanitization step is **bypassed** unless the input was sourced from a confidential origin (Slack DM, locked CryptPad, private email thread, etc.). If the input came from a confidential origin, verbatim copying is forbidden — paraphrase, even though the target repo itself is private.
    - **Unknown tier** → ask once: `<repo> sensitivity tier? (public / staff-ok / private)`. Do not assume. Cache the answer for this fire.
 
 2. **Strict-strip rules (`public` tier).**
