@@ -88,8 +88,9 @@ Plus, if the PR touches a deployed surface, look for "live HTTP check" evidence 
 
 - Label `override:skip-adversarial` is present
 - Label `override:allow-score-drop` is present
-- PR touches a deployed service (Cloud Run, Vercel project, Edge Function, etc.) AND no live HTTP check post-build is recorded in PR comments
+- PR deploys application code AND no live HTTP check post-build is recorded in PR comments
   - Detect deployed service via files matched: `Dockerfile`, `cloudrun*.yaml`, `vercel.json`, `supabase/functions/`, `.github/workflows/deploy*.yml`, etc.
+  - **Workflow-only carve-out:** If the ONLY deploy-surface files in the PR are themselves the deploy mechanism (e.g., the PR adds or modifies `.github/workflows/deploy*.yml` or a `Dockerfile`) AND no application code files are touched (no `src/`, `app/`, `lib/`, `pages/`, `components/`, `*.ts`/`*.tsx`/`*.py`/`*.go` etc. outside `tests/`), the cap does NOT fire. Adding the deploy mechanism doesn't deploy anything until the next code change merges. Live HTTP checks become relevant when the PR after this one ships actual code.
 - Files touched include any path tagged `sensitivity:private` per `context-repo.md`
 - CodeRabbit found anything above informational severity (parse PR comments for `**Issue:**`/`**Refactor:**`/`**Bug:**`/`**Note:**` blocks; the `chill` profile uses `Note:` for informational, so anything else is above-informational)
 - Any test in the PR was classified as `skip:flaky` by test-reviewer (look for that label OR comment from `test-reviewer` mentioning the classification)
