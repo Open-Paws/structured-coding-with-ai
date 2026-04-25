@@ -90,6 +90,14 @@ Different purposes:
 
 Subagents with `memory: project` in this setup: `scout`, `triage`, `planner`, `plan-reviewer`, `adversarial`, `persona-qa`. Stages where pattern recognition across many runs helps; not enabled on `test-writer` / `test-reviewer` / `implementer` / `verifier` / `desloppifier` because those should be driven by current plan + current code, not accumulated preference.
 
+## Operator commands
+
+Operator-only slash commands (`disable-model-invocation: true` — never auto-invoked) that sit on top of the pipeline. The cron `op-pipeline-orchestrator` keeps driving the pipeline forward in the background; these are the on-demand surface for operating it.
+
+- **`/run [--repo <name>] [--since <duration>] [--stage <name>] [--fix-mode]`** — drives the pipeline forward across in-scope items, dispatches the right subagent per stage, classifies every touched item, writes a structured report to `~/.claude/orchestrator-log/run-<UTC-timestamp>.md`. `/merge` and `/unblock` consume this report shape.
+- **`/merge [--risky] [--repo <name>]`** — read-only ranked merge queue. Reads the latest `/run` report (or derives via gh if stale), computes calibrated HIGH/MED/LOW confidence per PR, emits copy-paste merge commands. Never merges itself; the calibration is built so MED is the median outcome, not HIGH.
+- **`/unblock [--section credentials|decisions|sensitivity] [--repo <name>]`** — surfaces every pending decision only the operator can make: missing credentials, decision conflicts against `$OP_CONTEXT_REPO`, sensitivity escalations. Every row has a specific actionable next step. Sensitivity section never leaks private content per `context-repo.md` STAGE 13.
+
 ## Context repo
 
 `github.com/Open-Paws/context` (env var: `$OP_CONTEXT_REPO`). Single source of truth for WHY (decisions, priorities, org overview, proposals). This stack is HOW. Context repo wins conflicts. Org-wide read safety rules in `context-repo.md`. Key files inside the repo:
