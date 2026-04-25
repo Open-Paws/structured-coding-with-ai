@@ -3,7 +3,7 @@ name: merge
 description: Ranked merge queue with honest confidence scoring. Replaces "open 12 PR tabs" with one table. Reads the latest /run report (if <30min old) or derives ready-for-merge state via gh, computes a calibrated HIGH/MED/LOW confidence per PR, emits a markdown table with copy-paste merge commands. Read-only — never merges, never invokes subagents. Operator-only.
 disable-model-invocation: true
 argument-hint: "[--risky] [--repo <name>]"
-allowed-tools: Bash(gh:*), Bash(ls:*), Bash(date:*), Bash(stat:*), Read, Grep, Glob
+allowed-tools: Bash(gh:*), Bash(head:*), Bash(ls:*), Bash(date:*), Bash(stat:*), Read, Grep, Glob
 model: opus
 ---
 
