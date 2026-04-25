@@ -15,9 +15,9 @@ Ready-to-use AI coding instruction files for 12 tools, tailored for animal advoc
 **Unicode integrity (CI):** A CI action checks all instruction files for hidden Unicode characters (Rules File Backdoor attack). The `scripts/check-unicode-integrity.py` script is the underlying tool.
 
 **Strategy references:**
-- `open-paws-strategy/ecosystem/repos.md` — structured-coding-with-ai entry with full breakdown
-- `open-paws-strategy/closed-decisions.md` — 2026-04-01 external contribution safety decision
-- `open-paws-strategy/programs/developer-training-pipeline/guild/operations.md` — bootcamp curriculum context
+- `context/ecosystem/repos.md` — structured-coding-with-ai entry with full breakdown
+- `context/decisions.md` — 2026-04-01 external contribution safety decision
+- `context/programs/developer-training-pipeline/guild/operations.md` — bootcamp curriculum context
 
 ## Quick Start
 
