@@ -60,8 +60,20 @@ Client-side filter: keep PRs where `statusCheckRollup` is all-SUCCESS AND labels
 ### 1b. Optional: cross-reference the latest run log (secondary signal only)
 
 ```bash
-LATEST=$(ls -t ~/.claude/orchestrator-log/run-*.md 2>/dev/null | head -1)
+FIXTURE_LATEST=$(ls -t ~/.claude/orchestrator-log/run-*-fixture.md 2>/dev/null | head -1)
+ORCH_LATEST=$(ls -t ~/.claude/orchestrator-log/run-*.md 2>/dev/null | grep -v -- '-fixture\.md$' | head -1)
+if [ -z "$FIXTURE_LATEST" ]; then
+  LATEST="$ORCH_LATEST"
+elif [ -z "$ORCH_LATEST" ]; then
+  LATEST="$FIXTURE_LATEST"
+elif [ "$FIXTURE_LATEST" -nt "$ORCH_LATEST" ]; then
+  LATEST="$FIXTURE_LATEST"
+else
+  LATEST="$ORCH_LATEST"
+fi
 ```
+
+Newest-of-both, not fixture-first. A stale fixture must not shadow a fresh real run report.
 
 If `LATEST` exists AND its mtime is within the last 30 minutes, read it ONLY to harvest two specific signals that are otherwise expensive to recompute live:
 
