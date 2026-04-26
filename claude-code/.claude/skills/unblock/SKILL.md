@@ -30,7 +30,11 @@ Read these every fire (auto-load via `InstructionsLoaded`; cite by name in any f
 ### 1. Find the input
 
 ```bash
-LATEST=$(ls -t ~/.claude/orchestrator-log/run-*.md 2>/dev/null | head -1)
+if ls ~/.claude/fixture-logs/*.md &>/dev/null 2>&1; then
+  LATEST=$(ls -t ~/.claude/fixture-logs/*.md 2>/dev/null | head -1)
+else
+  LATEST=$(ls -t ~/.claude/orchestrator-log/run-*.md 2>/dev/null | head -1)
+fi
 ```
 
 If `LATEST` exists AND mtime within last 30 minutes:
