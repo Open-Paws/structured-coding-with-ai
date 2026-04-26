@@ -17,32 +17,10 @@ Read these every fire (auto-load via `InstructionsLoaded`; this skill must respe
 - `~/.claude/rules/context-repo.md` — sensitivity taxonomy and STAGE 13 confidentiality leak rule (load-bearing for sanitization)
 - `~/.claude/rules/advocacy-domain.md` — ubiquitous-language terms; titles and bodies must use them
 - `~/.claude/rules/voice.md` — no flattery, no corporate filler in issue bodies either
-- `~/.claude/rules/git-identity.md` — bot identity rules (referenced by the startup check below)
 
 Issues this skill files must be drop-in acceptable to `~/.claude/agents/scout.md` (well-formed: real observation, no fabricated paths, dedup-checked) and `~/.claude/agents/triage.md` (label set + sensitivity reasoning ready to be confirmed). If you find yourself wanting to relax those agents to make this skill easier, stop and report instead.
 
-## Startup gate — operator session, not bot session
-
-Before any other work, run:
-
-```bash
-gh auth status 2>&1 | head -10
-```
-
-Parse the active account. If it is `OpenGaryBot` (or any other bot identity matching `*Bot` / `*-bot`), refuse:
-
-```
-/issue refuses to run under bot identity (active: OpenGaryBot).
-
-Issues filed by /issue must carry the operator's identity — the bot triages, the
-operator files. Mixing creates a confusing audit trail (per ~/.claude/rules/git-identity.md
-the bot is for commits/automation, not operator-driven issue creation).
-
-Switch with:  gh auth switch --user <your-personal-account>
-Then re-run /issue.
-```
-
-Halt. Do not proceed to argument parsing or any gh write. This is non-negotiable — there is no `--force` flag.
+`/issue` runs under whichever `gh auth` identity is active — operator or bot. The bot/operator split governs commits and automation (`~/.claude/rules/git-identity.md`), not issue authorship; a manufactured "switch identities first" gate would manufacture an approval gate the pipeline doesn't need.
 
 ## Argument parsing
 
