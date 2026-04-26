@@ -112,9 +112,9 @@ Plus, if the PR touches a deployed surface, look for "live HTTP check" evidence 
 
 ### 4. Calibration intent (this is why the score is useful)
 
-The score answers ONE question: *is the content of this PR ready for the operator's decision?* It does not answer "has the operator decided yet." Pending review approval is the operator's job to provide; flagging "you haven't approved this" as a content concern makes the score circular and useless.
+The score answers ONE question: *is this PR safe to merge right now with no further pipeline action?* If a required check is missing, branch protection is unsatisfied, or the merge command will bounce, the answer is no — and that drops confidence by design. The score is mechanical, not aspirational.
 
-A clean bot-authored PR — CI green, no CodeRabbit issues, adversarial cleared, no merge conflict, no stale verifier, no UI-without-persona-qa, no deploy-without-live-check — is HIGH. The merge command bouncing on "review approval pending" is not a calibration failure, it's the expected workflow: operator reviews HIGH PRs, approves, merges.
+A clean bot-authored PR — CI green, no CodeRabbit issues, adversarial cleared, no merge conflict, no stale verifier, no UI-without-persona-qa, no deploy-without-live-check, AND `mergeStateStatus` is mergeable (not BLOCKED, BEHIND, or DIRTY) — is HIGH. If `mergeStateStatus == BLOCKED` for any reason — missing required check, missing required approval, branch-protection criteria unmet — that's a MED cap, no exceptions. The cap fires on the mechanical state regardless of why it's blocked.
 
 The MED-cap conditions exist to surface real content concerns: reviewer flagged unaddressed changes, deployed surface lacks a live HTTP check, UI lacks persona-qa, override label bypassed adversarial. When the operator sees MED, it means "look at this — there's something the pipeline noticed but couldn't resolve." When they see HIGH, it means "the pipeline thinks this is clean; your call."
 
