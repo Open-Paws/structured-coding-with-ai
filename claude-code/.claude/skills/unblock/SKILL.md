@@ -30,10 +30,16 @@ Read these every fire (auto-load via `InstructionsLoaded`; cite by name in any f
 ### 1. Find the input
 
 ```bash
-if ls ~/.claude/fixture-logs/*.md &>/dev/null 2>&1; then
-  LATEST=$(ls -t ~/.claude/fixture-logs/*.md 2>/dev/null | head -1)
+FIXTURE_LATEST=$(ls -t ~/.claude/fixture-logs/*.md 2>/dev/null | head -1)
+ORCH_LATEST=$(ls -t ~/.claude/orchestrator-log/run-*.md 2>/dev/null | head -1)
+if [ -z "$FIXTURE_LATEST" ]; then
+  LATEST="$ORCH_LATEST"
+elif [ -z "$ORCH_LATEST" ]; then
+  LATEST="$FIXTURE_LATEST"
+elif [ "$FIXTURE_LATEST" -nt "$ORCH_LATEST" ]; then
+  LATEST="$FIXTURE_LATEST"
 else
-  LATEST=$(ls -t ~/.claude/orchestrator-log/run-*.md 2>/dev/null | head -1)
+  LATEST="$ORCH_LATEST"
 fi
 ```
 
