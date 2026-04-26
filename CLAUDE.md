@@ -4,7 +4,7 @@ Ready-to-use AI coding instruction files for 12 tools, tailored for animal advoc
 
 ## Organizational Context
 
-**Role in flywheel:** This repo is the canonical source for AI coding methodology across all Open Paws projects. It feeds two downstream consumers: `graze-cli` bundles selected guides into its binary, and `desloppify` generates agent skill files from the same content. It is also curriculum content for the bootcamp — developers learn these 7 concerns and 6 process skills through the training pipeline.
+**Role in flywheel:** This repo is the canonical source for AI coding methodology across all Open Paws projects. Its primary downstream consumer is `desloppify`, which generates agent skill files from this content. It is also curriculum content for the bootcamp — developers learn these 7 concerns and 6 process skills through the training pipeline.
 
 **Layer:** 1 — Strengthen. Lever: Strengthen.
 
@@ -126,7 +126,7 @@ For tool-specific AI coding instructions, copy the corresponding directory from 
 
 All 7 always apply. Critical for this repo:
 
-1. **Testing** — Content changes must not break the downstream consumers (graze-cli bundling, desloppify skill generation). Verify content renders correctly in the target tool's format
+1. **Testing** — Content changes must not break the downstream consumers (desloppify skill generation). Verify content renders correctly in the target tool's format
 2. **Security** — Instruction file integrity is a first-class concern. Hidden Unicode in instruction files is the Rules File Backdoor attack. Every PR runs the Unicode check
 3. **Privacy** — No activist data or operational details in example code or sample prompts
 4. **Cost** — Instruction files are loaded into every AI session that uses them. Keep them lean — every token counts at scale across the bootcamp

@@ -185,18 +185,13 @@ Each tool directory is self-contained and independently authored for its format 
 
 **Integrity protection**: All instruction files are checked on every PR for hidden Unicode characters (the Rules File Backdoor attack). Run `python scripts/check-unicode-integrity.py` locally before pushing any edits to instruction files.
 
-**Ecosystem position**: This repo is the canonical AI methodology source for all Open Paws projects. It feeds two downstream consumers:
-- [graze-cli](https://github.com/Open-Paws/graze-cli) — bundles selected instruction files into its binary
+**Ecosystem position**: This repo is the canonical AI methodology source for all Open Paws projects. Its primary downstream consumer:
 - [desloppify](https://github.com/Open-Paws/desloppify) — generates agent skill files from the same content
 
 ```
 structured-coding-with-ai  (canonical AI methodology)
         |
-        +-- graze-cli          bundles instruction files into CLI binary
-        |
         +-- desloppify         generates agent skill files from content
-        |
-        +-- gary               autonomous agent uses these as base instructions
         |
         +-- platform           copies claude-code/ into project root
         |
@@ -251,9 +246,7 @@ project_status: stable
 difficulty: beginner
 skill_tags: [ai-coding, instruction-files, animal-advocacy, security, developer-tooling]
 related_repos:
-  - https://github.com/Open-Paws/graze-cli
   - https://github.com/Open-Paws/desloppify
-  - https://github.com/Open-Paws/gary
   - https://github.com/Open-Paws/platform
   - https://github.com/Open-Paws/no-animal-violence
 ```

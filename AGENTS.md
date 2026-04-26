@@ -10,8 +10,7 @@ This repo contains ready-to-use AI coding instruction files for 12 tools, tailor
 
 This repo is unusual: it is instruction files whose consumers are other AI agents. A change to `claude-code/.claude/rules/security.md` affects every Claude Code session across all Open Paws projects that have copied those files. A change to `agents-md/AGENTS.md` affects 20+ AI tools. Treat content edits with the same care you would treat changes to a shared library used in production.
 
-Two downstream consumers depend on this repo's content directly:
-- **graze-cli** — bundles selected instruction files into its binary; content changes require verifying the bundled output still renders correctly
+One downstream consumer depends on this repo's content directly:
 - **desloppify** — generates agent skill files from the same content; structural changes to skill files may break the generation pipeline
 
 ---
@@ -97,7 +96,7 @@ The most common failure modes in this repo are:
 - Introducing synonyms for established domain terms (see advocacy-domain language dictionary in `CLAUDE.md`)
 - Adding graphic investigation content to example prompts or test scenarios (violates emotional-safety concern)
 - Copying content across tool directories rather than independently authoring for each format
-- Edits that break the structural assumptions of downstream consumers (graze-cli bundling, desloppify skill generation)
+- Edits that break the structural assumptions of downstream consumers (desloppify skill generation)
 - Hidden Unicode characters introduced through copy-paste from external sources
 
 ---
