@@ -12,6 +12,15 @@ desloppify update-skill claude
 
 **OP fork only — never upstream.** The git install above pulls from `github.com/Open-Paws/desloppify`, which carries the movement conventions (no-speciesist-language rules, type-safety patterns, gateway response shape discipline, compassionate language enforcement, persona-QA browser testing) that upstream desloppify lacks. `pip install desloppify` from PyPI pulls upstream and is a hard-rule violation per `~/.claude/rules/pipeline-nevers.md`.
 
+**Score thresholds**
+| Repo type | Minimum score |
+|-----------|--------------|
+| Gary | ≥80 |
+| Platform repos (`open-paws-platform`, `open-paws-api-gateway`) | ≥75 |
+| All other repos | ≥70 |
+
+**Verify fork install**: `desloppify scan --path . --verbose` — look for "advocacy-language-detector" or "activist-security-detector" in output.
+
 Add `.desloppify/` to `.gitignore` — it contains local state that should not be committed. Before scanning, exclude generated / vendor / build dirs:
 
 ```bash

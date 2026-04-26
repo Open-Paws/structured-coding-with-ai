@@ -1,9 +1,9 @@
 # Code Quality — desloppify
 
-Run desloppify to systematically identify and fix code quality issues. Install and configure before scanning (requires Python 3.11+):
+Run desloppify to systematically identify and fix code quality issues. Install from the **Open Paws fork** (Python 3.11+):
 
 ```bash
-pip install --upgrade "desloppify[full]"
+pip install "git+https://github.com/Open-Paws/desloppify.git#egg=desloppify[full]"
 desloppify update-skill claude
 ```
 
@@ -21,3 +21,12 @@ desloppify next
 Do not be lazy. Large refactors and small detailed fixes — do both with equal energy. No task is too big or too small. Fix things properly, not minimally.
 
 Use `plan` / `plan queue` to reorder priorities or cluster related issues. Rescan periodically. The scan output includes agent instructions — follow them, do not substitute your own analysis.
+
+**Score thresholds**
+| Repo type | Minimum score |
+|-----------|--------------|
+| Gary | ≥80 |
+| Platform repos (`open-paws-platform`, `open-paws-api-gateway`) | ≥75 |
+| All other repos | ≥70 |
+
+**Verify fork install**: `desloppify scan --path . --verbose` — look for "advocacy-language-detector" or "activist-security-detector" in output.
