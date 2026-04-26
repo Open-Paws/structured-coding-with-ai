@@ -3,6 +3,7 @@
 ## What is graze and why use it?
 
 Graze-CLI is Open Paws' fork of [opencode](https://github.com/anomalyco/opencode), an agentic coding CLI for advocacy developers. It supports automatic failover across 9 LLM providers (7 with free tiers: Gemini, Groq, Cerebras, SambaNova, DeepInfra, Ollama, Mistral/CodeStral). Key differences from upstream:
+
 - Advocacy-aware system prompts (neutral mode for external repos, full kernel for Open Paws)
 - Pre-configured NAV/desloppify hooks
 - India bootcamp / global south optimized (free-tier providers, Colab secrets)
@@ -14,6 +15,7 @@ Copy this `graze-cli/` directory to your project root. Graze auto-detects it.
 **NOT** `npm i -g opencode` (upstream, lacks advocacy rules).
 
 ### Global install (recommended for Guild devs)
+
 ```bash
 git clone https://github.com/Open-Paws/graze-cli.git
 cd graze-cli
@@ -21,15 +23,18 @@ npm install
 npm run build
 npm link  # or `bun link`
 ```
+
 Test: `graze --version`
 
 ### Colab / no-install (India bootcamp)
+
 ```bash
 git clone https://github.com/Open-Paws/graze-cli.git
 cd graze-cli
 npm install
 npx graze --version  # or add to $PATH
 ```
+
 Use Colab secrets for API keys: `GOOGLE_GENERATIVE_AI_API_KEY`, `GROQ_API_KEY`, etc.
 
 **npm package pending** (@open-paws/graze publishing tracked [#74](https://github.com/Open-Paws/graze-cli/issues/74)).
@@ -47,8 +52,8 @@ Use Colab secrets for API keys: `GOOGLE_GENERATIVE_AI_API_KEY`, `GROQ_API_KEY`, 
 
 ## Advocacy Workflow Rules
 
-1. **Pre-commit**: Always `desloppify scan .` + `semgrep --config=p/open-paws/semgrep-rules-no-animal-violence`
-2. **Economic test**: Before implementing, ask: \"Does this make exploitation less profitable or alternatives more competitive?\"
+1. **Pre-commit**: Always `desloppify scan .` + `semgrep --config semgrep-no-animal-violence.yaml`
+2. **Economic test**: Before implementing, ask: "Does this make exploitation less profitable or alternatives more competitive?"
 3. **Quest submission** (Guild): `platform_submit_quest_completion` when done
 4. **Two-state prompts**: Advocacy kernel auto-injects in Open Paws repos; neutral elsewhere
 5. **Token discipline**: Large context (strategy docs) — `graze run --max-tokens 32k`
@@ -61,6 +66,7 @@ Use Colab secrets for API keys: `GOOGLE_GENERATIVE_AI_API_KEY`, `GROQ_API_KEY`, 
 - **India networks**: Gemini blocked? Fallback: `graze herd list | grep free`.
 
 ## Links
+
 - [Graze-CLI Repo](https://github.com/Open-Paws/graze-cli)
 - [India Bootcamp Module 1](https://github.com/Open-Paws/c4c-bootcamp/issues/10)
 - [Desloppify OP Fork](https://github.com/Open-Paws/desloppify)

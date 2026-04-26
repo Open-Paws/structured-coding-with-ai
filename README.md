@@ -26,6 +26,7 @@ structured-coding-with-ai/
 ├── cline/              # .clinerules/ (14 files)
 ├── cursor/             # .cursorrules + .cursor/rules/ (14 files)
 ├── gemini-cli/         # GEMINI.md
+├── graze-cli/          # GRAZE.md — Open Paws opencode fork (multi-provider failover, advocacy kernel)
 ├── github-copilot/     # .github/ instructions, prompts, chat modes (23 files)
 ├── jetbrains-junie/    # .junie/guidelines.md
 ├── kilo-code/          # .kilocode/rules/ + Memory Bank (21 files)
