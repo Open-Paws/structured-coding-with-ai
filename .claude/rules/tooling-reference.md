@@ -1,6 +1,6 @@
 # Open Paws Tooling Reference
 
-Loaded every session. Where the Open Paws dev stack lives and what each piece is for. Coverage scope: the integration points that don't have their own dedicated rule. For desloppify usage see `desloppify.md`; for emergency override labels and the pipeline rule set see `pipeline-nevers.md`; for the context repo and the org-wide read test see `context-repo.md`.
+Loaded every session. Where the Open Paws dev stack lives and what each piece is for. Coverage scope: the integration points that don't have their own dedicated rule. For desloppify usage see `desloppify.md`; for the context repo and the org-wide read test see `context-repo.md`.
 
 ## MCP config file locations (three scopes)
 
@@ -61,7 +61,7 @@ autoagent-merger.yml
 
 **Not universal.** The context repo, for instance, runs pipeline stages via in-session Claude orchestration (same dispatch model as the repo's existing `/weekly-review`, `/audit-all`, etc.) and does NOT carry these workflow files. Both models are valid: workflow-driven dispatch for repos that want CI-triggered pipeline runs, session-driven dispatch for repos where the orchestrator is a Claude Code session. Per-repo call; no one-size-fits-all.
 
-Workflow edits are unsafe-parallel — serialize per `parallelization.md`.
+Workflow edits are unsafe-parallel.
 
 ## Per-repo Claude Code config
 
@@ -80,9 +80,9 @@ Claude Code has two unrelated memory systems. Don't conflate them.
 
 **Subagent-scoped persistent memory** — `<cwd>/.claude/agent-memory/<agent-name>/` (cwd-relative, per-repo). Created when a subagent has `memory: project` in its frontmatter. Harness auto-creates the dir on first invocation and injects the path plus usage instructions into the subagent's system prompt. The subagent reads/writes its own `MEMORY.md` index plus topic files. **Scoped per-repo (one set of accumulated learnings per repo the subagent works in)**, not global per-subagent.
 
-Observed 2026-04-24: when orchestrator cwd is a git repo (e.g. `$OP_CONTEXT_REPO`), the harness places agent memory INSIDE that repo's working tree. When cwd is home dir, the harness fails to create worktrees at all (see `parallelization.md` §Orchestrator cwd preflight). The earlier doc claim that memory lives at `~/.claude/agent-memory/` "regardless of cwd" was incorrect.
+Observed 2026-04-24: when orchestrator cwd is a git repo (e.g. `$OP_CONTEXT_REPO`), the harness places agent memory INSIDE that repo's working tree. When cwd is home dir, the harness fails to create worktrees at all. The earlier doc claim that memory lives at `~/.claude/agent-memory/` "regardless of cwd" was incorrect.
 
-**Gitignore implication:** every Open Paws repo's `.gitignore` must include `.claude/agent-memory/` and `.claude/worktrees/` to prevent accidental commit of agent state into shared history. This is a standard per-repo hygiene convention — should ship with the repo's initial `.gitignore` and be part of the sync-labels-style tooling bootstrap.
+**Gitignore implication:** every Open Paws repo's `.gitignore` must include `.claude/agent-memory/` and `.claude/worktrees/` to prevent accidental commit of agent state into shared history. This is a standard per-repo hygiene convention — should ship with the repo's initial `.gitignore`.
 
 Different purposes:
 - Session memory = Claude's notes to **future-Claude-in-this-dir**
@@ -90,14 +90,6 @@ Different purposes:
 
 Subagents with `memory: project` in this setup: `scout`, `triage`, `planner`, `plan-reviewer`, `adversarial`, `persona-qa`. Stages where pattern recognition across many runs helps; not enabled on `test-writer` / `test-reviewer` / `implementer` / `verifier` / `desloppifier` because those should be driven by current plan + current code, not accumulated preference.
 
-## Operator commands
-
-Operator-only slash commands (`disable-model-invocation: true` — never auto-invoked) that sit on top of the pipeline. The cron `op-pipeline-orchestrator` keeps driving the pipeline forward in the background; these are the on-demand surface for operating it.
-
-- **`/run [--repo <name>] [--since <duration>] [--stage <name>] [--fix-mode]`** — drives the pipeline forward across in-scope items, dispatches the right subagent per stage, classifies every touched item, writes a structured report to `~/.claude/orchestrator-log/run-<UTC-timestamp>.md` where `<UTC-timestamp>` is `YYYY-MM-DDTHH-MM-SSZ` (ISO-8601 basic, UTC, colons replaced with hyphens for filename safety; e.g. `run-2026-04-25T11-00-38Z.md`). `/merge` and `/unblock` consume this report shape.
-- **`/merge [--risky] [--repo <name>]`** — read-only ranked merge queue. Reads the latest `/run` report (or derives via gh if stale), computes calibrated HIGH/MED/LOW confidence per PR, emits copy-paste merge commands. Never merges itself. Calibration specifics live in the `/merge` skill spec.
-- **`/unblock [--section credentials|decisions|sensitivity] [--repo <name>]`** — surfaces every pending decision only the operator can make: missing credentials, decision conflicts against `$OP_CONTEXT_REPO`, sensitivity escalations. Every row has a specific actionable next step. Sensitivity section never leaks private content per `context-repo.md` STAGE 13.
-- **`/issue <text> [--repo <name>] [--dry-run] [--no-confirm]`** — files one or many GitHub issues from arbitrary input (a sentence, paragraph, transcript, email). Auto-detects single-vs-batch: ≤3 sentences with a resolvable repo → Mode A (draft + confirm + file); longer or multi-item input → Mode B (decompose, classify each as NEW / DUPLICATE_OF / ALREADY_RESOLVED / OUT_OF_SCOPE, render approval table, file approved rows only); ambiguous short input → Mode C (one clarifying question, no second). Sanitizes every body against the target repo's sensitivity tier per `context-repo.md` (strict strip on public repos, mild on `staff-ok`, never paste verbatim transcript/email content). Refuses to run when `gh auth status` shows the bot account active — the bot triages, the operator files. Forbids `auto:approved` and `override:*` labels; sets only `stage:triaged` plus type/severity/component so the issue is drop-in acceptable to scout/triage.
 
 ## Context repo
 
