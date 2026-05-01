@@ -17,11 +17,10 @@ Each test names the rule it encodes and specifies the mutation that kills it.
 from __future__ import annotations
 
 import json
+import stat
 import sys
 import textwrap
 from pathlib import Path
-
-import pytest
 
 # ---------------------------------------------------------------------------
 # Load module under test
