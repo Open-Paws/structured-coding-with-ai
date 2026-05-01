@@ -17,9 +17,6 @@ Each test names the rule it encodes and specifies the mutation that kills it.
 from __future__ import annotations
 
 import json
-import os
-import stat
-import subprocess
 import sys
 import textwrap
 from pathlib import Path
@@ -46,21 +43,25 @@ drift_repair_pass = _watchdog.drift_repair_pass
 # ---------------------------------------------------------------------------
 
 def _write_mock_gh(path: Path, exit_code_for_edit: int, labels: list[str], comments: list[str]) -> None:
-    """Write a mock gh binary that records calls and returns configurable exit codes.
+    """Write a mock gh script that records calls and returns configurable exit codes.
+
+    On Windows the mock is a .py file invoked via ``python <path>.py``; on
+    Unix it is a shebang executable. The ``gh_path`` passed to functions under
+    test is a wrapper that works on both platforms.
 
     The mock records every invocation (argv) into a JSON-lines call log at
-    <path>.calls. Responses vary by sub-command:
+    <path.parent>/gh.calls. Responses vary by sub-command:
 
-    - `gh issue edit ... --remove-label ...`  → exit_code_for_edit
-    - `gh issue comment ...`                  → exit 0 (always)
-    - `gh issue view ... --json labels,comments` → stdout JSON, exit 0
+    - ``gh issue edit ... --remove-label ...`` → exit_code_for_edit
+    - ``gh issue comment ...``                 → exit 0 (always)
+    - ``gh issue view ... --json labels,comments`` → stdout JSON, exit 0
     """
     labels_json = json.dumps(labels)
     comments_json = json.dumps(comments)
 
-    # Build the mock script content
+    # Write the Python implementation (works on all platforms)
+    py_path = path.with_suffix(".py")
     script = textwrap.dedent(f"""\
-        #!/usr/bin/env python3
         import json, sys, os
 
         argv = sys.argv[1:]
@@ -80,9 +81,30 @@ def _write_mock_gh(path: Path, exit_code_for_edit: int, labels: list[str], comme
         else:
             sys.exit(0)
     """)
+    py_path.write_text(script, encoding="utf-8")
 
-    path.write_text(script, encoding="utf-8")
-    path.chmod(path.stat().st_mode | stat.S_IEXEC | stat.S_IXGRP | stat.S_IXOTH)
+    # Write a thin wrapper that invokes the .py via the same Python interpreter
+    # that runs pytest. On Windows this is a .cmd file; on Unix a shebang script.
+    if sys.platform == "win32":
+        cmd_path = path.with_suffix(".cmd")
+        cmd_path.write_text(
+            f'@"{sys.executable}" "{py_path}" %*\r\n',
+            encoding="utf-8",
+        )
+        # Store the .cmd path in a sentinel so _gh_path() finds it
+        path.write_bytes(cmd_path.read_bytes())
+    else:
+        wrapper = f'#!/bin/sh\nexec "{sys.executable}" "{py_path}" "$@"\n'
+        path.write_text(wrapper, encoding="utf-8")
+        path.chmod(path.stat().st_mode | stat.S_IEXEC | stat.S_IXGRP | stat.S_IXOTH)
+
+
+def _gh_path(base: Path) -> str:
+    """Return the platform-appropriate path for the mock gh binary."""
+    if sys.platform == "win32":
+        cmd = base.with_suffix(".cmd")
+        return str(cmd)
+    return str(base)
 
 
 def _read_calls(mock_gh_path: Path) -> list[list[str]]:
@@ -107,12 +129,11 @@ def test_mutation_first_behaviour(tmp_path: Path) -> None:
     _write_mock_gh(mock_gh, exit_code_for_edit=0, labels=["status:done"], comments=[])
     log_path = tmp_path / "orchestrator.log"
 
-    env = {**os.environ, "PATH": str(tmp_path) + os.pathsep + os.environ.get("PATH", "")}
     strip_status_done(
         repo="Open-Paws/structured-coding-with-ai",
         issue_number=46,
         log_path=log_path,
-        gh_path=str(mock_gh),
+        gh_path=_gh_path(mock_gh),
     )
 
     calls = _read_calls(mock_gh)
@@ -145,7 +166,7 @@ def test_comment_suppressed_on_mutation_failure(tmp_path: Path) -> None:
         repo="Open-Paws/structured-coding-with-ai",
         issue_number=46,
         log_path=log_path,
-        gh_path=str(mock_gh),
+        gh_path=_gh_path(mock_gh),
     )
 
     calls = _read_calls(mock_gh)
@@ -172,7 +193,7 @@ def test_comment_posted_on_mutation_success(tmp_path: Path) -> None:
         repo="Open-Paws/structured-coding-with-ai",
         issue_number=46,
         log_path=log_path,
-        gh_path=str(mock_gh),
+        gh_path=_gh_path(mock_gh),
     )
 
     calls = _read_calls(mock_gh)
@@ -200,7 +221,7 @@ def test_failure_logged_on_nonzero_exit(tmp_path: Path) -> None:
         repo="Open-Paws/context",
         issue_number=82,
         log_path=log_path,
-        gh_path=str(mock_gh),
+        gh_path=_gh_path(mock_gh),
     )
 
     assert log_path.exists(), "orchestrator log must be written on failure"
@@ -255,7 +276,7 @@ def test_drift_repair_fires_on_stale_comment(tmp_path: Path) -> None:
     drift_repair_pass(
         repos_and_issues=[("Open-Paws/context", 82)],
         log_path=log_path,
-        gh_path=str(mock_gh),
+        gh_path=_gh_path(mock_gh),
     )
 
     calls = _read_calls(mock_gh)
@@ -289,7 +310,7 @@ def test_drift_repair_noop_when_label_absent(tmp_path: Path) -> None:
     drift_repair_pass(
         repos_and_issues=[("Open-Paws/context", 82)],
         log_path=log_path,
-        gh_path=str(mock_gh),
+        gh_path=_gh_path(mock_gh),
     )
 
     calls = _read_calls(mock_gh)
