@@ -214,7 +214,7 @@ def test_unicode_integrity_all_changed_files() -> None:
 # Test 7: no speciesist language introduced in changed files
 #
 # Behaviour: the dedup rule text must not introduce language that normalises
-#            animal violence (e.g. "kill two birds with one stone").
+#            animal violence (e.g. idioms that normalize harm to animals).
 # Mutation kill: adding a prohibited idiom to any file fails this test.
 #
 # Implementation note: requires semgrep + the NAV config. If semgrep is not
