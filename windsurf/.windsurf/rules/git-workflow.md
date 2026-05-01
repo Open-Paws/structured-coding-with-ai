@@ -19,6 +19,15 @@ gh issue list --search "keywords describing the task"
 ```
 
 Issue exists → note the number; every branch, commit, and PR must reference it.
+
+Open PR check → Before beginning any work, check whether an open PR already addresses the issue:
+
+```bash
+gh pr list --state open --search "#<N> in:body,title" --json number,title,url
+```
+
+If one or more open PRs are returned: **Do not open a new PR** — a duplicate is already in flight. Reroute to plan-reviewer with the existing PR as input, OR halt and report the existing PR URL. Never open a second PR for the same issue unless the first is explicitly closed.
+
 No issue → create one first. Include: problem description, acceptance criteria, affected files/components, security/privacy considerations, and constraints.
 
 ```bash
