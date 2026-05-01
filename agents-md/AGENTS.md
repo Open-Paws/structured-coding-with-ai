@@ -309,6 +309,8 @@ Before starting any coding task on a GitHub repository. Before committing, branc
 
 **0. GitHub Issue First.** Before writing any code: `gh issue list --search "keywords"`. If no issue exists, create one with `gh issue create`. Include problem description, acceptance criteria, affected files/components, and security/privacy considerations. Do not begin implementation until the issue is documented.
 
+**Open PR already exists:** After confirming the issue number, check for open PRs that already address it: `gh pr list --state open --search "#<N> in:body,title" --json number,title,url`. If one or more open PRs are returned: **Do not open a new PR** — a duplicate is already in flight. Reroute to plan-reviewer with the existing PR as input, OR halt and report the existing PR URL. Never open a second PR for the same issue unless the first is explicitly closed.
+
 **1. One Worktree Per Task.** Every task — especially in parallel agent swarms — gets its own git worktree: `git worktree add ../worktrees/<branch-name> -b <branch-name>`. Branch naming: `fix/<issue-number>-short-description`. When spawning parallel sub-agents, each MUST receive its own unique branch name and worktree path — sharing a branch produces conflicts and corrupted history.
 
 **2. Read the Codebase.** Before planning, read every file in the affected module(s), existing utilities and patterns, test files, and recent git log. Do not plan until you can describe the current behavior in your own words.

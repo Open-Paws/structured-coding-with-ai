@@ -77,7 +77,7 @@ def test_dedup_rule_present(filepath: Path) -> None:
     """Every target file must contain the open-PR dedup rule."""
     assert filepath.exists(), f"File not found: {filepath}"
     content = read_text(filepath)
-    assert "Open PR already exists" in content or "open PR" in content.lower(), (
+    assert any(phrase in content for phrase in ("Open PR already exists", "Open PR check", "open-PR check", "No planner dispatch without open-PR check")), (
         f"Dedup rule not found in {filepath.relative_to(REPO_ROOT)}\n"
         "Expected text signalling the open-PR check (e.g. 'Open PR already exists')"
     )

@@ -64,6 +64,7 @@ Block deployment on any Critical or High severity finding.
 ## Process Enforcement
 
 Orchestrator mode enforces these process rules across all delegated work:
+- No planner dispatch without open-PR check: run `gh pr list --state open --search "#<N> in:body,title"` before dispatching for issue N; **Do not open a new PR** if an open PR is found — reroute to plan-reviewer with the existing PR as input instead
 - No Code mode work without a plan (Architect mode first for significant changes)
 - No commits without passing tests
 - No PRs without AI-Assisted tagging
